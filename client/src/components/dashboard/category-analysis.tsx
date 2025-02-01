@@ -12,6 +12,11 @@ interface Category {
   description: string;
 }
 
+interface CategoryInsight {
+  category: string;
+  description: string;
+}
+
 export default function CategoryAnalysis() {
   const { data: categories } = useQuery({
     queryKey: ["/api/analysis/categories"],
@@ -48,18 +53,22 @@ export default function CategoryAnalysis() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Key Insights</CardTitle>
+          <CardTitle>Category Insights</CardTitle>
         </CardHeader>
         <CardContent>
-          <ScrollArea className="h-[200px]">
-            <ul className="space-y-2">
-              {categories.insights.map((insight: string, i: number) => (
-                <li key={i} className="flex items-start space-x-2">
-                  <Badge variant="outline">{i + 1}</Badge>
-                  <span className="text-sm">{insight}</span>
-                </li>
+          <ScrollArea className="h-[400px]">
+            <div className="space-y-6">
+              {categories.insights.map((insight: CategoryInsight, i: number) => (
+                <div key={i} className="pb-4 border-b last:border-0">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge variant="outline">{insight.category}</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {insight.description}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           </ScrollArea>
         </CardContent>
       </Card>

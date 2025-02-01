@@ -26,6 +26,13 @@ export const categories = pgTable("categories", {
   description: text("description"),
 });
 
+// Category insights table
+export const categoryInsights = pgTable("category_insights", {
+  id: serial("id").primaryKey(),
+  standardizedCategory: text("standardized_category").notNull(),
+  insight: text("insight").notNull(),
+});
+
 // Intents analysis
 export const intents = pgTable("intents", {
   id: serial("id").primaryKey(),

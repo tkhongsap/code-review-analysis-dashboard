@@ -4,6 +4,7 @@ import { importJSONData } from "./services/import";
 import { db } from "@db";
 import { codeReviews, categories, intents, workAreas, trainingRecommendations } from "@db/schema";
 import { desc, sql } from "drizzle-orm";
+import { readFileSync } from "fs";
 import { join } from "path";
 
 export function registerRoutes(app: Express): Server {
@@ -57,14 +58,9 @@ export function registerRoutes(app: Express): Server {
       .groupBy(codeReviews.standardizedCategory)
       .orderBy(sql`count(*) desc`);
 
-      const insights = await db.select({
-        insight: sql<string>`concat(standardized_category, ' makes up ', 
-          round(count(*)::numeric / sum(count(*)) over() * 100), '% of all analysis')`
-      })
-      .from(codeReviews)
-      .groupBy(codeReviews.standardizedCategory)
-      .orderBy(sql`count(*) desc`)
-      .limit(3);
+      // Read insights from JSON file
+      const insightsPath = join(process.cwd(), "attached_assets", "category_insights.json");
+      const insightsData = JSON.parse(readFileSync(insightsPath, 'utf-8'));
 
       const distribution = [
         { name: "Data Processing", value: 131, percentage: 28, description: "Data Processing related reviews" },
@@ -81,7 +77,10 @@ export function registerRoutes(app: Express): Server {
 
       res.json({
         distribution,
-        insights: insights.map(i => i.insight)
+        insights: insightsData.map((item: any) => ({
+          category: item.standardized_category,
+          description: item.insight
+        }))
       });
     } catch (error) {
       console.error("Category analysis error:", error);
