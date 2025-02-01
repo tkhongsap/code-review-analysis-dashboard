@@ -17,6 +17,14 @@ export const codeReviews = pgTable("code_reviews", {
   suggestedTraining: text("suggested_training").array(),
 });
 
+// User capabilities table
+export const userCapabilities = pgTable("user_capabilities", {
+  id: serial("id").primaryKey(),
+  standardizedCategory: text("standardized_category").notNull(),
+  userQuery: text("user_query").notNull(),
+  capabilities: jsonb("capabilities").notNull(),
+});
+
 // Intents table
 export const intents = pgTable("intents", {
   id: serial("id").primaryKey(),
@@ -41,16 +49,12 @@ export const workAreaBroaderCategories = pgTable("work_area_broader_categories",
   broaderWorkAreas: text("broader_work_areas").notNull(),
 });
 
-// User capability analysis table
-export const userCapabilities = pgTable("user_capabilities", {
-  id: serial("id").primaryKey(),
-  standardizedCategory: text("standardized_category").notNull(),
-  userQuery: text("user_query"),
-  strongCapabilities: jsonb("strong_capabilities").notNull(),
-  weakCapabilities: jsonb("weak_capabilities").notNull()
-});
-
 // Export schemas for validation
+export const insertUserCapabilitySchema = createInsertSchema(userCapabilities);
+export const selectUserCapabilitySchema = createSelectSchema(userCapabilities);
+export type InsertUserCapability = typeof userCapabilities.$inferInsert;
+export type SelectUserCapability = typeof userCapabilities.$inferSelect;
+
 export const insertCodeReviewSchema = createInsertSchema(codeReviews);
 export const selectCodeReviewSchema = createSelectSchema(codeReviews);
 export type InsertCodeReview = typeof codeReviews.$inferInsert;

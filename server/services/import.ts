@@ -42,9 +42,8 @@ export async function importJSONData(filePath: string) {
 
             await db.insert(userCapabilities).values({
               standardizedCategory,
-              userQuery: capabilityAnalysis.user_query || null,
-              strongCapabilities: capabilityAnalysis.strong_capabilities || {},
-              weakCapabilities: capabilityAnalysis.weak_capabilities || {}
+              userQuery: capabilityAnalysis.user_query,
+              capabilities: capabilityAnalysis.capabilities
             });
             importedCount++;
             console.log(`Successfully imported capability analysis for: ${standardizedCategory}`);

@@ -2,174 +2,141 @@
   {
     "standardized_category": "API Integration",
     "capability_analysis": {
-      "user_query": "What are the key capabilities in API development and integration across various frameworks?",
-      "strong_capabilities": {
-        "API design and development": 9,
-        "Error handling": 8,
-        "ASP.NET Core development": 8,
-        "C# programming": 8,
-        "FastAPI framework proficiency": 7,
-        "Data retrieval and manipulation": 7,
-        "Understanding of RESTful services": 7,
-        "Logging frameworks": 7,
-        "Performance optimization": 7
-      },
-      "weak_capabilities": {
-        "Voice Short Message Service (VSMS) technologies": 3,
-        "Knowledge of communication protocols": 4,
-        "Understanding of educational theories": 4,
-        "Machine learning basics": 5,
-        "Familiarity with dropdown implementation": 5,
-        "Static file serving": 5,
-        "Configuration management": 5
+      "user_query": "What are the key capabilities required for effective API development and integration?",
+      "capabilities": {
+        "API integration": 10,
+        "Error handling": 9,
+        "HTTP request/response handling": 8,
+        "Data retrieval and manipulation": 8,
+        "Understanding of RESTful services": 9,
+        "API design": 10
       }
     }
   },
   {
     "standardized_category": "Code Development",
     "capability_analysis": {
-      "user_query": "{\n  \"user_query\": \"What are the key programming and framework proficiencies required for modern web and application development?\",\n  \"strong_capabilities\": {\n    \"Angular framework proficiency\": 9,\n    \"C# programming\": 8,\n    \"Proficiency in Python programming\": 8,\n    \"Understanding of RESTful APIs\": 8,\n    \"State management in Angular\": 9,\n    \"Asynchronous programming\": 7,\n    \"Entity Framework knowledge\": 7,\n    \"Understanding of service-oriented architecture\": 7,\n    \"Knowledge of JavaScript and TypeScript\": 8,\n    \"Proficiency in React\": 7\n  },\n  \"weak_capabilities\": {\n    \"Debugging skills\": 4,\n    \"Knowledge of performance optimization techniques\": 5,\n    \"Familiarity with testing frameworks\": 5,\n    \"Understanding of localization processes\": 4,\n    \"Knowledge of deprecated APIs\": 3,\n    \"Understanding of Android application",
-      "strong_capabilities": {},
-      "weak_capabilities": {}
+      "user_query": "What are the essential skills and knowledge areas for proficiency in Angular and related frameworks?",
+      "capabilities": {
+        "Angular framework proficiency": 10,
+        "State management in Angular": 10,
+        "Understanding of two-way data binding": 9,
+        "Reactive programming with RxJS": 8,
+        "Component communication techniques": 8,
+        "Understanding of Angular lifecycle hooks": 7
+      }
     }
   },
   {
     "standardized_category": "Data Processing",
     "capability_analysis": {
-      "user_query": "What are the key capabilities in Natural Language Processing and data analysis?",
-      "strong_capabilities": {
+      "user_query": "What are the essential capabilities related to Natural Language Processing and data analysis?",
+      "capabilities": {
         "Natural Language Processing": 10,
-        "Machine Learning": 9,
         "Data Analysis": 9,
-        "Text Summarization": 8,
-        "Data Manipulation": 8,
-        "Communication Skills": 7,
-        "Critical Thinking": 7,
-        "Data Visualization": 7,
-        "Translation Skills": 6
-      },
-      "weak_capabilities": {
-        "Basic SQL or Database Querying": 3,
-        "Understanding of Coding Standards": 4,
-        "File Handling": 4,
-        "Cultural Sensitivity in Communication": 5,
-        "Understanding of International Tax Regulations": 4
+        "Machine Learning": 8,
+        "Text Summarization": 9,
+        "Sentiment Analysis": 8,
+        "Data Manipulation": 7
       }
     }
   },
   {
     "standardized_category": "Database Management",
     "capability_analysis": {
-      "user_query": "What are the key capabilities required for effective database management and querying?",
-      "strong_capabilities": {
-        "SQL proficiency": 9,
-        "Database management": 8,
-        "Data modeling": 8,
-        "Performance tuning": 7,
-        "API integration": 7,
-        "Understanding of NoSQL databases": 7,
-        "Data retrieval": 8,
-        "Debugging skills": 6
-      },
-      "weak_capabilities": {
-        "Data validation techniques": 4,
-        "Error handling": 4,
-        "Knowledge of optional parameters in database operations": 3,
-        "Basic programming skills": 5,
-        "Understanding of fiscal year concepts": 3,
-        "Familiarity with command line interface": 4
+      "user_query": "What are the essential skills and knowledge required for effective database management and querying?",
+      "capabilities": {
+        "SQL querying": 10,
+        "Database management": 10,
+        "Data modeling": 9,
+        "Performance tuning": 8,
+        "MongoDB query language": 8,
+        "Data validation": 7
       }
     }
   },
   {
     "standardized_category": "DevOps & Automation",
     "capability_analysis": {
-      "user_query": "{\n  \"user_query\": \"What are the key technical and operational capabilities of users in software development and automation?\",\n  \"strong_capabilities\": {\n    \"Proficiency in Excel automation\": 8,\n    \"SQL database querying\": 8,\n    \"Data manipulation and transformation\": 7,\n    \"Workflow management\": 8,\n    \"Proficiency in React Native framework\": 7,\n    \"Understanding of .NET application architecture\": 7,\n    \"Machine learning\": 8,\n    \"Command Line Interface (CLI) Usage\": 7,\n    \"Kubernetes orchestration\": 8,\n    \"Understanding of Docker\": 8\n  },\n  \"weak_capabilities\": {\n    \"Basic computer operation\": 3,\n    \"Troubleshooting hardware issues\": 4,\n    \"Understanding of operating system functionalities\": 4,\n    \"Basic scripting knowledge\": 5,\n    \"Familiarity with terminal commands\": 5,\n    \"Understanding of procurement processes\":",
-      "strong_capabilities": {},
-      "weak_capabilities": {}
+      "user_query": "What are the essential capabilities for software development and automation?",
+      "capabilities": {
+        "Proficiency in Excel automation": 6,
+        "SQL database querying": 8,
+        "Data manipulation and transformation": 9,
+        "Workflow management": 8,
+        "Understanding of Docker": 7,
+        "Machine learning": 7
+      }
     }
   },
   {
     "standardized_category": "Error Handling",
     "capability_analysis": {
-      "user_query": "What are the key programming and debugging skills required for software development?",
-      "strong_capabilities": {
-        "debugging skills": 9,
-        "problem-solving": 8,
+      "user_query": "What are the essential skills required for debugging and error handling in software development?",
+      "capabilities": {
+        "debugging skills": 10,
+        "error handling": 10,
         "data analysis": 8,
-        "error handling": 8,
-        "understanding of programming languages": 8,
-        "knowledge of frameworks": 7,
-        "API integration": 7,
-        "familiarity with development tools": 7
-      },
-      "weak_capabilities": {
-        "performance optimization": 4,
-        "understanding of software architecture": 5,
-        "knowledge of specific libraries": 5,
-        "command line interface usage": 6,
-        "familiarity with version control": 5,
-        "knowledge of testing frameworks": 5,
-        "understanding of container orchestration": 4
+        "problem-solving": 9,
+        "understanding of programming languages": 7,
+        "knowledge of software architecture": 6
       }
     }
   },
   {
     "standardized_category": "Performance Optimization",
     "capability_analysis": {
-      "user_query": "What are the key strengths and weaknesses in data analysis, project management, and programming capabilities?",
-      "strong_capabilities": {
-        "data analysis": 9,
-        "project management": 8,
-        "financial analysis": 8,
-        "performance optimization": 7,
-        "programming proficiency": 7
-      },
-      "weak_capabilities": {
-        "communication skills": 4,
-        "time management": 5,
-        "error handling": 5,
-        "understanding of sustainability metrics": 4,
-        "knowledge of application performance monitoring": 4
+      "user_query": "What are the essential skills for effective data analysis and project management?",
+      "capabilities": {
+        "data analysis": 10,
+        "project management": 9,
+        "performance optimization": 8,
+        "financial analysis": 7,
+        "communication skills": 6,
+        "problem-solving": 7
       }
     }
   },
   {
     "standardized_category": "Security & Authentication",
     "capability_analysis": {
-      "user_query": "What are the key capabilities related to user access management and security protocols?",
-      "strong_capabilities": {
-        "Understanding of OTC system architecture": 8,
-        "Knowledge of role-based access control": 9,
-        "Ability to modify user permissions": 8,
-        "Familiarity with security best practices": 7,
-        "User Access Management": 8,
-        "Role-Based Access Control": 9,
-        "Database Permissions Management": 7
-      },
-      "weak_capabilities": {
-        "Knowledge of permission management systems": 5,
-        "Familiarity with company-specific policies": 4,
-        "Understanding of sanctions laws": 3,
-        "Risk assessment skills": 4,
-        "Knowledge of international jurisdictions": 3
+      "user_query": "What are the essential skills and knowledge areas for managing user access and permissions in an OTC system?",
+      "capabilities": {
+        "Understanding of OTC system architecture": 9,
+        "Role-Based Access Control (RBAC)": 10,
+        "User Permissions Management": 10,
+        "Knowledge of security best practices": 8,
+        "Ability to modify user roles and permissions": 9,
+        "Familiarity with regulatory compliance": 7
       }
     }
   },
   {
     "standardized_category": "Technical Support",
     "capability_analysis": {
-      "user_query": "{\n  \"user_query\": \"What are the key strengths and weaknesses in user capabilities across various domains?\",\n  \"strong_capabilities\": {\n    \"communication skills\": 9,\n    \"problem-solving\": 8,\n    \"data analysis\": 8,\n    \"natural language processing\": 8,\n    \"project management\": 7,\n    \"technical documentation\": 7,\n    \"understanding of procurement processes\": 7,\n    \"financial analysis\": 7,\n    \"user interaction design\": 7,\n    \"cultural context understanding\": 7\n  },\n  \"weak_capabilities\": {\n    \"basic troubleshooting skills\": 4,\n    \"knowledge of hardware controls\": 4,\n    \"familiarity with development tools\": 4,\n    \"understanding of operating system functions\": 4,\n    \"knowledge of international tax laws\": 4,\n    \"understanding document translation formats\": 4,\n    \"knowledge of automated testing tools\": 4,",
-      "strong_capabilities": {},
-      "weak_capabilities": {}
+      "user_query": "What are the essential skills and knowledge areas for effective communication and problem-solving in various professional contexts?",
+      "capabilities": {
+        "effective communication": 10,
+        "problem-solving": 10,
+        "cultural context understanding": 8,
+        "technical documentation": 7,
+        "data analysis": 8,
+        "stakeholder engagement": 9
+      }
     }
   },
   {
     "standardized_category": "Testing & QA",
     "capability_analysis": {
-      "user_query": "{\n  \"user_query\": \"What are the key capabilities in software development and testing?\",\n  \"strong_capabilities\": {\n    \"unit testing\": 9,\n    \"JavaScript programming\": 8,\n    \"C# programming\": 8,\n    \"code optimization\": 7,\n    \"debugging skills\": 7,\n    \"API integration\": 7,\n    \"understanding of testing frameworks\": 8,\n    \"performance optimization\": 7,\n    \"understanding of design patterns\": 6,\n    \"familiarity with code review processes\": 6\n  },\n  \"weak_capabilities\": {\n    \"understanding of sales order processing\": 3,\n    \"knowledge of vehicle stock management\": 3,\n    \"understanding of file types and formats\": 4,\n    \"knowledge of Generative AI technologies\": 4,\n    \"familiarity with child processes in Node.js\": 4,\n    \"knowledge of background services and their lifecycle",
-      "strong_capabilities": {},
-      "weak_capabilities": {}
+      "user_query": "How can I effectively implement unit testing and debugging in my software development process?",
+      "capabilities": {
+        "Unit testing": 10,
+        "Debugging skills": 10,
+        "Understanding of testing frameworks": 9,
+        "Code optimization": 8,
+        "Error handling": 8,
+        "Test-driven development (TDD)": 9
+      }
     }
   }
 ]
