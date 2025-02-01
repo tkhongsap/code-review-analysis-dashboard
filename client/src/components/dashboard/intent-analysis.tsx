@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
-import { getIntentAnalysis } from "@/lib/data";
+import { getIntentAnalysis, getCategoryAnalysis } from "@/lib/data";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 
@@ -9,13 +9,24 @@ interface Insight {
   keywords: string[];
 }
 
+interface Category {
+  name: string;
+  value: number;
+  percentage: number;
+}
+
 export default function IntentAnalysis() {
   const { data: intents } = useQuery({
     queryKey: ["/api/analysis/intents"],
     queryFn: getIntentAnalysis
   });
 
-  if (!intents) return null;
+  const { data: categories } = useQuery({
+    queryKey: ["/api/analysis/categories"],
+    queryFn: getCategoryAnalysis
+  });
+
+  if (!intents || !categories) return null;
 
   return (
     <Card>
@@ -32,7 +43,7 @@ export default function IntentAnalysis() {
               <div className="flex justify-between items-start mb-2">
                 <p className="font-medium">{insight.intent}</p>
                 <span className="text-sm text-muted-foreground">
-                  {intents.categories?.find(d => d.name === insight.intent)?.percentage || 0}%
+                  {categories.distribution.find(d => d.name === insight.intent)?.percentage || 0}%
                 </span>
               </div>
               <div className="flex flex-wrap gap-2">
