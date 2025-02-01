@@ -8,6 +8,74 @@ import { readFileSync } from "fs";
 import { join } from "path";
 
 export function registerRoutes(app: Express): Server {
+  // Import intent keywords route
+  app.post("/api/import/intent-keywords", async (req, res) => {
+    try {
+      const jsonPath = join(process.cwd(), "attached_assets", "intent_keywords.json");
+      console.log("Attempting to import intent keywords from:", jsonPath);
+      const result = await importJSONData(jsonPath);
+      res.json(result);
+    } catch (error) {
+      console.error("Import error:", error);
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
+
+  app.get("/api/analysis/intents", async (req, res) => {
+    try {
+      // Get intent distribution
+      const intentStats = await db.select({
+        category: intents.name,
+        count: sql<number>`count(*)`,
+      })
+      .from(intents)
+      .groupBy(intents.name)
+      .orderBy(desc(sql`count(*)`));
+
+      const total = intentStats.reduce((sum, stat) => sum + Number(stat.count), 0);
+
+      const distribution = intentStats.map(stat => ({
+        category: stat.category,
+        count: Number(stat.count),
+        percentage: Math.round((Number(stat.count) / total) * 100)
+      })).slice(0, 10);
+
+      // Get insights with keywords
+      const insights = await db.select({
+        intent: intents.name,
+        keywords: intents.keywords
+      })
+      .from(intents)
+      .orderBy(desc(intents.count))
+      .limit(10);
+
+      // Get top keywords
+      const keywordStats = await db.select({
+        keyword: sql<string>`unnest(keywords)`,
+        count: sql<number>`count(*)`
+      })
+      .from(intents)
+      .groupBy(sql`unnest(keywords)`)
+      .orderBy(desc(sql`count(*)`))
+      .limit(20);
+
+      res.json({
+        distribution,
+        insights: insights.map(insight => ({
+          intent: insight.intent,
+          keywords: insight.keywords || []
+        })),
+        topKeywords: keywordStats.map(stat => ({
+          keyword: stat.keyword,
+          count: Number(stat.count),
+          percentage: Math.round((Number(stat.count) / total) * 100)
+        }))
+      });
+    } catch (error) {
+      console.error("Intent analysis error:", error);
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
   // API routes
   app.post("/api/import", async (req, res) => {
     try {
@@ -224,73 +292,6 @@ export function registerRoutes(app: Express): Server {
     }
   });
   
-  app.get("/api/analysis/intents", async (req, res) => {
-    try {
-      // Get intent distribution
-      const intentStats = await db.select({
-        category: intents.standardizedIntent,
-        count: sql<number>`count(*)`,
-      })
-      .from(intents)
-      .groupBy(intents.standardizedIntent)
-      .orderBy(sql`count(*) desc`);
-
-      const total = intentStats.reduce((sum, stat) => sum + Number(stat.count), 0);
-
-      const distribution = intentStats
-        .map(stat => ({
-          category: stat.category.replace(/^"|"$/g, ''),
-          count: Number(stat.count),
-          percentage: Math.round((Number(stat.count) / total) * 100)
-        }))
-        .slice(0, 10);
-
-      // Get insights (top 10 intents with their keywords)
-      const insights = await db.select({
-        intent: intents.standardizedIntent,
-        keywords: intents.keywords
-      })
-      .from(intents)
-      .limit(10);
-
-      // Get keyword frequency
-      const allKeywords = await db.select({
-        keywords: intents.keywords
-      })
-      .from(intents);
-
-      const keywordFrequency = new Map();
-      allKeywords.forEach(record => {
-        if (Array.isArray(record.keywords)) {
-          record.keywords.forEach(keyword => {
-            keywordFrequency.set(keyword, (keywordFrequency.get(keyword) || 0) + 1);
-          });
-        }
-      });
-
-      const topKeywords = Array.from(keywordFrequency.entries())
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 20)
-        .map(([keyword, count]) => ({
-          keyword,
-          count,
-          percentage: Math.round((count as number / total) * 100)
-        }));
-
-      res.json({
-        distribution,
-        insights: insights.map(intent => ({
-          intent: intent.intent.replace(/^"|"$/g, ''),
-          keywords: intent.keywords || []
-        })),
-        topKeywords
-      });
-    } catch (error) {
-      console.error("Intent analysis error:", error);
-      res.status(500).json({ success: false, error: String(error) });
-    }
-  });
-
   const httpServer = createServer(app);
   return httpServer;
 }

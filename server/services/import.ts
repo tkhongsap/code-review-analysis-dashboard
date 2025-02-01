@@ -2,6 +2,7 @@ import { createReadStream, existsSync, readFileSync } from 'fs';
 import { parse } from "csv-parse";
 import { db } from "@db";
 import { codeReviews, intents } from "@db/schema";
+import { eq } from 'drizzle-orm';
 
 export async function importJSONData(filePath: string) {
   try {
@@ -20,15 +21,21 @@ export async function importJSONData(filePath: string) {
 
     // If the file is intent_keywords.json, handle it differently
     if (filePath.includes('intent_keywords.json')) {
+      // First clear existing intents
+      await db.delete(intents);
+
       for (const record of jsonData) {
         try {
+          const standardizedIntent = record.standardized_intent.replace(/^"|"$/g, '');
+          const keywordsList = record.keywords.split(", ").filter(Boolean);
+
           await db.insert(intents).values({
-            name: record.standardized_intent.replace(/^"|"$/g, ''),
-            standardizedIntent: record.standardized_intent,
-            keywords: record.keywords.split(", ").filter(Boolean),
-            count: 1,
-            frequency: 'common',
-            description: `Intent related to ${record.standardized_intent.replace(/^"|"$/g, '')}`
+            name: standardizedIntent,
+            standardizedIntent: standardizedIntent,
+            keywords: keywordsList,
+            count: 1, // Initial count
+            frequency: keywordsList.length > 5 ? 'high' : 'medium',
+            description: `Intent related to ${standardizedIntent}`
           });
           importedCount++;
         } catch (recordError: any) {
