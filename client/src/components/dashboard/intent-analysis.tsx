@@ -29,7 +29,12 @@ export default function IntentAnalysis() {
               key={i}
               className="mb-4 pb-4 border-b last:border-0 last:pb-0"
             >
-              <p className="font-medium mb-2">{insight.intent}</p>
+              <div className="flex justify-between items-start mb-2">
+                <p className="font-medium">{insight.intent}</p>
+                <span className="text-sm text-muted-foreground">
+                  {intents.distribution.find(d => d.category === insight.intent)?.percentage || 0}%
+                </span>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {Array.isArray(insight.keywords) && insight.keywords.map((keyword, j) => (
                   <Badge key={j} variant="secondary">
