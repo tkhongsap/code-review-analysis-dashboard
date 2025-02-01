@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { useQuery } from "@tanstack/react-query";
 import { getWorkAreaAnalysis } from "@/lib/data";
 
@@ -38,51 +37,27 @@ export default function WorkAreaAnalysis() {
 
   if (!workAreas) return null;
 
+  // Calculate total count for percentage
+  const totalCount = workAreas.distribution.reduce((sum, area) => sum + area.count, 0);
+
   return (
-    <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
+    <div className="grid gap-4 grid-cols-1">
       <Card>
         <CardHeader>
-          <CardTitle>Work Area Distribution</CardTitle>
+          <CardTitle>Work Area Insights</CardTitle>
         </CardHeader>
         <CardContent>
-          <ScrollArea className="h-[400px] pr-4">
-            {workAreas.distribution.map((area) => (
-              <div key={area.name} className="mb-6">
-                <div className="flex justify-between mb-2">
-                  <span className="font-medium">{area.name}</span>
-                  <Badge variant="outline">{area.count}</Badge>
-                </div>
-                <Progress value={area.percentage} className="mb-2" />
-                <div className="flex flex-wrap gap-2">
-                  {area.broaderAreas.map((category, i) => (
-                    <Badge key={i} variant="secondary">
-                      {category}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </ScrollArea>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Work Area Insights</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ScrollArea className="h-[200px]">
+          <ScrollArea className="h-[400px]">
+            <div className="space-y-6">
               {workAreas.insights.map((insight, i) => (
-                <div
-                  key={i}
-                  className="mb-4 pb-4 border-b last:border-0 last:pb-0"
-                >
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium">{insight.workArea}</span>
-                    <Badge>{insight.count} reviews</Badge>
+                <div key={i} className="pb-6 border-b last:border-0">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-medium">{insight.workArea}</h3>
+                    <Badge>
+                      {Math.round((insight.count / totalCount) * 100)}%
+                    </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-sm text-muted-foreground mb-3">
                     {insight.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -94,31 +69,31 @@ export default function WorkAreaAnalysis() {
                   </div>
                 </div>
               ))}
-            </ScrollArea>
-          </CardContent>
-        </Card>
+            </div>
+          </ScrollArea>
+        </CardContent>
+      </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Emerging Trends</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ScrollArea className="h-[180px]">
-              {workAreas.trends.map((trend, i) => (
-                <div
-                  key={i}
-                  className="mb-4 pb-4 border-b last:border-0 last:pb-0"
-                >
-                  <h3 className="font-medium mb-1">{trend.title}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {trend.description}
-                  </p>
-                </div>
-              ))}
-            </ScrollArea>
-          </CardContent>
-        </Card>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Emerging Trends</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ScrollArea className="h-[180px]">
+            {workAreas.trends.map((trend, i) => (
+              <div
+                key={i}
+                className="mb-4 pb-4 border-b last:border-0 last:pb-0"
+              >
+                <h3 className="font-medium mb-1">{trend.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {trend.description}
+                </p>
+              </div>
+            ))}
+          </ScrollArea>
+        </CardContent>
+      </Card>
     </div>
   );
 }
