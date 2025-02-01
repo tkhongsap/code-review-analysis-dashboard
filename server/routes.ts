@@ -169,27 +169,28 @@ export function registerRoutes(app: Express): Server {
 
   app.get("/api/metrics", async (req, res) => {
     try {
+      // 1. Total number of rows in code_reviews table
       const totalReviews = await db.select({ 
         count: sql<number>`count(*)` 
       }).from(codeReviews);
 
+      // 2. Number of rows in categories (from intents table as it represents categories)
       const uniqueCategories = await db.select({ 
-        count: sql<number>`count(distinct standardized_category)` 
-      }).from(codeReviews);
+        count: sql<number>`count(*)` 
+      }).from(intents);
 
-      // Use LATERAL to handle the array
-      const uniqueWorkAreasQuery = await db.execute(sql`
-        SELECT COUNT(DISTINCT work_area) as count
-        FROM code_reviews,
-        LATERAL unnest(related_work_areas) as work_area
+      // 3. Count words in broader_work_areas from work_area_broader_categories
+      const workAreasQuery = await db.execute(sql`
+        SELECT SUM(array_length(regexp_split_to_array(broader_work_areas, ',\s*'), 1)) as count
+        FROM work_area_broader_categories
       `);
-      const uniqueWorkAreas = uniqueWorkAreasQuery.rows[0];
+      const uniqueWorkAreas = workAreasQuery.rows[0];
 
       res.json({
         totalReviews: totalReviews[0].count,
         uniqueCategories: uniqueCategories[0].count,
         uniqueWorkAreas: uniqueWorkAreas.count,
-        totalTrainingCourses: uniqueCategories[0].count * 6 // Approximate based on categories
+        totalTrainingCourses: uniqueCategories[0].count * 6
       });
     } catch (error) {
       console.error("Metrics error:", error);
