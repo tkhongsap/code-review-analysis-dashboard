@@ -1,0 +1,42 @@
+[
+  {
+    "standardized_category": "API Integration",
+    "broader_work_areas": "API Development and Integration, Web Frameworks and Middleware, AI and Data Analytics"
+  },
+  {
+    "standardized_category": "Code Development",
+    "broader_work_areas": "Frontend Development, C# Development, Software Engineering and Quality Assurance"
+  },
+  {
+    "standardized_category": "Data Processing",
+    "broader_work_areas": "Natural Language Processing, Data Processing and Analysis, User Interface and Development"
+  },
+  {
+    "standardized_category": "Database Management",
+    "broader_work_areas": "Database Design and Optimization, API Integration and Development, Data Management and Performance Metrics"
+  },
+  {
+    "standardized_category": "DevOps & Automation",
+    "broader_work_areas": "Automation and Integration, Development and Deployment, Data Processing and Management"
+  },
+  {
+    "standardized_category": "Error Handling",
+    "broader_work_areas": "Software Development, Error Handling and Debugging, Data Management and Integration"
+  },
+  {
+    "standardized_category": "Performance Optimization",
+    "broader_work_areas": "Process Optimization, Fitness Training, Software Development"
+  },
+  {
+    "standardized_category": "Security & Authentication",
+    "broader_work_areas": "Access Control and Security, Workflow and Purchase Management, Database Management and Integration"
+  },
+  {
+    "standardized_category": "Technical Support",
+    "broader_work_areas": "Natural Language Processing and Localization, User Experience and Interaction Design, Software Development and Project Management"
+  },
+  {
+    "standardized_category": "Testing & QA",
+    "broader_work_areas": "Web Development, Software Testing and Quality Assurance, Natural Language Processing and User Experience Design"
+  }
+]

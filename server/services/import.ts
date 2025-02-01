@@ -1,7 +1,7 @@
 import { createReadStream, existsSync, readFileSync } from 'fs';
 import { parse } from "csv-parse";
 import { db } from "@db";
-import { codeReviews, intents, intentBroaderCategories } from "@db/schema";
+import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories } from "@db/schema";
 import { eq } from 'drizzle-orm';
 
 export async function importJSONData(filePath: string) {
@@ -19,7 +19,7 @@ export async function importJSONData(filePath: string) {
     let importedCount = 0;
     const errors: string[] = [];
 
-    // If the file is intent_broader_categories.json, handle it differently
+    // Handle different types of imports based on file content
     if (filePath.includes('intent_broader_categories.json')) {
       console.log('Processing intent broader categories data');
 
@@ -54,6 +54,42 @@ export async function importJSONData(filePath: string) {
         }
       } catch (error: any) {
         console.error('Error during broader categories import:', error);
+        throw error;
+      }
+    } else if (filePath.includes('work_area_broader_categories.json')) {
+      console.log('Processing work area broader categories data');
+
+      try {
+        // First clear existing work area broader categories
+        await db.delete(workAreaBroaderCategories);
+        console.log('Cleared existing work area broader categories data');
+
+        for (const record of jsonData) {
+          try {
+            const standardizedCategory = record.standardized_category;
+            const broaderWorkAreas = record.broader_work_areas;
+
+            if (!standardizedCategory || !broaderWorkAreas) {
+              console.error('Missing required fields in record:', record);
+              throw new Error('Missing required fields');
+            }
+
+            console.log(`Importing work area broader category: ${standardizedCategory}`);
+
+            await db.insert(workAreaBroaderCategories).values({
+              standardizedCategory,
+              broaderWorkAreas
+            });
+            importedCount++;
+            console.log(`Successfully imported work area broader category: ${standardizedCategory}`);
+          } catch (recordError: any) {
+            const errorMessage = `Failed to import ${record?.standardized_category || 'unknown'}: ${recordError.message}`;
+            console.error(errorMessage);
+            errors.push(errorMessage);
+          }
+        }
+      } catch (error: any) {
+        console.error('Error during work area broader categories import:', error);
         throw error;
       }
     } else {

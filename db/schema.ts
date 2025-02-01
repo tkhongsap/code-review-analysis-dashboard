@@ -34,6 +34,13 @@ export const intentBroaderCategories = pgTable("intent_broader_categories", {
   broaderCategories: text("broader_categories").notNull(),
 });
 
+// Work area broader categories table
+export const workAreaBroaderCategories = pgTable("work_area_broader_categories", {
+  id: serial("id").primaryKey(),
+  standardizedCategory: text("standardized_category").notNull().unique(),
+  broaderWorkAreas: text("broader_work_areas").notNull(),
+});
+
 // Export schemas for validation
 export const insertCodeReviewSchema = createInsertSchema(codeReviews);
 export const selectCodeReviewSchema = createSelectSchema(codeReviews);

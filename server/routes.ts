@@ -2,12 +2,25 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { importJSONData } from "./services/import";
 import { db } from "@db";
-import { codeReviews, intents, intentBroaderCategories } from "@db/schema";
+import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories } from "@db/schema";
 import { desc, sql } from "drizzle-orm";
 import { readFileSync } from "fs";
 import { join } from "path";
 
 export function registerRoutes(app: Express): Server {
+  // Add work area broader categories import route
+  app.post("/api/import/work-area-broader-categories", async (req, res) => {
+    try {
+      const jsonPath = join(process.cwd(), "attached_assets", "work_area_broader_categories.json");
+      console.log("Attempting to import work area broader categories from:", jsonPath);
+      const result = await importJSONData(jsonPath);
+      res.json(result);
+    } catch (error) {
+      console.error("Import error:", error);
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
+
   // Import intent keywords route
   app.post("/api/import/intent-keywords", async (req, res) => {
     try {
@@ -185,28 +198,40 @@ export function registerRoutes(app: Express): Server {
         count: sql<number>`count(*)`
       }).from(codeReviews);
 
-      const distribution = workAreaStats.map(stat => ({
-        name: stat.workArea,
-        percentage: Math.round((stat.count / totalReviews[0].count) * 100),
-        relatedCategories: ['Frontend', 'Backend', 'DevOps'] // Simplified for demo
-      }));
+      // Get broader categories data
+      const broaderWorkAreasData = await db.select()
+        .from(workAreaBroaderCategories);
+
+      const distribution = workAreaStats.map(stat => {
+        const broaderCategory = broaderWorkAreasData.find(
+          bc => bc.standardizedCategory === stat.workArea
+        );
+        return {
+          name: stat.workArea,
+          count: stat.count,
+          percentage: Math.round((stat.count / totalReviews[0].count) * 100),
+          broaderAreas: broaderCategory?.broaderWorkAreas.split(", ") || []
+        };
+      });
 
       res.json({
         distribution,
-        skillsAnalysis: workAreaStats.map(stat => ({
-          name: stat.workArea,
-          level: stat.count > 100 ? "Advanced" : stat.count > 50 ? "Intermediate" : "Beginner",
-          proficiency: Math.min(100, Math.round((stat.count / totalReviews[0].count) * 200)),
-          description: `Expertise in ${stat.workArea}`
+        insights: distribution.map(item => ({
+          workArea: item.name,
+          count: item.count,
+          broaderAreas: item.broaderAreas,
+          description: `Analysis of ${item.name} work area patterns and trends`
         })),
-        crossFunctional: workAreaStats.slice(0, 3).map(stat => ({
-          name: stat.workArea,
-          connections: Math.floor(Math.random() * 5) + 2,
-          connectedAreas: workAreaStats
-            .filter(other => other.workArea !== stat.workArea)
-            .slice(0, 3)
-            .map(other => other.workArea)
-        }))
+        trends: [
+          {
+            title: "Primary Focus Areas",
+            description: `${distribution[0]?.name || 'Unknown'} is the most active work area`
+          },
+          {
+            title: "Emerging Patterns",
+            description: `Growing emphasis on ${distribution[1]?.name || 'Unknown'}`
+          }
+        ]
       });
     } catch (error) {
       console.error("Work area analysis error:", error);
