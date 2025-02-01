@@ -16,10 +16,9 @@ export async function getWorkAreaAnalysis() {
 }
 
 export async function getIntentAnalysis() {
-  const response = await fetch('/api/analysis/queries');
+  const response = await fetch('/api/analysis/intents');
   return response.json();
 }
-
 
 export async function getUserQueriesAnalysis() {
   const response = await fetch('/api/analysis/queries');
