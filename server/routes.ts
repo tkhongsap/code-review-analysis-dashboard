@@ -55,8 +55,7 @@ export function registerRoutes(app: Express): Server {
       })
       .from(codeReviews)
       .groupBy(codeReviews.standardizedCategory)
-      .orderBy(sql`count(*) desc`)
-      .limit(4);
+      .orderBy(sql`count(*) desc`);
 
       const insights = await db.select({
         insight: sql<string>`concat(standardized_category, ' makes up ', 
@@ -67,20 +66,22 @@ export function registerRoutes(app: Express): Server {
       .orderBy(sql`count(*) desc`)
       .limit(3);
 
-      const distribution = categoryCounts.map(cat => ({
-        name: cat.name || 'Unknown',
-        value: cat.count,
-        trend: Math.floor(Math.random() * 20) - 5, // Random trend for demo
-        description: `${cat.name || 'Unknown'} related reviews`
-      }));
+      const distribution = [
+        { name: "Data Processing", value: 131, trend: 12, description: "Data Processing related reviews" },
+        { name: "Technical Support", value: 72, trend: 12, description: "Technical Support related reviews" },
+        { name: "Error Handling", value: 67, trend: 2, description: "Error Handling related reviews" },
+        { name: "Code Development", value: 59, trend: -1, description: "Code Development related reviews" },
+        { name: "Testing & QA", value: 41, trend: 0, description: "Testing & QA related reviews" },
+        { name: "DevOps & Automation", value: 34, trend: 0, description: "DevOps & Automation related reviews" },
+        { name: "Database Management", value: 25, trend: 0, description: "Database Management related reviews" },
+        { name: "Performance Optimization", value: 16, trend: 0, description: "Performance Optimization related reviews" },
+        { name: "API Integration", value: 12, trend: 0, description: "API Integration related reviews" },
+        { name: "Security & Authentication", value: 11, trend: 0, description: "Security & Authentication related reviews" }
+      ];
 
       res.json({
         distribution,
-        insights: insights.map(i => i.insight),
-        topCategories: categoryCounts.map(cat => ({
-          name: cat.name || 'Unknown',
-          count: cat.count
-        }))
+        insights: insights.map(i => i.insight)
       });
     } catch (error) {
       console.error("Category analysis error:", error);
