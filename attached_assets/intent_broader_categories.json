@@ -1,0 +1,42 @@
+[
+  {
+    "standardized_category": "API Integration",
+    "broader_categories": "API Development, Middleware Implementation, Data Retrieval and Validation"
+  },
+  {
+    "standardized_category": "Code Development",
+    "broader_categories": "Software Development, Localization and Internationalization, Code Quality and Optimization"
+  },
+  {
+    "standardized_category": "Data Processing",
+    "broader_categories": "Data Processing and Analysis, Natural Language Processing and Classification, Translation and Summarization"
+  },
+  {
+    "standardized_category": "Database Management",
+    "broader_categories": "Database Management, Data Retrieval and Manipulation, Database Configuration and Optimization"
+  },
+  {
+    "standardized_category": "DevOps & Automation",
+    "broader_categories": "Automation and Configuration, Documentation and Analysis, Development and Troubleshooting"
+  },
+  {
+    "standardized_category": "Error Handling",
+    "broader_categories": "Performance Optimization, Debugging and Troubleshooting, Technical Implementation and Configuration"
+  },
+  {
+    "standardized_category": "Performance Optimization",
+    "broader_categories": "Process Optimization, Performance Improvement, Training and Evaluation"
+  },
+  {
+    "standardized_category": "Security & Authentication",
+    "broader_categories": "User Access Management, Workflow Automation, Compliance and Monitoring"
+  },
+  {
+    "standardized_category": "Technical Support",
+    "broader_categories": "Translation and Language Services, Technical Analysis and Troubleshooting, Professional Development and Communication Skills"
+  },
+  {
+    "standardized_category": "Testing & QA",
+    "broader_categories": "Code Review and Optimization, Testing and Quality Assurance, Data Retrieval and Validation"
+  }
+]

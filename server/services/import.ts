@@ -19,27 +19,27 @@ export async function importJSONData(filePath: string) {
     let importedCount = 0;
     const errors: string[] = [];
 
-    // If the file is intent_keywords.json, handle it differently
-    if (filePath.includes('intent_keywords.json')) {
+    // If the file is intent_broader_categories.json, handle it differently
+    if (filePath.includes('intent_broader_categories.json')) {
       // First clear existing intents
       await db.delete(intents);
 
       for (const record of jsonData) {
         try {
-          const standardizedIntent = record.standardized_intent.replace(/^"|"$/g, '');
-          const keywordsList = record.keywords.split(", ").filter(Boolean);
+          const standardizedCategory = record.standardized_category;
+          const broaderCategories = record.broader_categories.split(", ").filter(Boolean);
 
           await db.insert(intents).values({
-            name: standardizedIntent,
-            keywords: keywordsList,
+            name: standardizedCategory,
+            keywords: broaderCategories,
             count: 1, // Initial count
-            frequency: keywordsList.length > 5 ? 'high' : 'medium',
-            description: `Intent related to ${standardizedIntent}`
+            frequency: broaderCategories.length > 2 ? 'high' : 'medium',
+            description: `Intent category: ${standardizedCategory} covering ${broaderCategories.join(", ")}`
           });
           importedCount++;
         } catch (recordError: any) {
-          console.error(`Error importing intent record: ${record.standardized_intent}`, recordError);
-          errors.push(`Failed to import ${record.standardized_intent}: ${recordError.message}`);
+          console.error(`Error importing intent record: ${record.standardized_category}`, recordError);
+          errors.push(`Failed to import ${record.standardized_category}: ${recordError.message}`);
         }
       }
     } else {

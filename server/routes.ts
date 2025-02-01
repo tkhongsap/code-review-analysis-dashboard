@@ -23,33 +23,35 @@ export function registerRoutes(app: Express): Server {
 
   app.get("/api/analysis/intents", async (req, res) => {
     try {
-      // Get intent distribution
+      // Get intent distribution with broader categories
       const intentStats = await db.select({
         category: intents.name,
-        count: sql<number>`count(*)`,
+        keywords: intents.keywords,
+        count: intents.count,
+        frequency: intents.frequency,
+        description: intents.description
       })
       .from(intents)
-      .groupBy(intents.name)
-      .orderBy(desc(sql`count(*)`));
+      .orderBy(desc(intents.count));
 
-      const total = intentStats.reduce((sum, stat) => sum + Number(stat.count), 0);
+      const total = await db.select({
+        count: sql<number>`count(*)`
+      }).from(intents);
 
       const distribution = intentStats.map(stat => ({
         category: stat.category,
         count: Number(stat.count),
-        percentage: Math.round((Number(stat.count) / total) * 100)
-      })).slice(0, 10);
+        percentage: Math.round((Number(stat.count) / total[0].count) * 100)
+      }));
 
-      // Get insights with keywords
-      const insights = await db.select({
-        intent: intents.name,
-        keywords: intents.keywords
-      })
-      .from(intents)
-      .orderBy(desc(intents.count))
-      .limit(10);
+      // Get insights with broader categories
+      const insights = intentStats.map(stat => ({
+        intent: stat.category,
+        keywords: stat.keywords || [],
+        description: stat.description
+      }));
 
-      // Get top keywords
+      // Get top broader categories
       const keywordStats = await db.select({
         keyword: sql<string>`unnest(keywords)`,
         count: sql<number>`count(*)`
@@ -60,15 +62,12 @@ export function registerRoutes(app: Express): Server {
       .limit(20);
 
       res.json({
-        distribution,
-        insights: insights.map(insight => ({
-          intent: insight.intent,
-          keywords: insight.keywords || []
-        })),
+        distribution: distribution.slice(0, 10),
+        insights: insights.slice(0, 10),
         topKeywords: keywordStats.map(stat => ({
           keyword: stat.keyword,
           count: Number(stat.count),
-          percentage: Math.round((Number(stat.count) / total) * 100)
+          percentage: Math.round((Number(stat.count) / total[0].count) * 100)
         }))
       });
     } catch (error) {
@@ -100,14 +99,18 @@ export function registerRoutes(app: Express): Server {
         count: sql<number>`count(distinct standardized_category)` 
       }).from(codeReviews);
 
-      const uniqueWorkAreas = await db.select({ 
-        count: sql<number>`count(distinct unnest(related_work_areas))` 
-      }).from(codeReviews);
+      // Use LATERAL to handle the array
+      const uniqueWorkAreasQuery = await db.execute(sql`
+        SELECT COUNT(DISTINCT work_area) as count
+        FROM code_reviews,
+        LATERAL unnest(related_work_areas) as work_area
+      `);
+      const uniqueWorkAreas = uniqueWorkAreasQuery.rows[0];
 
       res.json({
         totalReviews: totalReviews[0].count,
         uniqueCategories: uniqueCategories[0].count,
-        uniqueWorkAreas: uniqueWorkAreas[0].count,
+        uniqueWorkAreas: uniqueWorkAreas.count,
         totalTrainingCourses: uniqueCategories[0].count * 6 // Approximate based on categories
       });
     } catch (error) {
