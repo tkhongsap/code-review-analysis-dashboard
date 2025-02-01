@@ -3,12 +3,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useQuery } from "@tanstack/react-query";
 import { getCategoryAnalysis } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpIcon, ArrowDownIcon, MinusIcon } from "lucide-react";
+import { ChartPieIcon } from "lucide-react";
 
 interface Category {
   name: string;
   value: number;
-  trend: number;
+  percentage: number;
   description: string;
 }
 
@@ -33,24 +33,9 @@ export default function CategoryAnalysis() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div className="text-2xl font-bold">{category.value}</div>
-                <Badge 
-                  variant={
-                    category.trend > 0 
-                      ? "default" 
-                      : category.trend < 0 
-                      ? "destructive" 
-                      : "secondary"
-                  }
-                  className="flex items-center gap-1"
-                >
-                  {category.trend > 0 ? (
-                    <ArrowUpIcon className="w-3 h-3" />
-                  ) : category.trend < 0 ? (
-                    <ArrowDownIcon className="w-3 h-3" />
-                  ) : (
-                    <MinusIcon className="w-3 h-3" />
-                  )}
-                  {Math.abs(category.trend)}%
+                <Badge className="flex items-center gap-1">
+                  <ChartPieIcon className="w-3 h-3" />
+                  {category.percentage}%
                 </Badge>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">

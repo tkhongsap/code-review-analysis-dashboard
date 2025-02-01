@@ -67,16 +67,16 @@ export function registerRoutes(app: Express): Server {
       .limit(3);
 
       const distribution = [
-        { name: "Data Processing", value: 131, trend: 12, description: "Data Processing related reviews" },
-        { name: "Technical Support", value: 72, trend: 12, description: "Technical Support related reviews" },
-        { name: "Error Handling", value: 67, trend: 2, description: "Error Handling related reviews" },
-        { name: "Code Development", value: 59, trend: -1, description: "Code Development related reviews" },
-        { name: "Testing & QA", value: 41, trend: 0, description: "Testing & QA related reviews" },
-        { name: "DevOps & Automation", value: 34, trend: 0, description: "DevOps & Automation related reviews" },
-        { name: "Database Management", value: 25, trend: 0, description: "Database Management related reviews" },
-        { name: "Performance Optimization", value: 16, trend: 0, description: "Performance Optimization related reviews" },
-        { name: "API Integration", value: 12, trend: 0, description: "API Integration related reviews" },
-        { name: "Security & Authentication", value: 11, trend: 0, description: "Security & Authentication related reviews" }
+        { name: "Data Processing", value: 131, percentage: 28, description: "Data Processing related reviews" },
+        { name: "Technical Support", value: 72, percentage: 15, description: "Technical Support related reviews" },
+        { name: "Error Handling", value: 67, percentage: 14, description: "Error Handling related reviews" },
+        { name: "Code Development", value: 59, percentage: 13, description: "Code Development related reviews" },
+        { name: "Testing & QA", value: 41, percentage: 9, description: "Testing & QA related reviews" },
+        { name: "DevOps & Automation", value: 34, percentage: 7, description: "DevOps & Automation related reviews" },
+        { name: "Database Management", value: 25, percentage: 5, description: "Database Management related reviews" },
+        { name: "Performance Optimization", value: 16, percentage: 3, description: "Performance Optimization related reviews" },
+        { name: "API Integration", value: 12, percentage: 3, description: "API Integration related reviews" },
+        { name: "Security & Authentication", value: 11, percentage: 2, description: "Security & Authentication related reviews" }
       ];
 
       res.json({
