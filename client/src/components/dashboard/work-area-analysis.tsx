@@ -8,7 +8,6 @@ interface WorkArea {
   name: string;
   count: number;
   percentage: number;
-  broaderAreas: string[];
 }
 
 interface WorkAreaInsight {
@@ -44,7 +43,7 @@ export default function WorkAreaAnalysis() {
     <div className="grid gap-4 grid-cols-1">
       <Card>
         <CardHeader>
-          <CardTitle>Work Area Insights</CardTitle>
+          <CardTitle>Work Area Categories</CardTitle>
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-[400px]">
@@ -52,20 +51,20 @@ export default function WorkAreaAnalysis() {
               {workAreas.insights.map((insight, i) => (
                 <div key={i} className="pb-6 border-b last:border-0">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-medium">{insight.workArea}</h3>
-                    <Badge>
+                    <h3 className="font-medium text-lg">{insight.workArea}</h3>
+                    <Badge variant="secondary">
                       {Math.round((insight.count / totalCount) * 100)}%
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    {insight.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {insight.broaderAreas.map((area, j) => (
-                      <Badge key={j} variant="outline">
-                        {area}
-                      </Badge>
-                    ))}
+                  <div className="mt-2">
+                    <h4 className="text-sm font-medium text-muted-foreground mb-2">Broader Work Areas:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {insight.broaderAreas.map((area, j) => (
+                        <Badge key={j} variant="outline">
+                          {area}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
