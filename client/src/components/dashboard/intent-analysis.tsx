@@ -63,14 +63,14 @@ export default function IntentAnalysis() {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-[240px]">
-              {intents.insights.map((insight: Insight, i: number) => (
+              {intents.insights?.map((insight: Insight, i: number) => (
                 <div
                   key={i}
                   className="mb-4 pb-4 border-b last:border-0 last:pb-0"
                 >
                   <p className="font-medium mb-2">{insight.intent}</p>
                   <div className="flex flex-wrap gap-2">
-                    {insight.keywords.map((keyword, j) => (
+                    {Array.isArray(insight.keywords) && insight.keywords.map((keyword, j) => (
                       <Badge key={j} variant="secondary">
                         {keyword}
                       </Badge>
@@ -88,7 +88,7 @@ export default function IntentAnalysis() {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-[240px]">
-              {intents.topKeywords.map((item: TopKeyword, i: number) => (
+              {intents.topKeywords?.map((item: TopKeyword, i: number) => (
                 <div
                   key={i}
                   className="flex items-center justify-between py-2 border-b last:border-0"

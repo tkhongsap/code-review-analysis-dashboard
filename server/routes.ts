@@ -228,7 +228,7 @@ export function registerRoutes(app: Express): Server {
     try {
       const insightsPath = join(process.cwd(), "attached_assets", "intent_keywords.json");
       const intentsData = JSON.parse(readFileSync(insightsPath, 'utf-8'));
-  
+
       // Group intents by category for distribution analysis
       const categories = new Map();
       intentsData.forEach((intent: any) => {
@@ -236,7 +236,7 @@ export function registerRoutes(app: Express): Server {
         const cleanIntent = categoryMatch ? categoryMatch[1] : intent.standardized_intent;
         categories.set(cleanIntent, (categories.get(cleanIntent) || 0) + 1);
       });
-  
+
       // Convert to percentage distribution
       const total = intentsData.length;
       const distribution = Array.from(categories.entries())
@@ -247,7 +247,7 @@ export function registerRoutes(app: Express): Server {
         }))
         .sort((a, b) => b.count - a.count)
         .slice(0, 10);
-  
+
       // Get keyword frequency
       const keywordFrequency = new Map();
       intentsData.forEach((intent: any) => {
@@ -256,7 +256,7 @@ export function registerRoutes(app: Express): Server {
           keywordFrequency.set(keyword, (keywordFrequency.get(keyword) || 0) + 1);
         });
       });
-  
+
       // Get top keywords
       const topKeywords = Array.from(keywordFrequency.entries())
         .sort((a, b) => b[1] - a[1])
@@ -266,12 +266,12 @@ export function registerRoutes(app: Express): Server {
           count,
           percentage: Math.round((count as number / total) * 100)
         }));
-  
+
       res.json({
         distribution,
         insights: intentsData.slice(0, 10).map((intent: any) => ({
-          intent: intent.standardized_intent,
-          keywords: intent.keywords.split(", ")
+          intent: intent.standardized_intent.replace(/^"|"$/g, ''),
+          keywords: intent.keywords.split(", ").filter(Boolean)
         })),
         topKeywords
       });
