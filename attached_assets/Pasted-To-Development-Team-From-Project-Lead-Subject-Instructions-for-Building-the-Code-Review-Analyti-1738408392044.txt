@@ -1,0 +1,91 @@
+To: Development Team
+From: Project Lead
+Subject: Instructions for Building the Code Review Analytics Dashboard
+
+Dear team,
+
+We're embarking on a new project to create a Code Review Analytics Dashboard. This application will provide comprehensive insights into our code review process, helping us improve our development practices. Below are the key instructions and considerations for building this application.
+
+1. Project Overview:
+   - Name: Code Review Analytics Dashboard
+   - Framework: Next.js with App Router
+   - UI Library: shadcn/ui
+   - Main features: Analysis of code review categories, intents, work areas, user queries, and training recommendations
+
+2. Project Structure:
+   /app
+     /page.tsx (main dashboard page)
+   /components
+     /dashboard-shell.tsx
+     /dashboard-header.tsx
+     /analysis-tabs.tsx
+     /category-analysis.tsx
+     /intent-analysis.tsx
+     /work-area-analysis.tsx
+     /user-queries-analysis.tsx
+     /training-recommendations.tsx
+
+3. Key Components:
+
+   a. AnalysisTabs (analysis-tabs.tsx):
+      - Main component that renders all analysis tabs
+      - Uses shadcn/ui Tabs component
+      - Includes tabs for Category, Intent, Work Area, User Queries, and Training
+
+   b. CategoryAnalysis (category-analysis.tsx):
+      - Displays score cards for each category using shadcn/ui Card components
+      - Includes a scrollable area for category cards
+      - Provides key insights in a separate card
+
+   c. IntentAnalysis (intent-analysis.tsx):
+      - Shows detailed analysis of user intents
+      - Uses scrollable area to display intent data
+      - Includes progress bars for visual representation
+
+   d. WorkAreaAnalysis (work-area-analysis.tsx):
+      - Presents analysis of different work areas
+      - Uses badges to show related categories and skills
+      - Includes progress bars for percentage representation
+
+   e. UserQueriesAnalysis (user-queries-analysis.tsx):
+      - Displays a radar chart for query distribution
+      - Includes detailed analysis of query categories
+      - Provides key insights based on query data
+
+   f. TrainingRecommendations (training-recommendations.tsx):
+      - Shows recommended training courses with priorities
+      - Includes reasons for each recommendation
+      - Uses progress bars to visualize priority levels
+
+4. Data Handling:
+   - For this initial version, use static data defined within each component
+   - Structure the data to easily replace with dynamic data in future iterations
+
+5. Styling and Responsiveness:
+   - Utilize shadcn/ui components for consistent styling
+   - Ensure all components are responsive and work well on various screen sizes
+   - Use Tailwind CSS for additional custom styling as needed
+
+6. Accessibility:
+   - Implement proper ARIA labels and roles for all interactive elements
+   - Ensure proper color contrast for readability
+   - Make sure all functionality is accessible via keyboard navigation
+
+7. Performance Considerations:
+   - Implement code-splitting for each analysis tab to improve initial load time
+   - Optimize any images or icons used in the dashboard
+   - Consider implementing virtualization for long scrollable lists if needed
+
+8. Future Enhancements:
+   - Prepare for integration with a backend API for real-time data
+   - Consider adding user authentication and personalized dashboards
+   - Plan for additional data visualization options and customizable reports
+
+Please refer to the existing codebase for detailed implementation of each component. As you build, maintain consistent coding standards and follow best practices for React and Next.js development.
+
+If you have any questions or need clarification on any aspect of the project, please don't hesitate to ask.
+
+Good luck, and let's create an amazing analytics dashboard!
+
+Best regards,
+Project Lead
