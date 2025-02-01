@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { importJSONData } from "./services/import";
 import { db } from "@db";
-import { codeReviews, intents } from "@db/schema";
+import { codeReviews, intents, intentBroaderCategories } from "@db/schema";
 import { desc, sql } from "drizzle-orm";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -26,7 +26,6 @@ export function registerRoutes(app: Express): Server {
       // Get intent distribution with broader categories
       const intentStats = await db.select({
         category: intents.name,
-        broaderCategories: intents.broaderCategories,
         keywords: intents.keywords,
         count: intents.count,
         frequency: intents.frequency,
@@ -34,6 +33,10 @@ export function registerRoutes(app: Express): Server {
       })
       .from(intents)
       .orderBy(desc(intents.count));
+
+      // Get broader categories data
+      const broaderCategoriesData = await db.select()
+        .from(intentBroaderCategories);
 
       const total = await db.select({
         count: sql<number>`count(*)`
@@ -46,14 +49,19 @@ export function registerRoutes(app: Express): Server {
       }));
 
       // Get insights with broader categories
-      const insights = intentStats.map(stat => ({
-        intent: stat.category,
-        broaderCategories: stat.broaderCategories,
-        keywords: stat.keywords || [],
-        description: stat.description
-      }));
+      const insights = intentStats.map(stat => {
+        const broaderCategory = broaderCategoriesData.find(
+          bc => bc.standardizedCategory === stat.category
+        );
+        return {
+          intent: stat.category,
+          broaderCategories: broaderCategory?.broaderCategories.split(", ") || [],
+          keywords: stat.keywords || [],
+          description: stat.description
+        };
+      });
 
-      // Get top broader categories using the keywords array
+      // Get top keywords
       const keywordStats = await db.select({
         keyword: sql<string>`unnest(keywords)`,
         count: sql<number>`count(*)`
@@ -77,6 +85,7 @@ export function registerRoutes(app: Express): Server {
       res.status(500).json({ success: false, error: String(error) });
     }
   });
+
   // API routes
   app.post("/api/import", async (req, res) => {
     try {

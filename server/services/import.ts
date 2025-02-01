@@ -1,7 +1,7 @@
 import { createReadStream, existsSync, readFileSync } from 'fs';
 import { parse } from "csv-parse";
 import { db } from "@db";
-import { codeReviews, intents } from "@db/schema";
+import { codeReviews, intents, intentBroaderCategories } from "@db/schema";
 import { eq } from 'drizzle-orm';
 
 export async function importJSONData(filePath: string) {
@@ -24,9 +24,9 @@ export async function importJSONData(filePath: string) {
       console.log('Processing intent broader categories data');
 
       try {
-        // First clear existing intents
-        await db.delete(intents);
-        console.log('Cleared existing intents data');
+        // First clear existing broader categories
+        await db.delete(intentBroaderCategories);
+        console.log('Cleared existing broader categories data');
 
         for (const record of jsonData) {
           try {
@@ -38,19 +38,14 @@ export async function importJSONData(filePath: string) {
               throw new Error('Missing required fields');
             }
 
-            const keywordsList = broaderCategories.split(", ").filter(Boolean);
-            console.log(`Importing category: ${standardizedCategory}`);
+            console.log(`Importing broader category: ${standardizedCategory}`);
 
-            await db.insert(intents).values({
-              name: standardizedCategory,
-              broaderCategories,
-              keywords: keywordsList,
-              count: 1, // Initial count
-              frequency: 'medium', // Default frequency
-              description: `Category ${standardizedCategory} encompasses: ${broaderCategories}`
+            await db.insert(intentBroaderCategories).values({
+              standardizedCategory,
+              broaderCategories
             });
             importedCount++;
-            console.log(`Successfully imported: ${standardizedCategory}`);
+            console.log(`Successfully imported broader category: ${standardizedCategory}`);
           } catch (recordError: any) {
             const errorMessage = `Failed to import ${record?.standardized_category || 'unknown'}: ${recordError.message}`;
             console.error(errorMessage);
@@ -58,7 +53,7 @@ export async function importJSONData(filePath: string) {
           }
         }
       } catch (error: any) {
-        console.error('Error during intents import:', error);
+        console.error('Error during broader categories import:', error);
         throw error;
       }
     } else {

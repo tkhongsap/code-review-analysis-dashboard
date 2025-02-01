@@ -17,15 +17,21 @@ export const codeReviews = pgTable("code_reviews", {
   suggestedTraining: text("suggested_training").array(),
 });
 
-// Intents table with broader categories
+// Intents table
 export const intents = pgTable("intents", {
   id: serial("id").primaryKey(),
   name: text("name").notNull().unique(),
-  broaderCategories: text("broader_categories").notNull(),
   keywords: text("keywords").array().notNull(),
   count: integer("count").notNull().default(0),
   frequency: text("frequency"),
   description: text("description"),
+});
+
+// Intent broader categories table
+export const intentBroaderCategories = pgTable("intent_broader_categories", {
+  id: serial("id").primaryKey(),
+  standardizedCategory: text("standardized_category").notNull().unique(),
+  broaderCategories: text("broader_categories").notNull(),
 });
 
 // Export schemas for validation
@@ -37,4 +43,12 @@ export type SelectCodeReview = typeof codeReviews.$inferSelect;
 // Relations
 export const codeReviewsRelations = relations(codeReviews, ({ many }) => ({
   intents: many(intents),
+}));
+
+// Relation between intents and broader categories
+export const intentRelations = relations(intents, ({ one }) => ({
+  broaderCategory: one(intentBroaderCategories, {
+    fields: [intents.name],
+    references: [intentBroaderCategories.standardizedCategory],
+  }),
 }));
