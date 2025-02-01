@@ -1,6 +1,8 @@
-import { existsSync, readFileSync } from 'fs';
+import { createReadStream, existsSync, readFileSync } from 'fs';
+import { parse } from "csv-parse";
 import { db } from "@db";
-import { intents } from "@db/schema";
+import { codeReviews, intents } from "@db/schema";
+import { eq } from 'drizzle-orm';
 
 export async function importJSONData(filePath: string) {
   try {
@@ -17,28 +19,148 @@ export async function importJSONData(filePath: string) {
     let importedCount = 0;
     const errors: string[] = [];
 
-    // Drop existing data if any
-    await db.delete(intents);
-    console.log('Cleared existing intents data');
+    // If the file is intent_broader_categories.json, handle it differently
+    if (filePath.includes('intent_broader_categories.json')) {
+      console.log('Processing intent broader categories data');
 
-    // Import new data
-    for (const record of jsonData) {
       try {
-        if (!record.standardized_category || !record.broader_categories) {
-          throw new Error('Missing required fields');
+        // First clear existing intents
+        await db.delete(intents);
+        console.log('Cleared existing intents data');
+
+        for (const record of jsonData) {
+          try {
+            const standardizedCategory = record.standardized_category;
+            const broaderCategories = record.broader_categories;
+
+            if (!standardizedCategory || !broaderCategories) {
+              console.error('Missing required fields in record:', record);
+              throw new Error('Missing required fields');
+            }
+
+            const keywordsList = broaderCategories.split(", ").filter(Boolean);
+            console.log(`Importing category: ${standardizedCategory}`);
+
+            await db.insert(intents).values({
+              name: standardizedCategory,
+              broaderCategories,
+              keywords: keywordsList,
+              count: 1, // Initial count
+              frequency: 'medium', // Default frequency
+              description: `Category ${standardizedCategory} encompasses: ${broaderCategories}`
+            });
+            importedCount++;
+            console.log(`Successfully imported: ${standardizedCategory}`);
+          } catch (recordError: any) {
+            const errorMessage = `Failed to import ${record?.standardized_category || 'unknown'}: ${recordError.message}`;
+            console.error(errorMessage);
+            errors.push(errorMessage);
+          }
         }
+      } catch (error: any) {
+        console.error('Error during intents import:', error);
+        throw error;
+      }
+    } else {
+      // Handle regular code reviews import
+      for (const record of jsonData) {
+        try {
+          const processedTimestamp = record.processed_timestamp ? 
+            new Date(record.processed_timestamp) : 
+            new Date();
 
-        await db.insert(intents).values({
+          await db.insert(codeReviews).values({
+            filename: record.filename || 'unknown',
+            rawCategory: record.raw_category,
+            standardizedCategory: record.standardized_category,
+            rawIntent: record.raw_intent,
+            standardizedIntent: record.standardized_intent,
+            relatedWorkAreas: record.related_work_areas || [],
+            provider: record.provider,
+            processedTimestamp: processedTimestamp,
+            capabilityAnalysis: record.capability_analysis || [],
+            suggestedTraining: record.suggested_training || []
+          });
+          importedCount++;
+        } catch (recordError: any) {
+          const errorMessage = `Failed to import ${record?.filename || 'unknown'}: ${recordError.message}`;
+          console.error(errorMessage);
+          errors.push(errorMessage);
+        }
+      }
+    }
+
+    console.log(`Import completed. Successfully imported ${importedCount} records`);
+    if (errors.length > 0) {
+      console.log(`Encountered ${errors.length} errors during import`);
+      console.log('Errors:', errors);
+    }
+
+    return {
+      success: true,
+      message: `Successfully imported ${importedCount} records`,
+      count: importedCount,
+      errors: errors.length > 0 ? errors : undefined
+    };
+  } catch (error) {
+    console.error("Error importing JSON data:", error);
+    throw error;
+  }
+}
+
+export async function importCSVData(filePath: string) {
+  try {
+    // First check if file exists
+    if (!existsSync(filePath)) {
+      console.error(`File not found at path: ${filePath}`);
+      throw new Error(`CSV file not found at path: ${filePath}`);
+    }
+
+    console.log(`Starting import of CSV file from: ${filePath}`);
+
+    // Create parser with strict mode
+    const parser = createReadStream(filePath).pipe(
+      parse({
+        columns: true,
+        skip_empty_lines: true,
+        trim: true
+      })
+    );
+
+    let importedCount = 0;
+    const errors: string[] = [];
+
+    for await (const record of parser) {
+      try {
+        // Clean and prepare the data
+        const relatedWorkAreas = record.related_work_areas ? 
+          record.related_work_areas.split(",").map((area: string) => area.trim()).filter(Boolean) : 
+          [];
+
+        const capabilityAnalysis = record.capability_analysis ? 
+          record.capability_analysis.split(",").map((cap: string) => cap.trim()).filter(Boolean) : 
+          [];
+
+        const suggestedTraining = record.suggested_training ? 
+          record.suggested_training.split(",").map((training: string) => training.trim()).filter(Boolean) : 
+          [];
+
+        await db.insert(codeReviews).values({
+          filename: record.filename,
+          rawCategory: record.raw_category,
           standardizedCategory: record.standardized_category,
-          broaderCategories: record.broader_categories,
+          rawIntent: record.raw_intent,
+          standardizedIntent: record.standardized_intent,
+          relatedWorkAreas,
+          provider: record.provider,
+          processedTimestamp: new Date(record.processed_timestamp),
+          capabilityAnalysis,
+          suggestedTraining
         });
-
         importedCount++;
-        console.log(`Successfully imported category: ${record.standardized_category}`);
       } catch (recordError: any) {
-        const errorMessage = `Failed to import ${record?.standardized_category || 'unknown'}: ${recordError.message}`;
-        console.error(errorMessage);
-        errors.push(errorMessage);
+        console.error(`Error importing record: ${record.filename}`, recordError);
+        errors.push(`Failed to import ${record.filename}: ${recordError.message}`);
       }
     }
 
@@ -54,7 +176,7 @@ export async function importJSONData(filePath: string) {
       errors: errors.length > 0 ? errors : undefined
     };
   } catch (error) {
-    console.error("Error importing JSON data:", error);
+    console.error("Error importing CSV data:", error);
     throw error;
   }
 }
