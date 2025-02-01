@@ -25,7 +25,7 @@ export default function Dashboard() {
             <Tabs defaultValue="category" className="w-full">
               <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="category">Category Analysis</TabsTrigger>
-                <TabsTrigger value="intent">Intent Analysis</TabsTrigger>
+                <TabsTrigger value="intent">Query Analysis</TabsTrigger>
                 <TabsTrigger value="workarea">Work Area Analysis</TabsTrigger>
                 <TabsTrigger value="queries">User Queries</TabsTrigger>
                 <TabsTrigger value="training">Training</TabsTrigger>

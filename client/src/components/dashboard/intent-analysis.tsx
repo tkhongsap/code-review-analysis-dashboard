@@ -31,7 +31,7 @@ export default function IntentAnalysis() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Intent Analysis</CardTitle>
+        <CardTitle>Query Analysis</CardTitle>
       </CardHeader>
       <CardContent>
         <ScrollArea className="h-[600px]">
