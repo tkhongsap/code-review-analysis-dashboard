@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { importJSONData } from "./services/import";
 import { db } from "@db";
-import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories } from "@db/schema";
+import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories, userCapabilities } from "@db/schema";
 import { desc, sql } from "drizzle-orm";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -26,6 +26,19 @@ export function registerRoutes(app: Express): Server {
     try {
       const jsonPath = join(process.cwd(), "attached_assets", "intent_broader_categories.json");
       console.log("Attempting to import intent broader categories from:", jsonPath);
+      const result = await importJSONData(jsonPath);
+      res.json(result);
+    } catch (error) {
+      console.error("Import error:", error);
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
+
+  // Add this route after the other import routes
+  app.post("/api/import/capabilities", async (req, res) => {
+    try {
+      const jsonPath = join(process.cwd(), "attached_assets", "user_capability_analysis.json");
+      console.log("Attempting to import user capability analysis from:", jsonPath);
       const result = await importJSONData(jsonPath);
       res.json(result);
     } catch (error) {
@@ -339,6 +352,62 @@ export function registerRoutes(app: Express): Server {
     }
   });
   
+    app.get("/api/analysis/capabilities", async (req, res) => {
+    try {
+      const capabilities = await db.select({
+        category: userCapabilities.standardizedCategory,
+        strongCapabilities: userCapabilities.strongCapabilities,
+        weakCapabilities: userCapabilities.weakCapabilities
+      })
+      .from(userCapabilities);
+
+      // Transform capabilities data for spider chart
+      const analysisData = capabilities.map(cap => {
+        const strongScores = Object.values(cap.strongCapabilities as Record<string, number>);
+        const weakScores = Object.values(cap.weakCapabilities as Record<string, number>);
+
+        const avgStrong = strongScores.length ? 
+          strongScores.reduce((a, b) => a + b, 0) / strongScores.length : 0;
+
+        const avgWeak = weakScores.length ?
+          weakScores.reduce((a, b) => a + b, 0) / weakScores.length : 0;
+
+        return {
+          category: cap.category,
+          metrics: {
+            strongCapabilities: avgStrong,
+            weakCapabilities: avgWeak,
+            overallScore: (avgStrong * 0.7 + avgWeak * 0.3), // Weighted average
+            capabilities: [
+              ...Object.entries(cap.strongCapabilities as Record<string, number>).map(([name, score]) => ({
+                name,
+                score,
+                type: 'strong'
+              })),
+              ...Object.entries(cap.weakCapabilities as Record<string, number>).map(([name, score]) => ({
+                name,
+                score,
+                type: 'weak'
+              }))
+            ]
+          }
+        };
+      });
+
+      res.json({
+        capabilities: analysisData,
+        summary: {
+          totalCategories: capabilities.length,
+          averageStrong: analysisData.reduce((acc, curr) => acc + curr.metrics.strongCapabilities, 0) / analysisData.length,
+          averageWeak: analysisData.reduce((acc, curr) => acc + curr.metrics.weakCapabilities, 0) / analysisData.length
+        }
+      });
+    } catch (error) {
+      console.error("Capabilities analysis error:", error);
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

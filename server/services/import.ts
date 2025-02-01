@@ -1,7 +1,7 @@
 import { createReadStream, existsSync, readFileSync } from 'fs';
 import { parse } from "csv-parse";
 import { db } from "@db";
-import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories } from "@db/schema";
+import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories, userCapabilities } from "@db/schema";
 import { eq } from 'drizzle-orm';
 
 export async function importJSONData(filePath: string) {
@@ -20,7 +20,45 @@ export async function importJSONData(filePath: string) {
     const errors: string[] = [];
 
     // Handle different types of imports based on file content
-    if (filePath.includes('intent_broader_categories.json')) {
+    if (filePath.includes('user_capability_analysis.json')) {
+      console.log('Processing user capability analysis data');
+
+      try {
+        // Clear existing capability data
+        await db.delete(userCapabilities);
+        console.log('Cleared existing user capabilities data');
+
+        for (const record of jsonData) {
+          try {
+            const standardizedCategory = record.standardized_category;
+            const capabilityAnalysis = record.capability_analysis;
+
+            if (!standardizedCategory || !capabilityAnalysis) {
+              console.error('Missing required fields in record:', record);
+              throw new Error('Missing required fields');
+            }
+
+            console.log(`Importing capability analysis for category: ${standardizedCategory}`);
+
+            await db.insert(userCapabilities).values({
+              standardizedCategory,
+              userQuery: capabilityAnalysis.user_query || null,
+              strongCapabilities: capabilityAnalysis.strong_capabilities || {},
+              weakCapabilities: capabilityAnalysis.weak_capabilities || {}
+            });
+            importedCount++;
+            console.log(`Successfully imported capability analysis for: ${standardizedCategory}`);
+          } catch (recordError: any) {
+            const errorMessage = `Failed to import ${record?.standardized_category || 'unknown'}: ${recordError.message}`;
+            console.error(errorMessage);
+            errors.push(errorMessage);
+          }
+        }
+      } catch (error: any) {
+        console.error('Error during user capability analysis import:', error);
+        throw error;
+      }
+    } else if (filePath.includes('intent_broader_categories.json')) {
       console.log('Processing intent broader categories data');
 
       try {

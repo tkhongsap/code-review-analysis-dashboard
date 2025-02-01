@@ -29,3 +29,8 @@ export async function getTrainingRecommendations() {
   const response = await fetch('/api/analysis/training');
   return response.json();
 }
+
+export async function getCapabilitiesAnalysis() {
+  const response = await fetch('/api/analysis/capabilities');
+  return response.json();
+}
