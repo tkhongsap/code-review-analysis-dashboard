@@ -192,38 +192,52 @@ export function registerRoutes(app: Express): Server {
       })
       .from(workAreaBroaderCategories);
 
-      // Calculate total for percentages
-      const total = workAreaData.length;
+      // Get total reviews count for percentage calculation
+      const totalReviews = await db.select({ 
+        count: sql<number>`count(*)` 
+      }).from(codeReviews);
+
+      // Count reviews per work area using related_work_areas array
+      const workAreaCounts = await db.execute(sql`
+        SELECT unnest(related_work_areas) as work_area, COUNT(*) as count
+        FROM code_reviews
+        GROUP BY unnest(related_work_areas)
+      `);
+
+      // Create a map of work area counts
+      const countMap = new Map(
+        workAreaCounts.rows.map(row => [row.work_area, parseInt(row.count)])
+      );
 
       // Transform the data for the frontend
-      const distribution = workAreaData.map((area, index) => ({
-        name: area.standardizedCategory,
-        count: total - index, // Simulated count for ordering
-        percentage: Math.round(100 / total)
-      }));
-
-      // Create insights from the broader work areas
       const insights = workAreaData.map(area => ({
         workArea: area.standardizedCategory,
-        count: total - workAreaData.indexOf(area), // Simulated count for ordering
+        count: countMap.get(area.standardizedCategory) || 0,
         broaderAreas: area.broaderWorkAreas.split(", "),
         description: `Analysis of ${area.standardizedCategory} work area patterns and trends`
       }));
 
-      // Generate trends based on the data
+      // Sort insights by count
+      insights.sort((a, b) => b.count - a.count);
+
+      // Generate trends based on actual data
       const trends = [
         {
           title: "Primary Focus Areas",
-          description: `${workAreaData[0]?.standardizedCategory || 'Unknown'} is the most active work area`
+          description: `${insights[0]?.workArea || 'Unknown'} is the most active work area with ${insights[0]?.count || 0} reviews`
         },
         {
           title: "Emerging Patterns",
-          description: `Growing emphasis on ${workAreaData[1]?.standardizedCategory || 'Unknown'}`
+          description: `Growing emphasis on ${insights[1]?.workArea || 'Unknown'} with ${insights[1]?.count || 0} reviews`
         }
       ];
 
       res.json({
-        distribution,
+        distribution: insights.map(insight => ({
+          name: insight.workArea,
+          count: insight.count,
+          percentage: Math.round((insight.count / totalReviews[0].count) * 100)
+        })),
         insights,
         trends
       });
