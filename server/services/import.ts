@@ -31,7 +31,6 @@ export async function importJSONData(filePath: string) {
 
           await db.insert(intents).values({
             name: standardizedIntent,
-            standardizedIntent: standardizedIntent,
             keywords: keywordsList,
             count: 1, // Initial count
             frequency: keywordsList.length > 5 ? 'high' : 'medium',

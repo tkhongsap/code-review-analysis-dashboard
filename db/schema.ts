@@ -17,50 +17,14 @@ export const codeReviews = pgTable("code_reviews", {
   suggestedTraining: text("suggested_training").array(),
 });
 
-// Categories analysis
-export const categories = pgTable("categories", {
-  id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  count: integer("count").notNull().default(0),
-  description: text("description"),
-});
-
-// Category insights table
-export const categoryInsights = pgTable("category_insights", {
-  id: serial("id").primaryKey(),
-  standardizedCategory: text("standardized_category").notNull(),
-  insight: text("insight").notNull(),
-});
-
 // Intents analysis
 export const intents = pgTable("intents", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  standardizedIntent: text("standardized_intent").notNull(),
   keywords: text("keywords").array(),
   count: integer("count").notNull().default(0),
   frequency: text("frequency"),
   description: text("description"),
-});
-
-// Work areas
-export const workAreas = pgTable("work_areas", {
-  id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  percentage: integer("percentage").notNull().default(0),
-  relatedCategories: text("related_categories").array(),
-  skillLevel: text("skill_level"),
-  proficiency: integer("proficiency").notNull().default(0),
-});
-
-// Training recommendations
-export const trainingRecommendations = pgTable("training_recommendations", {
-  id: serial("id").primaryKey(),
-  course: text("course").notNull(),
-  priority: text("priority").notNull(),
-  category: text("category"),
-  description: text("description"),
-  impactScore: integer("impact_score").notNull().default(0),
 });
 
 // Export schemas for validation
@@ -71,8 +35,5 @@ export type SelectCodeReview = typeof codeReviews.$inferSelect;
 
 // Relations
 export const codeReviewsRelations = relations(codeReviews, ({ many }) => ({
-  categories: many(categories),
   intents: many(intents),
-  workAreas: many(workAreas),
-  trainingRecommendations: many(trainingRecommendations),
 }));
