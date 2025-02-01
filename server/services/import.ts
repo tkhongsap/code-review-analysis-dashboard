@@ -21,68 +21,71 @@ export async function importJSONData(filePath: string) {
 
     // If the file is intent_broader_categories.json, handle it differently
     if (filePath.includes('intent_broader_categories.json')) {
-      // First clear existing intents
-      await db.delete(intents);
+      console.log('Processing intent broader categories data');
 
-      for (const record of jsonData) {
-        try {
-          const standardizedCategory = record.standardized_category;
-          const broaderCategories = record.broader_categories.split(", ").filter(Boolean);
+      try {
+        // First clear existing intents
+        await db.delete(intents);
+        console.log('Cleared existing intents data');
 
-          await db.insert(intents).values({
-            name: standardizedCategory,
-            keywords: broaderCategories,
-            count: 1, // Initial count
-            frequency: broaderCategories.length > 2 ? 'high' : 'medium',
-            description: `Intent category: ${standardizedCategory} covering ${broaderCategories.join(", ")}`
-          });
-          importedCount++;
-        } catch (recordError: any) {
-          console.error(`Error importing intent record: ${record.standardized_category}`, recordError);
-          errors.push(`Failed to import ${record.standardized_category}: ${recordError.message}`);
+        for (const record of jsonData) {
+          try {
+            const standardizedCategory = record.standardized_category;
+            const broaderCategories = record.broader_categories;
+
+            if (!standardizedCategory || !broaderCategories) {
+              console.error('Missing required fields in record:', record);
+              throw new Error('Missing required fields');
+            }
+
+            const keywordsList = broaderCategories.split(", ").filter(Boolean);
+            console.log(`Importing category: ${standardizedCategory}`);
+
+            await db.insert(intents).values({
+              name: standardizedCategory,
+              broaderCategories,
+              keywords: keywordsList,
+              count: 1, // Initial count
+              frequency: 'medium', // Default frequency
+              description: `Category ${standardizedCategory} encompasses: ${broaderCategories}`
+            });
+            importedCount++;
+            console.log(`Successfully imported: ${standardizedCategory}`);
+          } catch (recordError: any) {
+            const errorMessage = `Failed to import ${record?.standardized_category || 'unknown'}: ${recordError.message}`;
+            console.error(errorMessage);
+            errors.push(errorMessage);
+          }
         }
+      } catch (error: any) {
+        console.error('Error during intents import:', error);
+        throw error;
       }
     } else {
-      // Handle code reviews import as before
+      // Handle regular code reviews import
       for (const record of jsonData) {
         try {
-          const relatedWorkAreas = record.related_work_areas ? 
-            (typeof record.related_work_areas === 'string' ? 
-              record.related_work_areas.split(",") : 
-              record.related_work_areas
-            ).map((area: string) => area.trim()).filter(Boolean) : 
-            [];
-
-          const capabilityAnalysis = record.capability_analysis ? 
-            (Array.isArray(record.capability_analysis) ? 
-              record.capability_analysis : 
-              record.capability_analysis.split(",")
-            ).map((cap: string) => cap.trim()).filter(Boolean) : 
-            [];
-
-          const suggestedTraining = record.suggested_training ? 
-            (Array.isArray(record.suggested_training) ? 
-              record.suggested_training : 
-              record.suggested_training.split(",")
-            ).map((training: string) => training.trim()).filter(Boolean) : 
-            [];
+          const processedTimestamp = record.processed_timestamp ? 
+            new Date(record.processed_timestamp) : 
+            new Date();
 
           await db.insert(codeReviews).values({
-            filename: record.filename,
+            filename: record.filename || 'unknown',
             rawCategory: record.raw_category,
             standardizedCategory: record.standardized_category,
             rawIntent: record.raw_intent,
             standardizedIntent: record.standardized_intent,
-            relatedWorkAreas,
+            relatedWorkAreas: record.related_work_areas || [],
             provider: record.provider,
-            processedTimestamp: new Date(record.processed_timestamp),
-            capabilityAnalysis,
-            suggestedTraining
+            processedTimestamp: processedTimestamp,
+            capabilityAnalysis: record.capability_analysis || [],
+            suggestedTraining: record.suggested_training || []
           });
           importedCount++;
         } catch (recordError: any) {
-          console.error(`Error importing record: ${record.filename}`, recordError);
-          errors.push(`Failed to import ${record.filename}: ${recordError.message}`);
+          const errorMessage = `Failed to import ${record?.filename || 'unknown'}: ${recordError.message}`;
+          console.error(errorMessage);
+          errors.push(errorMessage);
         }
       }
     }
@@ -90,6 +93,7 @@ export async function importJSONData(filePath: string) {
     console.log(`Import completed. Successfully imported ${importedCount} records`);
     if (errors.length > 0) {
       console.log(`Encountered ${errors.length} errors during import`);
+      console.log('Errors:', errors);
     }
 
     return {

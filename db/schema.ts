@@ -17,11 +17,12 @@ export const codeReviews = pgTable("code_reviews", {
   suggestedTraining: text("suggested_training").array(),
 });
 
-// Intents analysis
+// Intents table with broader categories
 export const intents = pgTable("intents", {
   id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  keywords: text("keywords").array(),
+  name: text("name").notNull().unique(),
+  broaderCategories: text("broader_categories").notNull(),
+  keywords: text("keywords").array().notNull(),
   count: integer("count").notNull().default(0),
   frequency: text("frequency"),
   description: text("description"),

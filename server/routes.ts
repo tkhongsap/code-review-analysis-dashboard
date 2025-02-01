@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { importJSONData } from "./services/import";
 import { db } from "@db";
-import { codeReviews, categories, intents, workAreas, trainingRecommendations } from "@db/schema";
+import { codeReviews, intents } from "@db/schema";
 import { desc, sql } from "drizzle-orm";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -11,8 +11,8 @@ export function registerRoutes(app: Express): Server {
   // Import intent keywords route
   app.post("/api/import/intent-keywords", async (req, res) => {
     try {
-      const jsonPath = join(process.cwd(), "attached_assets", "intent_keywords.json");
-      console.log("Attempting to import intent keywords from:", jsonPath);
+      const jsonPath = join(process.cwd(), "attached_assets", "intent_broader_categories.json");
+      console.log("Attempting to import intent broader categories from:", jsonPath);
       const result = await importJSONData(jsonPath);
       res.json(result);
     } catch (error) {
@@ -26,6 +26,7 @@ export function registerRoutes(app: Express): Server {
       // Get intent distribution with broader categories
       const intentStats = await db.select({
         category: intents.name,
+        broaderCategories: intents.broaderCategories,
         keywords: intents.keywords,
         count: intents.count,
         frequency: intents.frequency,
@@ -47,11 +48,12 @@ export function registerRoutes(app: Express): Server {
       // Get insights with broader categories
       const insights = intentStats.map(stat => ({
         intent: stat.category,
+        broaderCategories: stat.broaderCategories,
         keywords: stat.keywords || [],
         description: stat.description
       }));
 
-      // Get top broader categories
+      // Get top broader categories using the keywords array
       const keywordStats = await db.select({
         keyword: sql<string>`unnest(keywords)`,
         count: sql<number>`count(*)`
