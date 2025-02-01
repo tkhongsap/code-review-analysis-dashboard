@@ -15,6 +15,12 @@ export async function getWorkAreaAnalysis() {
   return response.json();
 }
 
+export async function getIntentAnalysis() {
+  const response = await fetch('/api/analysis/queries');
+  return response.json();
+}
+
+
 export async function getUserQueriesAnalysis() {
   const response = await fetch('/api/analysis/queries');
   return response.json();

@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { importCSVData } from "./services/import";
+import { importJSONData } from "./services/import";
 import { db } from "@db";
 import { codeReviews, categories, intents, workAreas, trainingRecommendations } from "@db/schema";
 import { desc, sql } from "drizzle-orm";
@@ -11,9 +11,9 @@ export function registerRoutes(app: Express): Server {
   app.post("/api/import", async (req, res) => {
     try {
       console.log("Current working directory:", process.cwd());
-      const csvPath = join(process.cwd(), "attached_assets", "consolidated_with_llm_openai.csv");
-      console.log("Attempting to import CSV from:", csvPath);
-      const result = await importCSVData(csvPath);
+      const jsonPath = join(process.cwd(), "attached_assets", "consolidated_with_llm_openai.json");
+      console.log("Attempting to import JSON from:", jsonPath);
+      const result = await importJSONData(jsonPath);
       res.json(result);
     } catch (error) {
       console.error("Import error:", error);
