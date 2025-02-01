@@ -1,7 +1,7 @@
 import { createReadStream, existsSync, readFileSync } from 'fs';
 import { parse } from "csv-parse";
 import { db } from "@db";
-import { codeReviews } from "@db/schema";
+import { codeReviews, intents } from "@db/schema";
 
 export async function importJSONData(filePath: string) {
   try {
@@ -18,46 +18,66 @@ export async function importJSONData(filePath: string) {
     let importedCount = 0;
     const errors: string[] = [];
 
-    for (const record of jsonData) {
-      try {
-        // Clean and prepare the data
-        const relatedWorkAreas = record.related_work_areas ? 
-          (typeof record.related_work_areas === 'string' ? 
-            record.related_work_areas.split(",") : 
-            record.related_work_areas
-          ).map((area: string) => area.trim()).filter(Boolean) : 
-          [];
+    // If the file is intent_keywords.json, handle it differently
+    if (filePath.includes('intent_keywords.json')) {
+      for (const record of jsonData) {
+        try {
+          await db.insert(intents).values({
+            name: record.standardized_intent.replace(/^"|"$/g, ''),
+            standardizedIntent: record.standardized_intent,
+            keywords: record.keywords.split(", ").filter(Boolean),
+            count: 1,
+            frequency: 'common',
+            description: `Intent related to ${record.standardized_intent.replace(/^"|"$/g, '')}`
+          });
+          importedCount++;
+        } catch (recordError: any) {
+          console.error(`Error importing intent record: ${record.standardized_intent}`, recordError);
+          errors.push(`Failed to import ${record.standardized_intent}: ${recordError.message}`);
+        }
+      }
+    } else {
+      // Handle code reviews import as before
+      for (const record of jsonData) {
+        try {
+          const relatedWorkAreas = record.related_work_areas ? 
+            (typeof record.related_work_areas === 'string' ? 
+              record.related_work_areas.split(",") : 
+              record.related_work_areas
+            ).map((area: string) => area.trim()).filter(Boolean) : 
+            [];
 
-        const capabilityAnalysis = record.capability_analysis ? 
-          (Array.isArray(record.capability_analysis) ? 
-            record.capability_analysis : 
-            record.capability_analysis.split(",")
-          ).map((cap: string) => cap.trim()).filter(Boolean) : 
-          [];
+          const capabilityAnalysis = record.capability_analysis ? 
+            (Array.isArray(record.capability_analysis) ? 
+              record.capability_analysis : 
+              record.capability_analysis.split(",")
+            ).map((cap: string) => cap.trim()).filter(Boolean) : 
+            [];
 
-        const suggestedTraining = record.suggested_training ? 
-          (Array.isArray(record.suggested_training) ? 
-            record.suggested_training : 
-            record.suggested_training.split(",")
-          ).map((training: string) => training.trim()).filter(Boolean) : 
-          [];
+          const suggestedTraining = record.suggested_training ? 
+            (Array.isArray(record.suggested_training) ? 
+              record.suggested_training : 
+              record.suggested_training.split(",")
+            ).map((training: string) => training.trim()).filter(Boolean) : 
+            [];
 
-        await db.insert(codeReviews).values({
-          filename: record.filename,
-          rawCategory: record.raw_category,
-          standardizedCategory: record.standardized_category,
-          rawIntent: record.raw_intent,
-          standardizedIntent: record.standardized_intent,
-          relatedWorkAreas,
-          provider: record.provider,
-          processedTimestamp: new Date(record.processed_timestamp),
-          capabilityAnalysis,
-          suggestedTraining
-        });
-        importedCount++;
-      } catch (recordError: any) {
-        console.error(`Error importing record: ${record.filename}`, recordError);
-        errors.push(`Failed to import ${record.filename}: ${recordError.message}`);
+          await db.insert(codeReviews).values({
+            filename: record.filename,
+            rawCategory: record.raw_category,
+            standardizedCategory: record.standardized_category,
+            rawIntent: record.raw_intent,
+            standardizedIntent: record.standardized_intent,
+            relatedWorkAreas,
+            provider: record.provider,
+            processedTimestamp: new Date(record.processed_timestamp),
+            capabilityAnalysis,
+            suggestedTraining
+          });
+          importedCount++;
+        } catch (recordError: any) {
+          console.error(`Error importing record: ${record.filename}`, recordError);
+          errors.push(`Failed to import ${record.filename}: ${recordError.message}`);
+        }
       }
     }
 

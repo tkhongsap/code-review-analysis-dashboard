@@ -226,38 +226,48 @@ export function registerRoutes(app: Express): Server {
   
   app.get("/api/analysis/intents", async (req, res) => {
     try {
-      const insightsPath = join(process.cwd(), "attached_assets", "intent_keywords.json");
-      const intentsData = JSON.parse(readFileSync(insightsPath, 'utf-8'));
+      // Get intent distribution
+      const intentStats = await db.select({
+        category: intents.standardizedIntent,
+        count: sql<number>`count(*)`,
+      })
+      .from(intents)
+      .groupBy(intents.standardizedIntent)
+      .orderBy(sql`count(*) desc`);
 
-      // Group intents by category for distribution analysis
-      const categories = new Map();
-      intentsData.forEach((intent: any) => {
-        const categoryMatch = intent.standardized_intent.match(/^"?(.*?)"?$/);
-        const cleanIntent = categoryMatch ? categoryMatch[1] : intent.standardized_intent;
-        categories.set(cleanIntent, (categories.get(cleanIntent) || 0) + 1);
-      });
+      const total = intentStats.reduce((sum, stat) => sum + Number(stat.count), 0);
 
-      // Convert to percentage distribution
-      const total = intentsData.length;
-      const distribution = Array.from(categories.entries())
-        .map(([category, count]) => ({
-          category,
-          count: count as number,
-          percentage: Math.round((count as number / total) * 100)
+      const distribution = intentStats
+        .map(stat => ({
+          category: stat.category.replace(/^"|"$/g, ''),
+          count: Number(stat.count),
+          percentage: Math.round((Number(stat.count) / total) * 100)
         }))
-        .sort((a, b) => b.count - a.count)
         .slice(0, 10);
 
+      // Get insights (top 10 intents with their keywords)
+      const insights = await db.select({
+        intent: intents.standardizedIntent,
+        keywords: intents.keywords
+      })
+      .from(intents)
+      .limit(10);
+
       // Get keyword frequency
+      const allKeywords = await db.select({
+        keywords: intents.keywords
+      })
+      .from(intents);
+
       const keywordFrequency = new Map();
-      intentsData.forEach((intent: any) => {
-        const keywords = intent.keywords.split(", ");
-        keywords.forEach((keyword: string) => {
-          keywordFrequency.set(keyword, (keywordFrequency.get(keyword) || 0) + 1);
-        });
+      allKeywords.forEach(record => {
+        if (Array.isArray(record.keywords)) {
+          record.keywords.forEach(keyword => {
+            keywordFrequency.set(keyword, (keywordFrequency.get(keyword) || 0) + 1);
+          });
+        }
       });
 
-      // Get top keywords
       const topKeywords = Array.from(keywordFrequency.entries())
         .sort((a, b) => b[1] - a[1])
         .slice(0, 20)
@@ -269,9 +279,9 @@ export function registerRoutes(app: Express): Server {
 
       res.json({
         distribution,
-        insights: intentsData.slice(0, 10).map((intent: any) => ({
-          intent: intent.standardized_intent.replace(/^"|"$/g, ''),
-          keywords: intent.keywords.split(", ").filter(Boolean)
+        insights: insights.map(intent => ({
+          intent: intent.intent.replace(/^"|"$/g, ''),
+          keywords: intent.keywords || []
         })),
         topKeywords
       });
