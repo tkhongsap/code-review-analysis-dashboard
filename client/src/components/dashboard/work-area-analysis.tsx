@@ -80,27 +80,6 @@ export default function WorkAreaAnalysis() {
           </ScrollArea>
         </CardContent>
       </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Emerging Trends</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ScrollArea className="h-[180px]">
-            {workAreas.trends.map((trend, i) => (
-              <div
-                key={i}
-                className="mb-4 pb-4 border-b last:border-0 last:pb-0"
-              >
-                <h3 className="font-medium mb-1">{trend.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {trend.description}
-                </p>
-              </div>
-            ))}
-          </ScrollArea>
-        </CardContent>
-      </Card>
     </div>
   );
 }
