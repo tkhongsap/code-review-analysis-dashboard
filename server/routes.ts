@@ -223,6 +223,63 @@ export function registerRoutes(app: Express): Server {
       res.status(500).json({ success: false, error: String(error) });
     }
   });
+  
+  app.get("/api/analysis/intents", async (req, res) => {
+    try {
+      const insightsPath = join(process.cwd(), "attached_assets", "intent_keywords.json");
+      const intentsData = JSON.parse(readFileSync(insightsPath, 'utf-8'));
+  
+      // Group intents by category for distribution analysis
+      const categories = new Map();
+      intentsData.forEach((intent: any) => {
+        const categoryMatch = intent.standardized_intent.match(/^"?(.*?)"?$/);
+        const cleanIntent = categoryMatch ? categoryMatch[1] : intent.standardized_intent;
+        categories.set(cleanIntent, (categories.get(cleanIntent) || 0) + 1);
+      });
+  
+      // Convert to percentage distribution
+      const total = intentsData.length;
+      const distribution = Array.from(categories.entries())
+        .map(([category, count]) => ({
+          category,
+          count: count as number,
+          percentage: Math.round((count as number / total) * 100)
+        }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10);
+  
+      // Get keyword frequency
+      const keywordFrequency = new Map();
+      intentsData.forEach((intent: any) => {
+        const keywords = intent.keywords.split(", ");
+        keywords.forEach((keyword: string) => {
+          keywordFrequency.set(keyword, (keywordFrequency.get(keyword) || 0) + 1);
+        });
+      });
+  
+      // Get top keywords
+      const topKeywords = Array.from(keywordFrequency.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 20)
+        .map(([keyword, count]) => ({
+          keyword,
+          count,
+          percentage: Math.round((count as number / total) * 100)
+        }));
+  
+      res.json({
+        distribution,
+        insights: intentsData.slice(0, 10).map((intent: any) => ({
+          intent: intent.standardized_intent,
+          keywords: intent.keywords.split(", ")
+        })),
+        topKeywords
+      });
+    } catch (error) {
+      console.error("Intent analysis error:", error);
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
 
   const httpServer = createServer(app);
   return httpServer;

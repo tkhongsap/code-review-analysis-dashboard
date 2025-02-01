@@ -22,7 +22,6 @@ export const categories = pgTable("categories", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   count: integer("count").notNull().default(0),
-  trend: integer("trend").notNull().default(0),
   description: text("description"),
 });
 
@@ -37,6 +36,8 @@ export const categoryInsights = pgTable("category_insights", {
 export const intents = pgTable("intents", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
+  standardizedIntent: text("standardized_intent").notNull(),
+  keywords: text("keywords").array(),
   count: integer("count").notNull().default(0),
   frequency: text("frequency"),
   description: text("description"),

@@ -1,0 +1,1822 @@
+[
+  {
+    "standardized_intent": "\"Centralize two-way data binding in Angular 18 components\"",
+    "keywords": "Centralize, two-way data binding, Angular 18, components"
+  },
+  {
+    "standardized_intent": "\"Optimize performance metrics to achieve maximum score\"",
+    "keywords": "optimize, performance metrics, maximum score"
+  },
+  {
+    "standardized_intent": "\"Review Angular component code for best practices\"",
+    "keywords": "Angular, component code, review, best practices"
+  },
+  {
+    "standardized_intent": "Implement service method for SAP sales return document",
+    "keywords": "implement, service method, SAP, sales return document"
+  },
+  {
+    "standardized_intent": "Automate SQL data refresh and email Excel files",
+    "keywords": "Automate, SQL, data refresh, email, Excel files"
+  },
+  {
+    "standardized_intent": "Debug Jest test error with child process exceptions",
+    "keywords": "Debug, Jest, test error, child process, exceptions"
+  },
+  {
+    "standardized_intent": "\"Filter dataset to display only 'brand' objects\"",
+    "keywords": "filter, dataset, display, brand, objects"
+  },
+  {
+    "standardized_intent": "\"Retrieve purchase order data via GET request\"",
+    "keywords": "retrieve, purchase order data, GET request"
+  },
+  {
+    "standardized_intent": "\"Automate procurement workflows to ensure timely purchases\"",
+    "keywords": "Automate, procurement workflows, timely purchases"
+  },
+  {
+    "standardized_intent": "\"Export aggregated data to .csv via command\"",
+    "keywords": "Export, aggregated data, .csv, command"
+  },
+  {
+    "standardized_intent": "\"Develop Streamlit app with OpenAI API integration\"",
+    "keywords": "Streamlit app, OpenAI API, integration"
+  },
+  {
+    "standardized_intent": "\"Condense content for improved readability and brevity\"",
+    "keywords": "condense content, improved readability, brevity"
+  },
+  {
+    "standardized_intent": "\"Analyze English sentence structure for semantic processing\"",
+    "keywords": "Analyze, English, sentence structure, semantic processing"
+  },
+  {
+    "standardized_intent": "\"Extract and categorize insights from technical conversation\"",
+    "keywords": "extract, categorize, insights, technical conversation"
+  },
+  {
+    "standardized_intent": "Clarify pricing terminology and vendor quotation discrepancies.",
+    "keywords": "pricing terminology, vendor quotation, discrepancies, clarification"
+  },
+  {
+    "standardized_intent": "\"Make `isCanceled` parameter optional in method signature\"",
+    "keywords": "isCanceled, parameter, optional, method signature"
+  },
+  {
+    "standardized_intent": "\"Translate meeting summary report from English to Thai\"",
+    "keywords": "Translate, meeting summary report, English, Thai"
+  },
+  {
+    "standardized_intent": "\"Summarize and extract key points from incoherent transcript\"",
+    "keywords": "summarize, extract, key points, incoherent transcript"
+  },
+  {
+    "standardized_intent": "\"Check system status for pending request completion\"",
+    "keywords": "system status, pending request, completion"
+  },
+  {
+    "standardized_intent": "\"Implement HTTP request/response logging middleware with Serilog\"",
+    "keywords": "HTTP request/response, logging, middleware, Serilog"
+  },
+  {
+    "standardized_intent": "\"Translate text to English and generate detailed explanation\"",
+    "keywords": "Translate, text, English, generate, detailed explanation"
+  },
+  {
+    "standardized_intent": "\"Verify consistent keystore usage for APK signing\"",
+    "keywords": "keystore, APK signing, consistent usage, verify"
+  },
+  {
+    "standardized_intent": "\"Define GitHub platform functionality and purpose\"",
+    "keywords": "GitHub, platform, functionality, purpose, version control, collaboration, code hosting, development tools"
+  },
+  {
+    "standardized_intent": "Analyze poetic transcript for themes, tone, and structure.",
+    "keywords": "analyze, poetic transcript, themes, tone, structure"
+  },
+  {
+    "standardized_intent": "Classify ambiguous user intent using NLP models",
+    "keywords": "classify, ambiguous user intent, NLP models"
+  },
+  {
+    "standardized_intent": "\"Verify keystore compatibility for authentication and encryption\"",
+    "keywords": "keystore, compatibility, authentication, encryption"
+  },
+  {
+    "standardized_intent": "\"Practice professional introduction for CEO meeting\"",
+    "keywords": "professional introduction, CEO meeting, practice"
+  },
+  {
+    "standardized_intent": "Clarify user intent through context analysis",
+    "keywords": "user intent, context analysis, clarify"
+  },
+  {
+    "standardized_intent": "\"Set system locale to Thai for language output\"",
+    "keywords": "system locale, Thai, language output"
+  },
+  {
+    "standardized_intent": "Install `cross-env` package in development environment",
+    "keywords": "Install, cross-env, package, development environment"
+  },
+  {
+    "standardized_intent": "\"Bind HTTP headers to model in .NET Core API\"",
+    "keywords": "Bind, HTTP headers, model, .NET Core, API"
+  },
+  {
+    "standardized_intent": "Generate structured meeting summary with key announcements and actions",
+    "keywords": "structured meeting summary, key announcements, actions"
+  },
+  {
+    "standardized_intent": "\"Learn SQL for querying and optimizing databases\"",
+    "keywords": "Learn SQL, querying, optimizing, databases"
+  },
+  {
+    "standardized_intent": "\"Generate financial reports including P&L, Balance Sheets, Cash Flow\"",
+    "keywords": "financial reports, P&L, Balance Sheets, Cash Flow"
+  },
+  {
+    "standardized_intent": "Explain `$unwind` operator with `preserveNullAndEmptyArrays` in MongoDB",
+    "keywords": "`$unwind` operator, `preserveNullAndEmptyArrays`, MongoDB"
+  },
+  {
+    "standardized_intent": "Retrieve user data from the database",
+    "keywords": "retrieve, user data, database"
+  },
+  {
+    "standardized_intent": "\"Fix JSON syntax error at line 5, column 1\"",
+    "keywords": "Fix, JSON, syntax error, line 5, column 1"
+  },
+  {
+    "standardized_intent": "\"Initiate system shutdown procedure for user's computer\"",
+    "keywords": "system shutdown, procedure, user's computer"
+  },
+  {
+    "standardized_intent": "\"Configure database connection in development environment\"",
+    "keywords": "configure, database connection, development environment"
+  },
+  {
+    "standardized_intent": "\"Enhance test coverage for `DiscountBenefitProducts` conditional branches\"",
+    "keywords": "Enhance, test coverage, DiscountBenefitProducts, conditional branches"
+  },
+  {
+    "standardized_intent": "Generate 5-month marathon training plan with integrated running, weight training, pace targets, and 4-hour goal.",
+    "keywords": "5-month, marathon training plan, integrated running, weight training, pace targets, 4-hour goal"
+  },
+  {
+    "standardized_intent": "Log `response` object before conditional check",
+    "keywords": "log, response object, conditional check"
+  },
+  {
+    "standardized_intent": "Retrieve tax identification and address details",
+    "keywords": "tax identification, address details, retrieve"
+  },
+  {
+    "standardized_intent": "Set system language preference to Thai.",
+    "keywords": "system language, preference, Thai"
+  },
+  {
+    "standardized_intent": "\"Document PR workflow and approval process functionality\"",
+    "keywords": "Document, PR workflow, approval process, functionality"
+  },
+  {
+    "standardized_intent": "Verify term consistency with PAN MC standards",
+    "keywords": "term consistency, PAN MC standards, verify"
+  },
+  {
+    "standardized_intent": "\"Process and structure meeting transcripts into professional reports\"",
+    "keywords": "process, structure, meeting transcripts, professional reports"
+  },
+  {
+    "standardized_intent": "\"Annotate test method with `Fact` attribute\"",
+    "keywords": "Annotate, test method, Fact attribute"
+  },
+  {
+    "standardized_intent": "\"Provide C# unit test example with mocking and assertions\"",
+    "keywords": "C#, unit test, example, mocking, assertions"
+  },
+  {
+    "standardized_intent": "\"Classify technical conversations by category, intent, and work area\"",
+    "keywords": "classify, technical conversations, category, intent, work area"
+  },
+  {
+    "standardized_intent": "\"Set user language preference to Thai\"",
+    "keywords": "user language preference, Thai"
+  },
+  {
+    "standardized_intent": "\"Write unit tests for `CreateGroup` method functionality\"",
+    "keywords": "unit tests, CreateGroup, method functionality"
+  },
+  {
+    "standardized_intent": "\"Document PR workflow and approval process details\"",
+    "keywords": "Document, PR workflow, approval process, details"
+  },
+  {
+    "standardized_intent": "Retrieve definition or explanation of specified term",
+    "keywords": "retrieve, definition, explanation, specified term"
+  },
+  {
+    "standardized_intent": "Retrieve lottery results for October 16, 2027.",
+    "keywords": "lottery results, October 16, 2027"
+  },
+  {
+    "standardized_intent": "\"Implement file format conversion functionality\"",
+    "keywords": "file format, conversion, functionality, implement"
+  },
+  {
+    "standardized_intent": "\"Diagnose printer error caused by PDF-1.7 corruption\"",
+    "keywords": "diagnose, printer error, PDF-1.7, corruption"
+  },
+  {
+    "standardized_intent": "Classify greeting message intent using NLP techniques",
+    "keywords": "classify, greeting message, intent, NLP techniques"
+  },
+  {
+    "standardized_intent": "\"Summarize transcript lyrics for thematic analysis\"",
+    "keywords": "summarize, transcript, lyrics, thematic analysis"
+  },
+  {
+    "standardized_intent": "\"Implement reactive state management across nested Angular components\"",
+    "keywords": "reactive state management, nested components, Angular"
+  },
+  {
+    "standardized_intent": "\"Enable Thai language localization for user interface\"",
+    "keywords": "Thai language, localization, user interface"
+  },
+  {
+    "standardized_intent": "\"Retrieve supplementary data for task execution\"",
+    "keywords": "retrieve, supplementary data, task execution"
+  },
+  {
+    "standardized_intent": "\"Troubleshoot React Native app installation errors\"",
+    "keywords": "Troubleshoot, React Native, app installation, errors"
+  },
+  {
+    "standardized_intent": "\"Review Angular component for product selection logic\"",
+    "keywords": "Angular, component, product selection, logic, review"
+  },
+  {
+    "standardized_intent": "\"Configure HostApplicationBuilder environment settings in .NET\"",
+    "keywords": "Configure, HostApplicationBuilder, environment settings, .NET"
+  },
+  {
+    "standardized_intent": "Define \"Flash Cards\" as a learning tool",
+    "keywords": "Flash Cards, learning tool, definition"
+  },
+  {
+    "standardized_intent": "\"Summarize product stock by `nameEN` and `stockOfCrates`.\"",
+    "keywords": "product stock, nameEN, stockOfCrates"
+  },
+  {
+    "standardized_intent": "Add missing namespace for `HasColumnName` in `PropertyBuilder<string>`",
+    "keywords": "missing namespace, HasColumnName, PropertyBuilder<string>"
+  },
+  {
+    "standardized_intent": "\"Emit event from child to parent on dropdown selection\"",
+    "keywords": "emit event, child to parent, dropdown selection"
+  },
+  {
+    "standardized_intent": "Fix scoped service resolution from root provider in .NET DI",
+    "keywords": "fix, scoped service, resolution, root provider, .NET, DI"
+  },
+  {
+    "standardized_intent": "Analyze narrative themes for learning and emotional insights.",
+    "keywords": "narrative themes, learning, emotional insights, analyze"
+  },
+  {
+    "standardized_intent": "\"Automate transcription, preprocessing, and summarization of meeting files\"",
+    "keywords": "automate, transcription, preprocessing, summarization, meeting files"
+  },
+  {
+    "standardized_intent": "\"Filter items by name prefix 'พ' and color 'สีชมพู'\"",
+    "keywords": "filter, items, name prefix, 'พ', color, 'สีชมพู'"
+  },
+  {
+    "standardized_intent": "\"Explain deserialization error with anonymous type in .NET\"",
+    "keywords": "deserialization error, anonymous type, .NET"
+  },
+  {
+    "standardized_intent": "Compare VSCode and Cursor for development efficiency",
+    "keywords": "Compare, VSCode, Cursor, development, efficiency"
+  },
+  {
+    "standardized_intent": "\"Explain SQL query calculating days difference with `GETDATE()`\"",
+    "keywords": "SQL query, days difference, GETDATE()"
+  },
+  {
+    "standardized_intent": "\"Demonstrate `Func` delegate usage for async EF filtering\"",
+    "keywords": "Func delegate, async, EF filtering, usage demonstration"
+  },
+  {
+    "standardized_intent": "\"Troubleshoot container restart failure in Kubernetes pod\"",
+    "keywords": "troubleshoot, container, restart failure, Kubernetes, pod"
+  },
+  {
+    "standardized_intent": "Define KPIs for Derivative Trading Manager performance evaluation",
+    "keywords": "KPIs, Derivative Trading, Manager, performance evaluation"
+  },
+  {
+    "standardized_intent": "Retrieve project component code from repository",
+    "keywords": "retrieve, project component, code, repository"
+  },
+  {
+    "standardized_intent": "Clarify relevance of basic logic principles",
+    "keywords": "basic logic, principles, relevance, clarify"
+  },
+  {
+    "standardized_intent": "\"Write unit test for specified method\"",
+    "keywords": "unit test, specified method"
+  },
+  {
+    "standardized_intent": "\"Classify text data using natural language processing techniques\"",
+    "keywords": "Classify, text data, natural language processing, techniques"
+  },
+  {
+    "standardized_intent": "Debug unit test case for Fi document generation",
+    "keywords": "Debug, unit test case, Fi document generation"
+  },
+  {
+    "standardized_intent": "\"Troubleshoot and resolve system error in production environment\"",
+    "keywords": "troubleshoot, resolve, system error, production environment"
+  },
+  {
+    "standardized_intent": "Submit code implementation for functionality and performance review",
+    "keywords": "Submit code, implementation, functionality review, performance review"
+  },
+  {
+    "standardized_intent": "Classify message intent for chatbot response generation",
+    "keywords": "classify, message intent, chatbot, response generation"
+  },
+  {
+    "standardized_intent": "Analyze Thai meeting transcript for narrative themes.",
+    "keywords": "Analyze, Thai meeting, transcript, narrative themes"
+  },
+  {
+    "standardized_intent": "\"Update MongoDB documents by unique 'code' field\"",
+    "keywords": "Update, MongoDB, documents, unique, code, field"
+  },
+  {
+    "standardized_intent": "Investigate and correct inventory data discrepancies",
+    "keywords": "investigate, correct, inventory data, discrepancies"
+  },
+  {
+    "standardized_intent": "\"Translate committee-related term into formal English\"",
+    "keywords": "translate, committee, formal English"
+  },
+  {
+    "standardized_intent": "\"Write unit tests for document number generator function\"",
+    "keywords": "unit tests, document number generator, function"
+  },
+  {
+    "standardized_intent": "Debug missing function in `storageService` test case",
+    "keywords": "debug, missing function, storageService, test case"
+  },
+  {
+    "standardized_intent": "Generate English apology sentence for missed meeting",
+    "keywords": "generate, English, apology, sentence, missed meeting"
+  },
+  {
+    "standardized_intent": "Ensure `ngOnInit()` executes before `isShowCancel()` on render.",
+    "keywords": "ngOnInit, executes, isShowCancel, render"
+  },
+  {
+    "standardized_intent": "\"Resolve YAML configuration file error with examples\"",
+    "keywords": "YAML, configuration file, error, resolve, examples"
+  },
+  {
+    "standardized_intent": "\"Insert user data into OTC table using SQL\"",
+    "keywords": "user data, OTC table, SQL"
+  },
+  {
+    "standardized_intent": "\"Analyze meeting transcript for summarization and sentiment insights\"",
+    "keywords": "analyze, meeting transcript, summarization, sentiment insights"
+  },
+  {
+    "standardized_intent": "Summarize transcript on life lessons from dry leaves",
+    "keywords": "transcript, life lessons, dry leaves, summarize"
+  },
+  {
+    "standardized_intent": "Debug JSON parsing error at line 5, column 1",
+    "keywords": "Debug, JSON, parsing error, line 5, column 1"
+  },
+  {
+    "standardized_intent": "\"Summarize meeting transcript on impermanence using leaf metaphor\"",
+    "keywords": "summarize, meeting transcript, impermanence, leaf metaphor"
+  },
+  {
+    "standardized_intent": "\"Define systematic troubleshooting steps for technical issues\"",
+    "keywords": "systematic troubleshooting, steps, technical issues, define"
+  },
+  {
+    "standardized_intent": "\"Configure CI/CD pipeline for C and .NET projects\"",
+    "keywords": "CI/CD pipeline, configure, C projects, .NET projects"
+  },
+  {
+    "standardized_intent": "\"Define procurement terms for business context clarification\"",
+    "keywords": "procurement, terms, business, context, clarification"
+  },
+  {
+    "standardized_intent": "\"Extract tabular data from image to Excel\"",
+    "keywords": "extract, tabular data, image, Excel"
+  },
+  {
+    "standardized_intent": "\"Update return statement for `GoodsReservationModel<T>` properties\"",
+    "keywords": "update, return statement, GoodsReservationModel<T>, properties"
+  },
+  {
+    "standardized_intent": "\"Notify stakeholders of SAP shutdown impacting Purchase Order data\"",
+    "keywords": "Notify, stakeholders, SAP shutdown, Purchase Order data"
+  },
+  {
+    "standardized_intent": "Analyze `Deserialize` method for JSON-to-object conversion in C#",
+    "keywords": "Deserialize method, JSON, object conversion, C#"
+  },
+  {
+    "standardized_intent": "Retrieve definition of \"Investment Program Positions\" in finance",
+    "keywords": "Investment Program Positions, definition, finance"
+  },
+  {
+    "standardized_intent": "Retrieve AI assistant identity from system configuration",
+    "keywords": "AI assistant, identity, system configuration, retrieve"
+  },
+  {
+    "standardized_intent": "Process associative array with key-value pairs",
+    "keywords": "process, associative array, key-value pairs"
+  },
+  {
+    "standardized_intent": "\"Validate and update employee records for 2023-2024\"",
+    "keywords": "validate, update, employee records, 2023-2024"
+  },
+  {
+    "standardized_intent": "\"Develop script to validate cross-table data consistency\"",
+    "keywords": "script, validate, cross-table, data consistency"
+  },
+  {
+    "standardized_intent": "Explain `$addField` operator syntax and usage in MongoDB aggregation.",
+    "keywords": "`$addField` operator, syntax, usage, MongoDB, aggregation"
+  },
+  {
+    "standardized_intent": "Enhance AI model with targeted feedback datasets",
+    "keywords": "Enhance AI model, targeted feedback, datasets"
+  },
+  {
+    "standardized_intent": "Define \"output for circular economy\" in technical context",
+    "keywords": "output, circular economy, definition, technical context"
+  },
+  {
+    "standardized_intent": "\"Centralize two-way data binding in Angular page-component\"",
+    "keywords": "Centralize, two-way data binding, Angular, page-component"
+  },
+  {
+    "standardized_intent": "\"Translate Thai text to English for Gen AI analysis\"",
+    "keywords": "Translate, Thai text, English, Gen AI, analysis"
+  },
+  {
+    "standardized_intent": "Explain Gradle's role in Android app development",
+    "keywords": "Gradle, Android app development, build automation, dependency management, project configuration"
+  },
+  {
+    "standardized_intent": "\"Write Jasmine unit tests for `HistoryPageComponent` lifecycle and services\"",
+    "keywords": "Jasmine, unit tests, HistoryPageComponent, lifecycle, services"
+  },
+  {
+    "standardized_intent": "Translate user message into English text",
+    "keywords": "Translate, user message, English text"
+  },
+  {
+    "standardized_intent": "\"Translate content to English and export to Word\"",
+    "keywords": "Translate, content, English, export, Word"
+  },
+  {
+    "standardized_intent": "\"Implement fallback for `getHistorySalesDate` failure handling\"",
+    "keywords": "fallback, getHistorySalesDate, failure handling"
+  },
+  {
+    "standardized_intent": "\"Explain conditional logic using the IF formula\"",
+    "keywords": "conditional logic, IF formula, explanation"
+  },
+  {
+    "standardized_intent": "\"Develop English communication skills learning roadmap\"",
+    "keywords": "English communication skills, learning roadmap, develop"
+  },
+  {
+    "standardized_intent": "\"Write unit tests for code functionality\"",
+    "keywords": "unit tests, code functionality, write"
+  },
+  {
+    "standardized_intent": "Refactor C# code into modular, asynchronous functions",
+    "keywords": "Refactor, C#, modular, asynchronous, functions"
+  },
+  {
+    "standardized_intent": "Debug OpenAI API integration with Streamlit chat assistant",
+    "keywords": "Debug, OpenAI API, integration, Streamlit, chat assistant"
+  },
+  {
+    "standardized_intent": "Retrieve vegetable oil price data for 2024.",
+    "keywords": "vegetable oil, price data, 2024"
+  },
+  {
+    "standardized_intent": "Clarify technical implementation for handling process",
+    "keywords": "technical implementation, handling process, clarify"
+  },
+  {
+    "standardized_intent": "Translate text into Thai using API integration",
+    "keywords": "Translate, text, Thai, API, integration"
+  },
+  {
+    "standardized_intent": "\"Preserve function name to maintain codebase consistency\"",
+    "keywords": "preserve function name, maintain, codebase consistency"
+  },
+  {
+    "standardized_intent": "Retrieve caller IP address in Web API",
+    "keywords": "caller IP address, Web API, retrieve"
+  },
+  {
+    "standardized_intent": "Validate API response structure against Swagger documentation",
+    "keywords": "Validate, API response, structure, Swagger documentation"
+  },
+  {
+    "standardized_intent": "\"Classify message type using NLP for response generation\"",
+    "keywords": "Classify, message type, NLP, response generation"
+  },
+  {
+    "standardized_intent": "\"Analyze `FOREGROUND_SERVICE_DATA_SYNC` permission impact on Android 14\"",
+    "keywords": "FOREGROUND_SERVICE_DATA_SYNC, permission impact, Android 14"
+  },
+  {
+    "standardized_intent": "\"Implement method to group `SalesOrder` objects by `SalesOrderNo` into `FiDocument`\"",
+    "keywords": "SalesOrder, group, SalesOrderNo, FiDocument, implement method"
+  },
+  {
+    "standardized_intent": "\"Implement two-way data binding in nested Angular components\"",
+    "keywords": "two-way data binding, nested components, Angular"
+  },
+  {
+    "standardized_intent": "\"Generate detailed implementation guide for task workflow\"",
+    "keywords": "implementation guide, task workflow, detailed generation"
+  },
+  {
+    "standardized_intent": "Resolve technical implementation issue",
+    "keywords": "resolve, technical, implementation, issue"
+  },
+  {
+    "standardized_intent": "Classify text data using machine learning models",
+    "keywords": "classify, text data, machine learning models"
+  },
+  {
+    "standardized_intent": "\"Clean, format, and organize mixed-language transcript data\"",
+    "keywords": "clean, format, organize, mixed-language, transcript data"
+  },
+  {
+    "standardized_intent": "Set `SAPNWRFC_HOME` environment variable to `c:\\nwrfcsdk`",
+    "keywords": "SAPNWRFC_HOME, environment variable, c:\\nwrfcsdk"
+  },
+  {
+    "standardized_intent": "Debug Jest test suite child process retry limit exceptions",
+    "keywords": "Debug, Jest, test suite, child process, retry limit, exceptions"
+  },
+  {
+    "standardized_intent": "Retrieve religious statement details for clarification",
+    "keywords": "retrieve, religious statement, details, clarification"
+  },
+  {
+    "standardized_intent": "Clarify grammatical usage of \"Sit\" in context",
+    "keywords": "grammatical usage, \"Sit\", context, clarify"
+  },
+  {
+    "standardized_intent": "\"Resolve duplicate method/path conflict in `BillingsController`\"",
+    "keywords": "duplicate method, path conflict, BillingsController, resolve"
+  },
+  {
+    "standardized_intent": "Initiate session with assistant for communication establishment",
+    "keywords": "initiate session, assistant, communication establishment"
+  },
+  {
+    "standardized_intent": "\"Integrate Thanos, Prometheus, and MinIO for Kubernetes monitoring\"",
+    "keywords": "Thanos, Prometheus, MinIO, Kubernetes, monitoring"
+  },
+  {
+    "standardized_intent": "Retrieve current gold price and trend data",
+    "keywords": "current gold price, trend data"
+  },
+  {
+    "standardized_intent": "Classify message content to detect greeting intent",
+    "keywords": "classify, message content, detect, greeting intent"
+  },
+  {
+    "standardized_intent": "Analyze user input for intent classification",
+    "keywords": "analyze, user input, intent classification"
+  },
+  {
+    "standardized_intent": "\"Implement modal communication between Angular parent-child components\"",
+    "keywords": "modal communication, Angular, parent-child components"
+  },
+  {
+    "standardized_intent": "Review navigation logic and back button visibility based on URL.",
+    "keywords": "navigation logic, back button visibility, URL"
+  },
+  {
+    "standardized_intent": "\"Trigger assistant greeting protocol for user interaction\"",
+    "keywords": "trigger, assistant, greeting, protocol, user interaction"
+  },
+  {
+    "standardized_intent": "\"Assign specific permissions to employee in OTC system\"",
+    "keywords": "assign permissions, employee, OTC system"
+  },
+  {
+    "standardized_intent": "Optimize system processes for enhanced efficiency",
+    "keywords": "Optimize, system processes, enhanced efficiency"
+  },
+  {
+    "standardized_intent": "Analyze message format for intent clarity",
+    "keywords": "analyze, message format, intent, clarity"
+  },
+  {
+    "standardized_intent": "Extract key themes from transcript using NLP analysis",
+    "keywords": "key themes, transcript, NLP analysis"
+  },
+  {
+    "standardized_intent": "Classify and analyze message intent for NLP pipelines",
+    "keywords": "Classify, analyze, message intent, NLP, pipelines"
+  },
+  {
+    "standardized_intent": "\"Filter `productTemp` output to display description only\"",
+    "keywords": "filter, productTemp, output, display, description"
+  },
+  {
+    "standardized_intent": "\"Format date as TypeScript type minus two months\"",
+    "keywords": "Format date, TypeScript type, minus two months"
+  },
+  {
+    "standardized_intent": "\"Demonstrate `Func` delegate usage with Entity Framework filtering\"",
+    "keywords": "Func delegate, Entity Framework, filtering, usage demonstration"
+  },
+  {
+    "standardized_intent": "\"Troubleshoot report discrepancies and resolve functionality issues\"",
+    "keywords": "troubleshoot, report discrepancies, resolve, functionality issues"
+  },
+  {
+    "standardized_intent": "\"Extract key decisions, action items, and highlights from transcript\"",
+    "keywords": "key decisions, action items, highlights, transcript"
+  },
+  {
+    "standardized_intent": "Explain function binding context in specific code line",
+    "keywords": "function binding, context, specific code line"
+  },
+  {
+    "standardized_intent": "\"Fix invalid JSON parsing error for character 'S'\"",
+    "keywords": "Fix, invalid JSON, parsing error, character 'S'"
+  },
+  {
+    "standardized_intent": "\"Document workflow clarification for approvals and financial reporting\"",
+    "keywords": "Document workflow, clarification, approvals, financial reporting"
+  },
+  {
+    "standardized_intent": "\"Investigate missing logs for `veryIntensiveTask` execution\"",
+    "keywords": "missing logs, investigate, veryIntensiveTask, execution"
+  },
+  {
+    "standardized_intent": "\"Manually trigger CronJob container in Argo\"",
+    "keywords": "Manually trigger, CronJob, container, Argo"
+  },
+  {
+    "standardized_intent": "Debug \"TO Error\" in logistics application",
+    "keywords": "Debug, TO Error, logistics application"
+  },
+  {
+    "standardized_intent": "\"Analyze multinational tax regulations for foreign investments\"",
+    "keywords": "multinational tax regulations, foreign investments, analyze"
+  },
+  {
+    "standardized_intent": "\"Review code for performance and maintainability improvements\"",
+    "keywords": "code review, performance improvements, maintainability improvements"
+  },
+  {
+    "standardized_intent": "\"Generate meeting summary report for B2B workflows\"",
+    "keywords": "meeting summary, report, B2B, workflows"
+  },
+  {
+    "standardized_intent": "\"Conduct code review and implement unit and stress tests\"",
+    "keywords": "code review, unit tests, stress tests, implementation"
+  },
+  {
+    "standardized_intent": "Analyze cost variances in raw material expenditures",
+    "keywords": "cost variances, raw materials, expenditures, analysis"
+  },
+  {
+    "standardized_intent": "Analyze cross-border tax regulations for compliance optimization",
+    "keywords": "cross-border tax regulations, compliance optimization, analysis"
+  },
+  {
+    "standardized_intent": "\"Integrate `DocRunningService` in `Program.cs` for document numbering\"",
+    "keywords": "Integrate, DocRunningService, Program.cs, document numbering"
+  },
+  {
+    "standardized_intent": "Analyze system logs for failed vehicle dispatch.",
+    "keywords": "analyze, system logs, failed, vehicle dispatch"
+  },
+  {
+    "standardized_intent": "\"Prioritize tasks using workflow optimization techniques\"",
+    "keywords": "prioritize tasks, workflow optimization, techniques"
+  },
+  {
+    "standardized_intent": "\"Automate purchase approval workflow for price optimization\"",
+    "keywords": "Automate, purchase approval, workflow, price optimization"
+  },
+  {
+    "standardized_intent": "Execute Yarn script for linting and testing",
+    "keywords": "Yarn, script, linting, testing"
+  },
+  {
+    "standardized_intent": "Explain MSC and MTP as image transfer protocols",
+    "keywords": "MSC, MTP, image transfer protocols, explanation"
+  },
+  {
+    "standardized_intent": "\"Analyze button click event handler behavior\"",
+    "keywords": "analyze, button click, event handler, behavior"
+  },
+  {
+    "standardized_intent": "Write test case for `resetPromotionWhenNotEnougProduct` behavior verification",
+    "keywords": "test case, resetPromotion, behavior verification, not enough product"
+  },
+  {
+    "standardized_intent": "\"Classify message type for response generation pipeline\"",
+    "keywords": "classify, message type, response generation, pipeline"
+  },
+  {
+    "standardized_intent": "Fix JSON deserialization error for `pageSize` field type mismatch",
+    "keywords": "Fix, JSON, deserialization error, pageSize, field type mismatch"
+  },
+  {
+    "standardized_intent": "\"Write unit tests for transaction type validation\"",
+    "keywords": "unit tests, transaction type, validation"
+  },
+  {
+    "standardized_intent": "Retrieve additional content or metadata for user",
+    "keywords": "retrieve, additional content, metadata, user"
+  },
+  {
+    "standardized_intent": "Initiate session with system acknowledgment protocol",
+    "keywords": "session, system, acknowledgment, protocol"
+  },
+  {
+    "standardized_intent": "\"Implement `GroupJoin` for LINQ-based data grouping\"",
+    "keywords": "GroupJoin, LINQ, data grouping, implementation"
+  },
+  {
+    "standardized_intent": "\"Process transcript for readability and coherence optimization\"",
+    "keywords": "process transcript, readability, coherence, optimization"
+  },
+  {
+    "standardized_intent": "\"Debug unexpected subtraction results in Excel formulas\"",
+    "keywords": "Debug, unexpected results, subtraction, Excel, formulas"
+  },
+  {
+    "standardized_intent": "Review C# code for API integration and error handling",
+    "keywords": "C#, code review, API integration, error handling"
+  },
+  {
+    "standardized_intent": "Generate formal gratitude expressions in English.",
+    "keywords": "formal gratitude, expressions, English"
+  },
+  {
+    "standardized_intent": "\"Translate and explain 'Deconstruct' term into Thai\"",
+    "keywords": "Translate, explain, Deconstruct, Thai"
+  },
+  {
+    "standardized_intent": "\"Analyze metaphor usage for philosophical content classification\"",
+    "keywords": "metaphor usage, philosophical content, classification, analysis"
+  },
+  {
+    "standardized_intent": "\"Develop FastAPI service for OpenAI-powered code analysis\"",
+    "keywords": "FastAPI, service, OpenAI, code analysis"
+  },
+  {
+    "standardized_intent": "\"Develop BRD for genAI-MDM integration to enhance data quality\"",
+    "keywords": "BRD, genAI, MDM integration, enhance, data quality"
+  },
+  {
+    "standardized_intent": "\"Classify message intent and detect greeting categories\"",
+    "keywords": "classify, message intent, detect, greeting categories"
+  },
+  {
+    "standardized_intent": "\"Design scalable Golang project structure for Kafka integration\"",
+    "keywords": "Golang, project structure, scalable, Kafka integration"
+  },
+  {
+    "standardized_intent": "Debug missing property or method in `SalesTeam` class",
+    "keywords": "Debug, missing property, method, SalesTeam class"
+  },
+  {
+    "standardized_intent": "\"Automate Cypress test script for UI interaction sequence\"",
+    "keywords": "Automate, Cypress, test script, UI interaction, sequence"
+  },
+  {
+    "standardized_intent": "\"Integrate automated code review into DevOps pipeline\"",
+    "keywords": "automated code review, DevOps pipeline, integration"
+  },
+  {
+    "standardized_intent": "\"Analyze benefits of procurement shared service implementation\"",
+    "keywords": "procurement, shared service, implementation, benefits, analysis"
+  },
+  {
+    "standardized_intent": "Debug background service execution at `console.log` breakpoint",
+    "keywords": "Debug, background service, execution, console.log, breakpoint"
+  },
+  {
+    "standardized_intent": "\"Refactor C# code for readability, performance, and error handling\"",
+    "keywords": "Refactor, C#, code, readability, performance, error handling"
+  },
+  {
+    "standardized_intent": "Identify decision-making criteria for topic analysis",
+    "keywords": "decision-making criteria, topic analysis, identify"
+  },
+  {
+    "standardized_intent": "\"Define metrics for code review performance analysis\"",
+    "keywords": "metrics, code review, performance analysis"
+  },
+  {
+    "standardized_intent": "\"Preprocess and refine Thai-English transcript for readability\"",
+    "keywords": "Preprocess, refine, Thai-English, transcript, readability"
+  },
+  {
+    "standardized_intent": "Explain `ENTRYPOINT` directive for .NET application in Dockerfile",
+    "keywords": "ENTRYPOINT, directive, .NET application, Dockerfile"
+  },
+  {
+    "standardized_intent": "\"Implement `ngOnChanges` for single input detection in Angular 18\"",
+    "keywords": "ngOnChanges, single input detection, Angular 18"
+  },
+  {
+    "standardized_intent": "\"Simplify vocabulary for beginner-level English comprehension\"",
+    "keywords": "simplify vocabulary, beginner-level, English comprehension"
+  },
+  {
+    "standardized_intent": "\"Write and execute Jest tests for JavaScript code\"",
+    "keywords": "Jest, tests, JavaScript, write, execute"
+  },
+  {
+    "standardized_intent": "\"Apply CamelCase naming convention to `sales_team` collection only\"",
+    "keywords": "CamelCase, naming convention, sales_team, collection"
+  },
+  {
+    "standardized_intent": "\"Execute `rm` command to delete specified folder\"",
+    "keywords": "rm command, delete, specified folder"
+  },
+  {
+    "standardized_intent": "\"Rename column in MongoDB collection using Compass\"",
+    "keywords": "Rename column, MongoDB, collection, Compass"
+  },
+  {
+    "standardized_intent": "\"Implement Kotlin function to decode base64 string\"",
+    "keywords": "Kotlin, function, decode, base64, string"
+  },
+  {
+    "standardized_intent": "\"Confirm user agreement via affirmative response handling\"",
+    "keywords": "confirm, user agreement, affirmative response, handling"
+  },
+  {
+    "standardized_intent": "\"Coordinate medical communication for brain hemorrhage treatment plan\"",
+    "keywords": "Coordinate, medical communication, brain hemorrhage, treatment plan"
+  },
+  {
+    "standardized_intent": "Debug modal display issues in Angular application",
+    "keywords": "Debug, modal display issues, Angular application"
+  },
+  {
+    "standardized_intent": "\"Perform aggregation on customer data objects\"",
+    "keywords": "aggregation, customer data, objects"
+  },
+  {
+    "standardized_intent": "\"Process transcript for readability, summarization, and formatting optimization\"",
+    "keywords": "transcript, readability, summarization, formatting optimization"
+  },
+  {
+    "standardized_intent": "Configure resource quotas for CPU and memory limits",
+    "keywords": "resource quotas, CPU limits, memory limits, configure"
+  },
+  {
+    "standardized_intent": "Debug `IDocRunningRepository` service resolution error in `DocRunningService` instantiation.",
+    "keywords": "Debug, IDocRunningRepository, service resolution error, DocRunningService, instantiation"
+  },
+  {
+    "standardized_intent": "\"Develop AI pipeline for transcription, summarization, and report generation\"",
+    "keywords": "AI pipeline, transcription, summarization, report generation"
+  },
+  {
+    "standardized_intent": "Analyze tax regulations for multinational compliance and foreign investments",
+    "keywords": "tax regulations, multinational compliance, foreign investments"
+  },
+  {
+    "standardized_intent": "\"Refactor code to increase score above 8\"",
+    "keywords": "refactor code, increase score, above 8"
+  },
+  {
+    "standardized_intent": "Troubleshoot laptop power-off functionality issue",
+    "keywords": "troubleshoot, laptop, power-off, functionality, issue"
+  },
+  {
+    "standardized_intent": "\"Normalize dataset values and impute missing data\"",
+    "keywords": "normalize dataset, impute missing data"
+  },
+  {
+    "standardized_intent": "\"Analyze error 'Resource temporarily unavailable' for root cause\"",
+    "keywords": "Analyze, error, Resource temporarily unavailable, root cause"
+  },
+  {
+    "standardized_intent": "Retrieve abbreviation definition for \"TBC\" from database.",
+    "keywords": "abbreviation, definition, TBC, retrieve, database"
+  },
+  {
+    "standardized_intent": "\"Translate 'Table' into Thai using language API\"",
+    "keywords": "Translate, Table, Thai, language API"
+  },
+  {
+    "standardized_intent": "Analyze transcript for philosophical and religious themes.",
+    "keywords": "analyze, transcript, philosophical themes, religious themes"
+  },
+  {
+    "standardized_intent": "\"Correct typographical error in system documentation\"",
+    "keywords": "correct, typographical error, system documentation"
+  },
+  {
+    "standardized_intent": "\"Analyze C# code for correctness, efficiency, and improvements\"",
+    "keywords": "C#, code analysis, correctness, efficiency, improvements"
+  },
+  {
+    "standardized_intent": "\"Implement asynchronous PATCH request for sales order cancellation\"",
+    "keywords": "asynchronous, PATCH request, sales order, cancellation"
+  },
+  {
+    "standardized_intent": "\"Display environment paths using CMD command\"",
+    "keywords": "display, environment paths, CMD command"
+  },
+  {
+    "standardized_intent": "Identify AI assistant identity via conversational query",
+    "keywords": "AI assistant, identity, conversational query"
+  },
+  {
+    "standardized_intent": "\"Translate manual content into English for summarization\"",
+    "keywords": "Translate, manual content, English, summarization"
+  },
+  {
+    "standardized_intent": "\"Define SAP data transmission status workflows\"",
+    "keywords": "SAP, data transmission, status, workflows"
+  },
+  {
+    "standardized_intent": "Review HTTP GET method in ASP.NET Core controller",
+    "keywords": "HTTP GET method, ASP.NET Core, controller, review"
+  },
+  {
+    "standardized_intent": "\"Explain SQL script calculating date difference with `PR_Outstanding_Day`\"",
+    "keywords": "SQL script, calculate, date difference, PR_Outstanding_Day"
+  },
+  {
+    "standardized_intent": "Refactor stored procedures into raw SQL queries",
+    "keywords": "refactor, stored procedures, raw SQL queries"
+  },
+  {
+    "standardized_intent": "\"Modify system environment variables via CMD commands\"",
+    "keywords": "modify, system, environment variables, CMD commands"
+  },
+  {
+    "standardized_intent": "\"Create test case for `ValidateError` handling `BadRequestException`\"",
+    "keywords": "test case, ValidateError, BadRequestException, handling"
+  },
+  {
+    "standardized_intent": "\"Replace null `DiscountBenefitProducts` with '0' conditionally\"",
+    "keywords": "Replace, null, DiscountBenefitProducts, '0', conditionally"
+  },
+  {
+    "standardized_intent": "Retrieve ISO 3166-1 alpha-2 code for Myanmar.",
+    "keywords": "ISO 3166-1, alpha-2 code, Myanmar"
+  },
+  {
+    "standardized_intent": "\"Implement HTTP logging middleware for ASP.NET Core\"",
+    "keywords": "HTTP logging, middleware, ASP.NET Core, implement"
+  },
+  {
+    "standardized_intent": "Analyze `trackBy` usage in Angular `*ngFor` optimization",
+    "keywords": "trackBy, Angular, *ngFor, optimization, usage, analyze"
+  },
+  {
+    "standardized_intent": "Debug `System.NullReferenceException` by resolving null object references",
+    "keywords": "Debug, System.NullReferenceException, null object references, resolve"
+  },
+  {
+    "standardized_intent": "\"Define schema in database or API context\"",
+    "keywords": "schema, database, API, context, define"
+  },
+  {
+    "standardized_intent": "\"Translate English text to Thai using NLP frameworks\"",
+    "keywords": "Translate, English, Thai, NLP, frameworks"
+  },
+  {
+    "standardized_intent": "\"Explain GitHub's definition and software development use cases\"",
+    "keywords": "GitHub, definition, software development, use cases"
+  },
+  {
+    "standardized_intent": "\"Troubleshoot and resolve system error logs\"",
+    "keywords": "troubleshoot, resolve, system, error logs"
+  },
+  {
+    "standardized_intent": "\"Process audio file for transcription and summarization\"",
+    "keywords": "audio file, transcription, summarization"
+  },
+  {
+    "standardized_intent": "\"Enforce required or default `pageSize` and `pageIndex` parameters\"",
+    "keywords": "enforce, required, default, pageSize, pageIndex, parameters"
+  },
+  {
+    "standardized_intent": "\"Log `this.maxDateNgb` object to console\"",
+    "keywords": "log, this.maxDateNgb, object, console"
+  },
+  {
+    "standardized_intent": "\"Invalidate and reprocess document for database storage\"",
+    "keywords": "Invalidate, reprocess, document, database, storage"
+  },
+  {
+    "standardized_intent": "\"Generate script for concluding meeting with follow-up prompt\"",
+    "keywords": "script, concluding meeting, follow-up prompt"
+  },
+  {
+    "standardized_intent": "\"Explain IF formula usage for conditional logic\"",
+    "keywords": "IF formula, usage, conditional logic, explanation"
+  },
+  {
+    "standardized_intent": "Debug `APITimeoutError` during OpenAI API thread creation",
+    "keywords": "Debug, APITimeoutError, OpenAI API, thread creation"
+  },
+  {
+    "standardized_intent": "\"Clarify procurement processes and tender conditions\"",
+    "keywords": "procurement processes, tender conditions, clarify"
+  },
+  {
+    "standardized_intent": "\"Invoke `TransformSalesOrderToLoadingDocumentPdfModel` method in `_loadingDocumentTransformService`\"",
+    "keywords": "Invoke, TransformSalesOrderToLoadingDocumentPdfModel, method, _loadingDocumentTransformService"
+  },
+  {
+    "standardized_intent": "\"Process Thai transcript for readability and key extraction\"",
+    "keywords": "Thai transcript, readability, key extraction"
+  },
+  {
+    "standardized_intent": "Retrieve Thai Beverage Recycling operational data details",
+    "keywords": "Thai Beverage, Recycling, operational data, details"
+  },
+  {
+    "standardized_intent": "\"Research .NET framework features and capabilities\"",
+    "keywords": ".NET framework, features, capabilities, research"
+  },
+  {
+    "standardized_intent": "\"Retrieve sales order details via `SalesOrderShortInfoResponse` interface\"",
+    "keywords": "sales order details, SalesOrderShortInfoResponse, retrieve"
+  },
+  {
+    "standardized_intent": "\"Implement job swap condition based on seniority\"",
+    "keywords": "job swap, condition, seniority"
+  },
+  {
+    "standardized_intent": "Add `com.tom_roush:pdfbox-android:2.0.0` dependency to React Native Android project",
+    "keywords": "Add dependency, React Native, Android project, pdfbox-android, 2.0.0"
+  },
+  {
+    "standardized_intent": "Compare RFQ, Auction, and Tender procurement processes",
+    "keywords": "RFQ, Auction, Tender, procurement processes, comparison"
+  },
+  {
+    "standardized_intent": "\"Master Power Query for data transformation in Excel/Power BI\"",
+    "keywords": "Master, Power Query, data transformation, Excel, Power BI"
+  },
+  {
+    "standardized_intent": "\"Integrate VSMS API for voice message delivery\"",
+    "keywords": "Integrate, VSMS API, voice message delivery"
+  },
+  {
+    "standardized_intent": "\"Assist in drafting or refining English self-introduction\"",
+    "keywords": "drafting, refining, English, self-introduction"
+  },
+  {
+    "standardized_intent": "\"Resolve BSON element definition in `I_WA_SALES_HEAD`\"",
+    "keywords": "BSON, element definition, I_WA_SALES_HEAD, resolve"
+  },
+  {
+    "standardized_intent": "\"Update user permissions in otcsale system\"",
+    "keywords": "update, user permissions, otcsale system"
+  },
+  {
+    "standardized_intent": "\"Classify conversational intent in greeting messages\"",
+    "keywords": "classify, conversational intent, greeting messages"
+  },
+  {
+    "standardized_intent": "\"Develop a 3-month project timeline with milestones\"",
+    "keywords": "3-month, project timeline, milestones"
+  },
+  {
+    "standardized_intent": "Replace `console.log` with structured logging framework",
+    "keywords": "replace, console.log, structured logging framework"
+  },
+  {
+    "standardized_intent": "Classify message intent and category as greeting",
+    "keywords": "classify, message, intent, category, greeting"
+  },
+  {
+    "standardized_intent": "\"Query OTC support features for integration requirements\"",
+    "keywords": "OTC support, features, integration requirements"
+  },
+  {
+    "standardized_intent": "Review C# API controller implementation details with line references",
+    "keywords": "C#, API, controller, implementation details, line references, review"
+  },
+  {
+    "standardized_intent": "\"Verify code compatibility in `OnModelCreating` method\"",
+    "keywords": "verify, code compatibility, OnModelCreating method"
+  },
+  {
+    "standardized_intent": "Retrieve user session data for personalization",
+    "keywords": "user session data, retrieval, personalization"
+  },
+  {
+    "standardized_intent": "\"Analyze invoice management and customer transaction workflows\"",
+    "keywords": "invoice management, customer transactions, workflows, analyze"
+  },
+  {
+    "standardized_intent": "\"Implement two-way data binding across nested components\"",
+    "keywords": "two-way data binding, nested components, implement"
+  },
+  {
+    "standardized_intent": "\"Validate file type compatibility for code review upload\"",
+    "keywords": "validate, file type, compatibility, code review, upload"
+  },
+  {
+    "standardized_intent": "Increase JVM heap space for Gradle daemon process",
+    "keywords": "JVM, heap space, Gradle, daemon process, increase"
+  },
+  {
+    "standardized_intent": "\"Convert JSON structure to C# model with type mapping\"",
+    "keywords": "Convert, JSON structure, C# model, type mapping"
+  },
+  {
+    "standardized_intent": "\"Provide usage examples for Python libraries\"",
+    "keywords": "usage examples, Python, libraries"
+  },
+  {
+    "standardized_intent": "\"Verify and configure `pip` installation in system PATH\"",
+    "keywords": "verify, configure, pip, installation, system PATH"
+  },
+  {
+    "standardized_intent": "Implement Google OAuth2 authentication for user login",
+    "keywords": "Google OAuth2, authentication, user login"
+  },
+  {
+    "standardized_intent": "\"Enable manual execution for Kubernetes CronJob in ArgoCD\"",
+    "keywords": "manual execution, Kubernetes, CronJob, ArgoCD"
+  },
+  {
+    "standardized_intent": "\"Develop FastAPI service integrating OpenAI for code review\"",
+    "keywords": "FastAPI, service, integrate, OpenAI, code review"
+  },
+  {
+    "standardized_intent": "\"Resolve file copy error in CMD\"",
+    "keywords": "file copy error, CMD, resolve"
+  },
+  {
+    "standardized_intent": "Refactor code to await all asynchronous operations",
+    "keywords": "refactor code, await, asynchronous operations"
+  },
+  {
+    "standardized_intent": "Explain F-stop impact on light and depth control",
+    "keywords": "F-stop, light control, depth control, photography"
+  },
+  {
+    "standardized_intent": "\"Troubleshoot SharePoint API request error for document library\"",
+    "keywords": "Troubleshoot, SharePoint, API request, error, document library"
+  },
+  {
+    "standardized_intent": "Implement `.pipe` and `tap` for RxJS response assignment",
+    "keywords": "`.pipe`, `tap`, `RxJS`, `response assignment`"
+  },
+  {
+    "standardized_intent": "\"Generate sample Q&A to evaluate AI functionality\"",
+    "keywords": "sample Q&A, evaluate, AI functionality"
+  },
+  {
+    "standardized_intent": "\"Move folder using PowerShell Move-Item command\"",
+    "keywords": "Move folder, PowerShell, Move-Item command"
+  },
+  {
+    "standardized_intent": "\"Develop script to import data from file into database\"",
+    "keywords": "develop script, import data, file, database"
+  },
+  {
+    "standardized_intent": "\"Analyze C# code for SAP BAPI sales order creation\"",
+    "keywords": "C#, SAP BAPI, sales order, creation, analyze"
+  },
+  {
+    "standardized_intent": "\"Configure `fa-icon` component in Angular application\"",
+    "keywords": "Configure, fa-icon, component, Angular, application"
+  },
+  {
+    "standardized_intent": "\"Update tax strategy for multinational compliance and foreign investments\"",
+    "keywords": "tax strategy, multinational compliance, foreign investments"
+  },
+  {
+    "standardized_intent": "\"Fix malformed JSON structure at line 5, column 1\"",
+    "keywords": "fix, malformed, JSON, structure, line 5, column 1"
+  },
+  {
+    "standardized_intent": "\"Diagnose and fix request timeout and JSON parsing issues\"",
+    "keywords": "diagnose, fix, request timeout, JSON parsing issues"
+  },
+  {
+    "standardized_intent": "\"Classify conversational data by engagement and context metrics\"",
+    "keywords": "classify, conversational data, engagement metrics, context metrics"
+  },
+  {
+    "standardized_intent": "\"Calculate and set date to first day two months prior\"",
+    "keywords": "calculate, set date, first day, two months prior"
+  },
+  {
+    "standardized_intent": "\"Analyze renewable energy trends in Thailand\"",
+    "keywords": "renewable energy, trends, Thailand"
+  },
+  {
+    "standardized_intent": "\"Retrieve AI assistant metadata for user inquiry\"",
+    "keywords": "AI assistant, metadata, user inquiry, retrieve"
+  },
+  {
+    "standardized_intent": "\"Process Thai transcript for translation and thematic analysis\"",
+    "keywords": "Thai transcript, translation, thematic analysis"
+  },
+  {
+    "standardized_intent": "Debug `MapSalesOrderToSdDocument` function for issue resolution",
+    "keywords": "Debug, MapSalesOrderToSdDocument, function, issue resolution"
+  },
+  {
+    "standardized_intent": "Optimize bottle production lead times and mold development",
+    "keywords": "optimize, bottle production, lead times, mold development"
+  },
+  {
+    "standardized_intent": "Explain foundational concepts of AI and Generative AI",
+    "keywords": "foundational concepts, AI, Generative AI, explanation"
+  },
+  {
+    "standardized_intent": "Explain and demonstrate CS0104 ambiguous reference error resolution",
+    "keywords": "CS0104, ambiguous reference, error resolution, explain, demonstrate"
+  },
+  {
+    "standardized_intent": "\"Analyze and optimize NAB product cost-effectiveness for hawkers\"",
+    "keywords": "Analyze, optimize, NAB product, cost-effectiveness, hawkers"
+  },
+  {
+    "standardized_intent": "\"Resolve type inference error in `Patch` method call\"",
+    "keywords": "type inference error, Patch method, resolve"
+  },
+  {
+    "standardized_intent": "\"Troubleshoot Docker Desktop connectivity for image tagging\"",
+    "keywords": "Troubleshoot, Docker Desktop, connectivity, image tagging"
+  },
+  {
+    "standardized_intent": "Generate summary from meeting transcript with narrative analysis",
+    "keywords": "summary, meeting transcript, narrative analysis"
+  },
+  {
+    "standardized_intent": "\"Set default value `0.00` for `DiscountAmountIncludeVat` property\"",
+    "keywords": "default value, 0.00, DiscountAmountIncludeVat, property"
+  },
+  {
+    "standardized_intent": "\"Analyze dataset using specified program for insights\"",
+    "keywords": "analyze, dataset, specified program, insights"
+  },
+  {
+    "standardized_intent": "\"Update `ASSIGNMENT` field to `00022345` in JSON data\"",
+    "keywords": "Update, ASSIGNMENT, field, 00022345, JSON data"
+  },
+  {
+    "standardized_intent": "Retrieve overseas suppliers with FY transaction records",
+    "keywords": "overseas suppliers, FY transaction records, retrieve"
+  },
+  {
+    "standardized_intent": "Refactor `ngOnInit` to use `forkJoin` for parallel async calls",
+    "keywords": "Refactor, ngOnInit, forkJoin, parallel, async calls"
+  },
+  {
+    "standardized_intent": "\"Process and store reconciliation data in database tables\"",
+    "keywords": "Process, store, reconciliation data, database tables"
+  },
+  {
+    "standardized_intent": "\"Configure `.gitignore` to exclude files in .NET project\"",
+    "keywords": "`.gitignore`, exclude files, .NET project, configuration"
+  },
+  {
+    "standardized_intent": "\"Construct query with specific initial condition pattern\"",
+    "keywords": "construct query, specific initial condition, pattern"
+  },
+  {
+    "standardized_intent": "\"Extract and summarize key insights from Thai transcript\"",
+    "keywords": "Extract, summarize, key insights, Thai transcript"
+  },
+  {
+    "standardized_intent": "Troubleshoot file download failure in resource delivery system",
+    "keywords": "troubleshoot, file download, failure, resource delivery system"
+  },
+  {
+    "standardized_intent": "\"Integrate Angular sub-application into React main application\"",
+    "keywords": "Integrate, Angular, sub-application, React, main application"
+  },
+  {
+    "standardized_intent": "\"Resolve file path error in reportgenerator tool\"",
+    "keywords": "file path error, reportgenerator tool, resolve"
+  },
+  {
+    "standardized_intent": "\"Configure custom source path for `dotnet restore`\"",
+    "keywords": "custom source path, dotnet restore, configure"
+  },
+  {
+    "standardized_intent": "Debug PowerShell here-string syntax error in Chocolatey installation script",
+    "keywords": "Debug, PowerShell, here-string, syntax error, Chocolatey, installation script"
+  },
+  {
+    "standardized_intent": "Generate transcript summary with nature and impermanence insights",
+    "keywords": "transcript summary, nature, impermanence, insights"
+  },
+  {
+    "standardized_intent": "\"Implement error handling in software application\"",
+    "keywords": "error handling, software application, implement"
+  },
+  {
+    "standardized_intent": "\"Configure Anthropic AI agents for autonomous task execution\"",
+    "keywords": "Configure, Anthropic AI, agents, autonomous, task execution"
+  },
+  {
+    "standardized_intent": "\"Extract key points, action items, and updates\"",
+    "keywords": "key points, action items, updates"
+  },
+  {
+    "standardized_intent": "\"Generate poetic metaphor for life impermanence reflection\"",
+    "keywords": "poetic metaphor, life, impermanence, reflection"
+  },
+  {
+    "standardized_intent": "Generate summary from Thai Buddhist meeting transcript",
+    "keywords": "summary, Thai, Buddhist, meeting, transcript"
+  },
+  {
+    "standardized_intent": "\"Grant resource access permissions to specified user\"",
+    "keywords": "Grant, resource access, permissions, specified user"
+  },
+  {
+    "standardized_intent": "Debug React Native app compilation errors",
+    "keywords": "Debug, React Native, app, compilation errors"
+  },
+  {
+    "standardized_intent": "\"Summarize meeting transcript on transient life metaphor\"",
+    "keywords": "summarize, meeting transcript, transient life, metaphor"
+  },
+  {
+    "standardized_intent": "\"Process Thai transcript for grammar correction and readability enhancement\"",
+    "keywords": "Thai transcript, grammar correction, readability enhancement"
+  },
+  {
+    "standardized_intent": "\"Configure roles and permissions in OTC Sale system\"",
+    "keywords": "Configure, roles, permissions, OTC Sale system"
+  },
+  {
+    "standardized_intent": "\"Enhance function to return paginated records and count\"",
+    "keywords": "enhance function, return, paginated records, count"
+  },
+  {
+    "standardized_intent": "\"Query MongoDB collection count documents with 'code' containing 'z'\"",
+    "keywords": "MongoDB, collection, count, documents, code, containing, z"
+  },
+  {
+    "standardized_intent": "Analyze conversation data to classify message intents",
+    "keywords": "analyze, conversation data, classify, message intents"
+  },
+  {
+    "standardized_intent": "Calculate PR-to-PO utilization percentage based on item counts.",
+    "keywords": "PR-to-PO, utilization percentage, item counts, calculate"
+  },
+  {
+    "standardized_intent": "Refine text content for email communication",
+    "keywords": "refine, text content, email communication"
+  },
+  {
+    "standardized_intent": "\"Refine Thai transcript for technical clarity and accuracy\"",
+    "keywords": "Refine, Thai transcript, technical clarity, accuracy"
+  },
+  {
+    "standardized_intent": "\"Add console logging function for debugging purposes\"",
+    "keywords": "console logging, function, debugging, purposes"
+  },
+  {
+    "standardized_intent": "\"Debug unexpected type in Thanos S3 configuration\"",
+    "keywords": "Debug, unexpected type, Thanos, S3 configuration"
+  },
+  {
+    "standardized_intent": "\"Configure modal appearance using `modalService` with `margin-top`\"",
+    "keywords": "configure, modal appearance, modalService, margin-top"
+  },
+  {
+    "standardized_intent": "\"Generate business plan with budget for cat hotel\"",
+    "keywords": "business plan, budget, cat hotel"
+  },
+  {
+    "standardized_intent": "\"Generate structured report from meeting transcript\"",
+    "keywords": "structured report, meeting transcript, generate"
+  },
+  {
+    "standardized_intent": "\"Update `docker-compose.yaml` to remove obsolete version attribute\"",
+    "keywords": "update, docker-compose.yaml, remove, obsolete, version attribute"
+  },
+  {
+    "standardized_intent": "\"Configure role-based access control for OTC Sale system\"",
+    "keywords": "role-based access control, OTC Sale system, configure"
+  },
+  {
+    "standardized_intent": "\"Set default date value from parameter input\"",
+    "keywords": "default date value, parameter input"
+  },
+  {
+    "standardized_intent": "\"Generate project timeline and calculate ROI metrics\"",
+    "keywords": "project timeline, calculate ROI, metrics"
+  },
+  {
+    "standardized_intent": "Analyze Flutter UI/UX design patterns in image",
+    "keywords": "Flutter, UI design, UX design, patterns, image analysis"
+  },
+  {
+    "standardized_intent": "\"Validate system responsiveness and functionality status\"",
+    "keywords": "validate, system, responsiveness, functionality, status"
+  },
+  {
+    "standardized_intent": "\"Check system auto-start capability configuration\"",
+    "keywords": "system, auto-start, capability, configuration"
+  },
+  {
+    "standardized_intent": "\"Assign role-based permissions to user account\"",
+    "keywords": "Assign, role-based permissions, user account"
+  },
+  {
+    "standardized_intent": "\"Refactor function to query `FiDocument` asynchronously using LINQ\"",
+    "keywords": "Refactor, function, query, FiDocument, asynchronously, LINQ"
+  },
+  {
+    "standardized_intent": "\"Generate topic analysis for information summarization\"",
+    "keywords": "topic analysis, information summarization"
+  },
+  {
+    "standardized_intent": "Review and optimize asynchronous C# API retrieval method",
+    "keywords": "Review, optimize, asynchronous, C#, API, retrieval method"
+  },
+  {
+    "standardized_intent": "\"Reconcile missing data between LE and report systems\"",
+    "keywords": "reconcile, missing data, LE, report systems"
+  },
+  {
+    "standardized_intent": "Debug `streamlit run app-streamlit.py` error message",
+    "keywords": "Debug, streamlit, run, app-streamlit.py, error message"
+  },
+  {
+    "standardized_intent": "Map `I_WA_SALES_HEAD` field to MongoDB collection schema",
+    "keywords": "Map, I_WA_SALES_HEAD, field, MongoDB, collection, schema"
+  },
+  {
+    "standardized_intent": "\"Remove 'total' row on table selection event\"",
+    "keywords": "remove, total row, table, selection event"
+  },
+  {
+    "standardized_intent": "Display system message on user interface",
+    "keywords": "display, system message, user interface"
+  },
+  {
+    "standardized_intent": "Initiate session handshake for user acknowledgment",
+    "keywords": "session handshake, user acknowledgment, initiate"
+  },
+  {
+    "standardized_intent": "Clarify technical definition of \"proc / con\"",
+    "keywords": "technical definition, proc, con, clarify"
+  },
+  {
+    "standardized_intent": "\"Develop approval system workflow with PR management and reporting\"",
+    "keywords": "approval system, workflow, PR management, reporting"
+  },
+  {
+    "standardized_intent": "\"Design a mechanism for automated task scheduling\"",
+    "keywords": "automated, task scheduling, mechanism, design"
+  },
+  {
+    "standardized_intent": "\"Define 'Jurisdictions under Increased Monitoring' for compliance analysis\"",
+    "keywords": "Jurisdictions, Increased Monitoring, compliance analysis, define"
+  },
+  {
+    "standardized_intent": "Assess AI capabilities for task suitability evaluation",
+    "keywords": "AI capabilities, task suitability, evaluation"
+  },
+  {
+    "standardized_intent": "Resolve dependency conflicts in `react-native-view-shot` build",
+    "keywords": "resolve, dependency conflicts, react-native-view-shot, build"
+  },
+  {
+    "standardized_intent": "Compare query performance metrics for optimization potential",
+    "keywords": "compare, query performance, metrics, optimization, potential"
+  },
+  {
+    "standardized_intent": "\"Define BAPI functionality in SAP systems\"",
+    "keywords": "BAPI, functionality, SAP systems, definition"
+  },
+  {
+    "standardized_intent": "\"Develop script to filter Windows Event Log data\"",
+    "keywords": "Develop, script, filter, Windows, Event Log, data"
+  },
+  {
+    "standardized_intent": "\"Validate and correct English sentence grammar\"",
+    "keywords": "validate, correct, English, sentence, grammar"
+  },
+  {
+    "standardized_intent": "\"Classify greeting message intent using NLP techniques\"",
+    "keywords": "classify, greeting message, intent, NLP techniques"
+  },
+  {
+    "standardized_intent": "Calculate percentage progress for PR-to-PO transition workflow",
+    "keywords": "percentage progress, PR-to-PO transition, workflow calculation"
+  },
+  {
+    "standardized_intent": "\"Execute terminal command to delete folder\"",
+    "keywords": "execute, terminal command, delete, folder"
+  },
+  {
+    "standardized_intent": "Retrieve tomorrow's activity suggestions for user.",
+    "keywords": "tomorrow, activity suggestions, retrieve, user"
+  },
+  {
+    "standardized_intent": "Debug `#REF!` error in VLOOKUP formula in Excel",
+    "keywords": "Debug, #REF! error, VLOOKUP formula, Excel"
+  },
+  {
+    "standardized_intent": "\"Resolve system errors by correcting database data\"",
+    "keywords": "resolve system errors, correct database data"
+  },
+  {
+    "standardized_intent": "Troubleshoot software error to identify root cause",
+    "keywords": "troubleshoot, software error, identify, root cause"
+  },
+  {
+    "standardized_intent": "\"Add missing object field to MongoDB documents\"",
+    "keywords": "add, missing, object field, MongoDB, documents"
+  },
+  {
+    "standardized_intent": "\"Define code review best practices and workflows\"",
+    "keywords": "code review, best practices, workflows"
+  },
+  {
+    "standardized_intent": "Analyze tax implications of 15% minimum rate",
+    "keywords": "tax implications, 15% minimum rate, analysis"
+  },
+  {
+    "standardized_intent": "Generate thematic summary using leaf metaphor analysis",
+    "keywords": "thematic summary, leaf metaphor, analysis"
+  },
+  {
+    "standardized_intent": "Analyze energy consumption metrics for system optimization",
+    "keywords": "energy consumption, metrics, analysis, system optimization"
+  },
+  {
+    "standardized_intent": "\"Debug JSON parsing error at line 5, column 1\"",
+    "keywords": "Debug, JSON, parsing error, line 5, column 1"
+  },
+  {
+    "standardized_intent": "\"Verify system localization support for Thai language\"",
+    "keywords": "system localization, support, Thai language"
+  },
+  {
+    "standardized_intent": "Update specific fields in `dbo.TB_OTC_PurchaseOrders` table",
+    "keywords": "Update, specific fields, dbo.TB_OTC_PurchaseOrders, table"
+  },
+  {
+    "standardized_intent": "\"Analyze transcript for narrative insights and summaries\"",
+    "keywords": "analyze, transcript, narrative insights, summaries"
+  },
+  {
+    "standardized_intent": "Resolve incompatible package update in Android build",
+    "keywords": "incompatible package, update, Android build, resolve"
+  },
+  {
+    "standardized_intent": "\"Define responsibilities for Procurement-Business Alignment Manager role\"",
+    "keywords": "responsibilities, Procurement, Business Alignment, Manager role"
+  },
+  {
+    "standardized_intent": "\"Identify top automated testing tools in market\"",
+    "keywords": "automated testing tools, top, market"
+  },
+  {
+    "standardized_intent": "Analyze procurement process outcomes for performance metrics",
+    "keywords": "procurement process, outcomes, performance metrics, analyze"
+  },
+  {
+    "standardized_intent": "\"Implement task categorization by priority, type, and alignment\"",
+    "keywords": "task categorization, priority, type, alignment"
+  },
+  {
+    "standardized_intent": "Optimize bulk field updates in MongoDB for performance",
+    "keywords": "optimize, bulk field updates, MongoDB, performance"
+  },
+  {
+    "standardized_intent": "\"Refactor `ResponseChecker.ValidateError` for optimization and maintainability\"",
+    "keywords": "Refactor, ResponseChecker, ValidateError, optimization, maintainability"
+  },
+  {
+    "standardized_intent": "Diagnose and resolve `SharedResourceWarning` in ArgoCD CronJob",
+    "keywords": "Diagnose, resolve, SharedResourceWarning, ArgoCD, CronJob"
+  },
+  {
+    "standardized_intent": "\"Analyze AI integration in LMS for user roles\"",
+    "keywords": "AI integration, LMS, user roles, analysis"
+  },
+  {
+    "standardized_intent": "\"Design prompt engineering strategies for AI model optimization\"",
+    "keywords": "design, prompt engineering, strategies, AI model, optimization"
+  },
+  {
+    "standardized_intent": "\"Query database table with specified filter conditions\"",
+    "keywords": "query, database, table, filter, conditions"
+  },
+  {
+    "standardized_intent": "\"Replace missing field values with empty strings\"",
+    "keywords": "replace, missing field values, empty strings"
+  },
+  {
+    "standardized_intent": "Translate \"อำนาจในการต่อรอง\" to English as \"bargaining power\"",
+    "keywords": "Translate, อำนาจในการต่อรอง, English, bargaining power"
+  },
+  {
+    "standardized_intent": "\"Develop dashboard for code review metrics visualization\"",
+    "keywords": "dashboard, code review, metrics, visualization"
+  },
+  {
+    "standardized_intent": "\"Apply Android, Kotlin, and React Native plugins\"",
+    "keywords": "Android, Kotlin, React Native, plugins"
+  },
+  {
+    "standardized_intent": "\"Install and configure `kustomize` for command execution\"",
+    "keywords": "Install, configure, kustomize, command execution"
+  },
+  {
+    "standardized_intent": "\"Translate Thai sentence to formal English for GPC compliance.\"",
+    "keywords": "Translate, Thai sentence, formal English, GPC compliance"
+  },
+  {
+    "standardized_intent": "\"Diagnose CrashLoopBackOff state with exit code 0\"",
+    "keywords": "Diagnose, CrashLoopBackOff, exit code 0"
+  },
+  {
+    "standardized_intent": "\"Evaluate Python code for performance and correctness\"",
+    "keywords": "Evaluate, Python code, performance, correctness"
+  },
+  {
+    "standardized_intent": "\"Sum `DiscountTotalIncludeVat` values in `DiscountBenefitProducts` collection\"",
+    "keywords": "Sum, DiscountTotalIncludeVat, values, DiscountBenefitProducts, collection"
+  },
+  {
+    "standardized_intent": "\"Classify text data using machine learning models\"",
+    "keywords": "classify, text data, machine learning, models"
+  },
+  {
+    "standardized_intent": "Translate English text to Thai using API",
+    "keywords": "Translate, English, Thai, API"
+  },
+  {
+    "standardized_intent": "\"Integrate Angular framework for web application development\"",
+    "keywords": "Integrate, Angular framework, web application development"
+  },
+  {
+    "standardized_intent": "\"Standardize and structure bilingual transcript for readability\"",
+    "keywords": "standardize, structure, bilingual, transcript, readability"
+  },
+  {
+    "standardized_intent": "Retrieve requested information from data source",
+    "keywords": "retrieve, requested information, data source"
+  },
+  {
+    "standardized_intent": "\"Translate email to Thai with formal tone\"",
+    "keywords": "Translate, email, Thai, formal tone"
+  },
+  {
+    "standardized_intent": "Troubleshoot document download failure in translation service",
+    "keywords": "troubleshoot, document download, failure, translation service"
+  },
+  {
+    "standardized_intent": "Retrieve advanced clean energy technologies in Thailand",
+    "keywords": "advanced clean energy, technologies, Thailand"
+  },
+  {
+    "standardized_intent": "\"Integrate TiDB database with system configuration\"",
+    "keywords": "Integrate, TiDB, database, system, configuration"
+  },
+  {
+    "standardized_intent": "Generate text guideline with 50-character limit.",
+    "keywords": "text guideline, 50-character limit, generate"
+  },
+  {
+    "standardized_intent": "\"Resolve `pip` command recognition error in system\"",
+    "keywords": "pip, command, recognition, error, resolve, system"
+  },
+  {
+    "standardized_intent": "\"Tag Docker image with specified version in registry\"",
+    "keywords": "Tag, Docker image, specified version, registry"
+  },
+  {
+    "standardized_intent": "\"Generate Gantt chart for project timeline visualization\"",
+    "keywords": "Gantt chart, project timeline, visualization"
+  },
+  {
+    "standardized_intent": "Debug 503 error during audio file upload",
+    "keywords": "Debug, 503 error, audio file upload"
+  },
+  {
+    "standardized_intent": "\"Standardize and refine multilingual transcript for documentation clarity\"",
+    "keywords": "Standardize, refine, multilingual transcript, documentation, clarity"
+  },
+  {
+    "standardized_intent": "Debug `dotnet-coverage` project file profiler initialization error",
+    "keywords": "Debug, dotnet-coverage, project file, profiler, initialization error"
+  },
+  {
+    "standardized_intent": "\"Deactivate user account with ID 57468 in sales system\"",
+    "keywords": "Deactivate, user account, ID 57468, sales system"
+  },
+  {
+    "standardized_intent": "\"Log user feedback for sentiment analysis\"",
+    "keywords": "Log, user feedback, sentiment analysis"
+  },
+  {
+    "standardized_intent": "\"Process, format, and summarize meeting transcripts into structured reports\"",
+    "keywords": "Process, format, summarize, meeting transcripts, structured reports"
+  },
+  {
+    "standardized_intent": "Classify message as greeting using intent recognition model",
+    "keywords": "classify message, greeting, intent recognition model"
+  },
+  {
+    "standardized_intent": "\"Fix type conversion error from `string` to `bool`\"",
+    "keywords": "fix, type conversion error, string, bool"
+  },
+  {
+    "standardized_intent": "\"Clean and format Thai transcript for readability\"",
+    "keywords": "Clean, format, Thai transcript, readability"
+  },
+  {
+    "standardized_intent": "\"Write unit tests for `VehicleStockService` stock validation\"",
+    "keywords": "unit tests, VehicleStockService, stock validation"
+  },
+  {
+    "standardized_intent": "Format text string to lowercase and remove trailing whitespace",
+    "keywords": "format text, lowercase, remove trailing whitespace"
+  },
+  {
+    "standardized_intent": "Review `ClientBase` code for correctness and efficiency",
+    "keywords": "Review, ClientBase, code, correctness, efficiency"
+  },
+  {
+    "standardized_intent": "Detect and handle user input errors automatically",
+    "keywords": "detect, handle, user input, errors, automatically"
+  },
+  {
+    "standardized_intent": "\"Fix compilation errors in `react-native-view-shot` module\"",
+    "keywords": "fix, compilation errors, react-native-view-shot, module"
+  },
+  {
+    "standardized_intent": "\"Reverse prepaid payment transaction in accounting system\"",
+    "keywords": "Reverse, prepaid, payment, transaction, accounting system"
+  },
+  {
+    "standardized_intent": "Resolve Angular npm package dependency conflicts",
+    "keywords": "Angular, npm, package, dependency, conflicts, resolve"
+  },
+  {
+    "standardized_intent": "Debug YAML parsing error in `deployment.yml` line 14",
+    "keywords": "Debug, YAML, parsing error, deployment.yml, line 14"
+  },
+  {
+    "standardized_intent": "Classify conversation messages for intent analysis",
+    "keywords": "Classify, conversation messages, intent analysis"
+  },
+  {
+    "standardized_intent": "Debug `InvalidOperationException` in .NET dependency injection",
+    "keywords": "Debug, InvalidOperationException, .NET, dependency injection"
+  },
+  {
+    "standardized_intent": "Analyze tax regulation impact on multinational financial strategies",
+    "keywords": "tax regulation, impact, multinational, financial strategies"
+  },
+  {
+    "standardized_intent": "\"Use raw SQL queries for database operations\"",
+    "keywords": "raw SQL, queries, database operations"
+  },
+  {
+    "standardized_intent": "\"Transform raw meeting transcripts into polished YouTube-style format\"",
+    "keywords": "raw meeting transcripts, polished format, YouTube-style"
+  },
+  {
+    "standardized_intent": "\"Fetch client public IP address in React\"",
+    "keywords": "fetch, client, public IP address, React"
+  }
+]
