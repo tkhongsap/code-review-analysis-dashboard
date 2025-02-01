@@ -32,7 +32,7 @@ export default function IntentAnalysis() {
               <div className="flex justify-between items-start mb-2">
                 <p className="font-medium">{insight.intent}</p>
                 <span className="text-sm text-muted-foreground">
-                  {intents.distribution.find(d => d.category === insight.intent)?.percentage || 0}%
+                  {intents.categories?.find(d => d.name === insight.intent)?.percentage || 0}%
                 </span>
               </div>
               <div className="flex flex-wrap gap-2">
