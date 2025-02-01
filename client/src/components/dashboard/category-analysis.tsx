@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useQuery } from "@tanstack/react-query";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { getCategoryAnalysis } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
+import { ArrowUpIcon, ArrowDownIcon, MinusIcon } from "lucide-react";
 
 export default function CategoryAnalysis() {
   const { data: categories } = useQuery({
@@ -15,24 +15,45 @@ export default function CategoryAnalysis() {
 
   return (
     <div className="grid gap-4 grid-cols-1 lg:grid-cols-3">
-      <div className="lg:col-span-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Category Distribution</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="h-[400px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={categories.distribution}>
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="value" fill="hsl(var(--primary))" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="lg:col-span-2 space-y-4">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+          {categories.distribution.map((category, i) => (
+            <Card key={i}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  {category.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between">
+                  <div className="text-2xl font-bold">{category.value}</div>
+                  <Badge 
+                    variant={
+                      category.trend > 0 
+                        ? "default" 
+                        : category.trend < 0 
+                        ? "destructive" 
+                        : "secondary"
+                    }
+                    className="flex items-center gap-1"
+                  >
+                    {category.trend > 0 ? (
+                      <ArrowUpIcon className="w-3 h-3" />
+                    ) : category.trend < 0 ? (
+                      <ArrowDownIcon className="w-3 h-3" />
+                    ) : (
+                      <MinusIcon className="w-3 h-3" />
+                    )}
+                    {Math.abs(category.trend)}%
+                  </Badge>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {category.description || `Total ${category.name.toLowerCase()} reviews`}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
 
       <div className="space-y-4">

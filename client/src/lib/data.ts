@@ -18,11 +18,30 @@ export async function getMetrics() {
 export async function getCategoryAnalysis() {
   return {
     distribution: [
-      { name: "Code Review", value: 120 },
-      { name: "Problem Solving", value: 85 },
-      { name: "Data Processing", value: 65 },
-      { name: "API Integration", value: 55 },
-      { name: "Testing & QA", value: 45 }
+      { 
+        name: "Code Review", 
+        value: 120, 
+        trend: 15,
+        description: "Code quality and structure reviews"
+      },
+      { 
+        name: "Problem Solving", 
+        value: 85, 
+        trend: 8,
+        description: "Technical problem resolution"
+      },
+      { 
+        name: "Data Processing", 
+        value: 65, 
+        trend: -5,
+        description: "Data handling and transformation"
+      },
+      { 
+        name: "API Integration", 
+        value: 55, 
+        trend: 10,
+        description: "External service integration"
+      }
     ],
     insights: [
       "Code reviews make up 25% of all analysis",
