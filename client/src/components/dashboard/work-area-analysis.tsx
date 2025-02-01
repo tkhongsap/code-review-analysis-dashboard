@@ -34,10 +34,18 @@ export default function WorkAreaAnalysis() {
     queryFn: getWorkAreaAnalysis
   });
 
-  if (!workAreas) return null;
+  const { data: categories } = useQuery({
+    queryKey: ["/api/analysis/categories"],
+    queryFn: getCategoryAnalysis
+  });
 
-  // Calculate total count for percentage
-  const totalCount = workAreas.distribution.reduce((sum, area) => sum + area.count, 0);
+  if (!workAreas || !categories) return null;
+
+  const categoryCountMap = new Map(
+    categories.distribution.map(cat => [cat.name, cat.value])
+  );
+
+  const totalCount = categories.distribution.reduce((sum, cat) => sum + cat.value, 0);
 
   return (
     <div className="grid gap-4 grid-cols-1">
@@ -53,7 +61,7 @@ export default function WorkAreaAnalysis() {
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-medium text-lg">{insight.workArea}</h3>
                     <Badge variant="secondary">
-                      {Math.round((insight.count / totalCount) * 100)}%
+                      {Math.round(((categoryCountMap.get(insight.workArea) || 0) / totalCount) * 100)}%
                     </Badge>
                   </div>
                   <div className="mt-2">
