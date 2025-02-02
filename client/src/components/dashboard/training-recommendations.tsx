@@ -71,10 +71,10 @@ export default function TrainingRecommendations() {
                     <PolarAngleAxis
                       dataKey="name"
                       tick={{
-                        fontSize: 11,
+                        fontSize: 9,
                         fill: "hsl(var(--muted-foreground))",
                         width: 200,
-                        dy: 15
+                        dy: 10
                       }}
                     />
                     <Radar

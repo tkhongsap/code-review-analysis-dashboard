@@ -54,7 +54,15 @@ export default function UserQueriesAnalysis() {
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart data={capability.metrics.capabilities}>
                   <PolarGrid />
-                  <PolarAngleAxis dataKey="name" />
+                  <PolarAngleAxis 
+                    dataKey="name"
+                    tick={{
+                      fontSize: 9,
+                      fill: "hsl(var(--muted-foreground))",
+                      width: 200,
+                      dy: 10
+                    }}
+                  />
                   <Radar
                     name="Scores"
                     dataKey="score"
