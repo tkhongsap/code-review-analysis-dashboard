@@ -12,8 +12,8 @@ export default function Dashboard() {
     <div className="container mx-auto py-6">
       <div className="flex flex-col space-y-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">
-            Code Review Analytics Dashboard
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+            Code Review Insights
           </h1>
           <div className="text-sm text-muted-foreground">
             Last updated: {new Date().toLocaleString()}
