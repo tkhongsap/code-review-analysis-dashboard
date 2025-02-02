@@ -62,6 +62,14 @@ export default function WorkAreaAnalysis() {
 
   if (!workAreas) return null;
 
+  // Sort insights alphabetically by workArea
+  const sortedInsights = [...workAreas.insights].sort((a, b) => 
+    a.workArea.localeCompare(b.workArea)
+  );
+
+  // Calculate total count for consistent percentage calculation
+  const totalCount = workAreas.distribution.reduce((sum, area) => sum + area.count, 0);
+
   return (
     <div className="space-y-4">
       <div>
@@ -72,44 +80,48 @@ export default function WorkAreaAnalysis() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {workAreas.insights.map((insight, i) => (
-          <Card 
-            key={i}
-            className="group transition-shadow duration-200 hover:shadow-md border-gray-100"
-          >
-            <CardHeader className="pb-2">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  {domainIcons[insight.workArea] || <ChartPieIcon className="h-5 w-5" />}
-                  <CardTitle className="text-base font-medium">
-                    {insight.workArea}
-                  </CardTitle>
+        {sortedInsights.map((insight, i) => {
+          const percentage = Math.round((insight.count / totalCount) * 100);
+
+          return (
+            <Card 
+              key={i}
+              className="group transition-shadow duration-200 hover:shadow-md border-gray-100"
+            >
+              <CardHeader className="pb-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    {domainIcons[insight.workArea] || <ChartPieIcon className="h-5 w-5" />}
+                    <CardTitle className="text-base font-medium">
+                      {insight.workArea}
+                    </CardTitle>
+                  </div>
+                  <Badge 
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
+                  >
+                    {percentage}%
+                  </Badge>
                 </div>
-                <Badge 
-                  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
-                >
-                  {workAreas.distribution.find(d => d.name === insight.workArea)?.percentage || 0}%
-                </Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="border-t border-gray-100 my-4" />
-              <div>
-                <h4 className="text-sm font-medium text-muted-foreground mb-2">Related Domains:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {insight.broaderAreas.map((area, j) => (
-                    <span
-                      key={j}
-                      className="inline-flex items-center px-3 py-1 text-sm bg-gray-50 hover:bg-gray-100 rounded-md cursor-pointer transition-colors duration-200"
-                    >
-                      {area}
-                    </span>
-                  ))}
+              </CardHeader>
+              <CardContent>
+                <div className="border-t border-gray-100 my-4" />
+                <div>
+                  <h4 className="text-sm font-medium text-muted-foreground mb-2">Related Domains:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {insight.broaderAreas.map((area, j) => (
+                      <span
+                        key={j}
+                        className="inline-flex items-center px-3 py-1 text-sm bg-gray-50 hover:bg-gray-100 rounded-md cursor-pointer transition-colors duration-200"
+                      >
+                        {area}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
