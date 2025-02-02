@@ -17,34 +17,24 @@ async function importTrainingData() {
 
     for (const item of jsonData) {
       const trainingPlanEntries = Object.entries(item.training_analysis.training_plan);
-      const maxScore = 10; // Maximum score in the training plan
-
-      // Create normalized metrics from training plan scores
-      const metrics = {
-        implementation: 80, // Base score
-        theoretical: 60,   // Base score
-        practical: 70,     // Base score
-        complexity: 50,    // Base score
-        impact: 90        // Base score
-      };
-
-      // Create recommendations list from training plan
-      const recommendations = trainingPlanEntries.map(([name, score]) => ({
-        name,
-        priority: Number(score)
-      }))
-      .sort((a, b) => b.priority - a.priority)
-      .map(({name, priority}) => `${name} (Priority: ${priority})`);
-
-      // Calculate time estimate based on priorities
       const timeEstimate = trainingPlanEntries.reduce((sum, [_, score]) => sum + Number(score), 0);
+
+      // Transform training plan entries into metrics for the spider chart
+      const metrics = Object.fromEntries(
+        trainingPlanEntries.map(([name, score]) => [
+          name.toLowerCase().replace(/\s+/g, '_'),
+          Number(score)
+        ])
+      );
 
       await db.insert(trainingRecommendations).values({
         standardized_category: item.standardized_category,
         training_query: item.training_analysis.training_query,
         training_plan: {
           metrics,
-          recommendations,
+          recommendations: trainingPlanEntries.map(([name, score]) => 
+            `${name} (Priority: ${score})`
+          ),
           timeEstimate
         }
       });

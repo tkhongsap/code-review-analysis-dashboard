@@ -14,9 +14,7 @@ import { TrainingAnalysis } from "@/lib/data";
 
 async function getTrainingRecommendations(): Promise<TrainingAnalysis> {
   const response = await fetch("/api/analysis/training");
-  if (!response.ok) {
-    throw new Error("Failed to fetch training recommendations");
-  }
+  if (!response.ok) throw new Error("Failed to fetch training recommendations");
   return response.json();
 }
 
@@ -52,19 +50,21 @@ export default function TrainingRecommendations() {
                 <div className="h-[200px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart 
-                      data={[
-                        { name: "Implementation", value: rec.training_plan.metrics.implementation },
-                        { name: "Theoretical", value: rec.training_plan.metrics.theoretical },
-                        { name: "Practical", value: rec.training_plan.metrics.practical },
-                        { name: "Complexity", value: rec.training_plan.metrics.complexity },
-                        { name: "Impact", value: rec.training_plan.metrics.impact }
-                      ]}
+                      data={Object.entries(rec.training_plan.metrics).map(([name, value]) => ({
+                        name: name.split('_').map(word => 
+                          word.charAt(0).toUpperCase() + word.slice(1)
+                        ).join(' '),
+                        value
+                      }))}
                       outerRadius={90}
                     >
                       <PolarGrid />
-                      <PolarAngleAxis dataKey="name" />
+                      <PolarAngleAxis 
+                        dataKey="name"
+                        tick={{ fontSize: 10 }}
+                      />
                       <Radar
-                        name="Metrics"
+                        name="Priority"
                         dataKey="value"
                         stroke="hsl(var(--primary))"
                         fill="hsl(var(--primary))"
