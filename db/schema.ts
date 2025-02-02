@@ -49,6 +49,15 @@ export const workAreaBroaderCategories = pgTable("work_area_broader_categories",
   broaderWorkAreas: text("broader_work_areas").notNull(),
 });
 
+// Training recommendations table
+export const trainingRecommendations = pgTable("training_recommendations", {
+  id: serial("id").primaryKey(),
+  standardized_category: text("standardized_category").notNull(),
+  training_query: text("training_query").notNull(),
+  training_plan: jsonb("training_plan").notNull(),
+});
+
+
 // Export schemas for validation
 export const insertUserCapabilitySchema = createInsertSchema(userCapabilities);
 export const selectUserCapabilitySchema = createSelectSchema(userCapabilities);
@@ -59,6 +68,11 @@ export const insertCodeReviewSchema = createInsertSchema(codeReviews);
 export const selectCodeReviewSchema = createSelectSchema(codeReviews);
 export type InsertCodeReview = typeof codeReviews.$inferInsert;
 export type SelectCodeReview = typeof codeReviews.$inferSelect;
+
+export const insertTrainingRecommendationSchema = createInsertSchema(trainingRecommendations);
+export const selectTrainingRecommendationSchema = createSelectSchema(trainingRecommendations);
+export type InsertTrainingRecommendation = typeof trainingRecommendations.$inferInsert;
+export type SelectTrainingRecommendation = typeof trainingRecommendations.$inferSelect;
 
 // Relations
 export const codeReviewsRelations = relations(codeReviews, ({ many }) => ({

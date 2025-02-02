@@ -30,7 +30,32 @@ export async function getUserQueriesAnalysis() {
   return response.json();
 }
 
-export async function getTrainingRecommendations() {
+export interface TrainingMetrics {
+  implementation: number;
+  theoretical: number;
+  practical: number;
+  complexity: number;
+  impact: number;
+}
+
+export interface TrainingRecommendation {
+  category: string;
+  query: string;
+  metrics: TrainingMetrics;
+  recommendations: string[];
+  timeEstimate: number;
+}
+
+export interface TrainingAnalysis {
+  recommendations: TrainingRecommendation[];
+  summary: {
+    totalRecommendations: number;
+    averageTimeEstimate: number;
+    categoryBreakdown: Record<string, number>;
+  };
+}
+
+export async function getTrainingRecommendations(): Promise<TrainingAnalysis> {
   const response = await fetch('/api/analysis/training');
   if (!response.ok) throw new Error('Failed to fetch training recommendations');
   return response.json();
