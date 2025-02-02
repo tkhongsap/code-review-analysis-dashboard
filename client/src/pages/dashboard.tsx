@@ -12,7 +12,9 @@ export default function Dashboard() {
     <div className="container mx-auto py-6">
       <div className="flex flex-col space-y-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">Code Review Analytics Dashboard</h1>
+          <h1 className="text-3xl font-bold">
+            Code Review Analytics Dashboard
+          </h1>
           <div className="text-sm text-muted-foreground">
             Last updated: {new Date().toLocaleString()}
           </div>
@@ -24,11 +26,21 @@ export default function Dashboard() {
           <CardContent className="p-6">
             <Tabs defaultValue="category" className="w-full">
               <TabsList className="tabs-list grid w-full grid-cols-5">
-                <TabsTrigger className="tab-trigger" value="category">Category Analysis</TabsTrigger>
-                <TabsTrigger className="tab-trigger" value="intent">Support Request Analysis</TabsTrigger>
-                <TabsTrigger className="tab-trigger" value="workarea">Technical Domain Coverage</TabsTrigger>
-                <TabsTrigger className="tab-trigger" value="queries">User Queries</TabsTrigger>
-                <TabsTrigger className="tab-trigger" value="training">Training</TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="category">
+                  Category Analysis
+                </TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="intent">
+                  Support Request Analysis
+                </TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="workarea">
+                  Technical Domain Coverage
+                </TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="queries">
+                  Domain Analysis
+                </TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="training">
+                  Training Recommendation
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="category">
                 <CategoryAnalysis />
