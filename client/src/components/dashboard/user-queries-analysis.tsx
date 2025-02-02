@@ -12,17 +12,6 @@ import {
   Legend,
 } from "recharts";
 
-interface Category {
-  name: string;
-  count: number;
-  description: string;
-}
-
-interface Insight {
-  title: string;
-  description: string;
-}
-
 interface CapabilityMetric {
   name: string;
   score: number;
@@ -31,26 +20,22 @@ interface CapabilityMetric {
 
 interface CategoryCapability {
   category: string;
+  userQuery: string;
   metrics: {
+    capabilities: CapabilityMetric[];
     strongCapabilities: number;
     weakCapabilities: number;
     overallScore: number;
-    capabilities: CapabilityMetric[];
   };
 }
 
 export default function UserQueriesAnalysis() {
-  const { data: queries } = useQuery({
-    queryKey: ["/api/analysis/queries"],
-    queryFn: getUserQueriesAnalysis
-  });
-
   const { data: capabilities } = useQuery({
     queryKey: ["/api/analysis/capabilities"],
     queryFn: getCapabilitiesAnalysis
   });
 
-  if (!queries || !capabilities) return null;
+  if (!capabilities) return null;
 
   return (
     <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
@@ -66,20 +51,11 @@ export default function UserQueriesAnalysis() {
                   <PolarGrid />
                   <PolarAngleAxis dataKey="name" />
                   <Radar
-                    name="Strong Capabilities"
+                    name="Scores"
                     dataKey="score"
                     stroke="hsl(var(--primary))"
                     fill="hsl(var(--primary))"
                     fillOpacity={0.5}
-                    data={capability.metrics.capabilities.filter(cap => cap.type === 'strong')}
-                  />
-                  <Radar
-                    name="Weak Capabilities"
-                    dataKey="score"
-                    stroke="hsl(var(--destructive))"
-                    fill="hsl(var(--destructive))"
-                    fillOpacity={0.3}
-                    data={capability.metrics.capabilities.filter(cap => cap.type === 'weak')}
                   />
                   <Legend />
                 </RadarChart>
@@ -92,6 +68,9 @@ export default function UserQueriesAnalysis() {
                   {Math.round(capability.metrics.overallScore * 10) / 10}
                 </Badge>
               </div>
+              <p className="text-sm text-muted-foreground mt-2">
+                Query: {capability.userQuery}
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -108,15 +87,15 @@ export default function UserQueriesAnalysis() {
               <p className="text-2xl font-bold">{capabilities.summary.totalCategories}</p>
             </div>
             <div className="space-y-2">
-              <p className="text-sm font-medium">Average Strong Score</p>
+              <p className="text-sm font-medium">Average Score</p>
               <p className="text-2xl font-bold">
                 {Math.round(capabilities.summary.averageStrong * 10) / 10}
               </p>
             </div>
             <div className="space-y-2">
-              <p className="text-sm font-medium">Average Weak Score</p>
+              <p className="text-sm font-medium">Total Capabilities</p>
               <p className="text-2xl font-bold">
-                {Math.round(capabilities.summary.averageWeak * 10) / 10}
+                {capabilities.capabilities.reduce((acc, curr) => acc + curr.metrics.capabilities.length, 0)}
               </p>
             </div>
           </div>
