@@ -25,20 +25,35 @@ export default function Dashboard() {
         <Card>
           <CardContent className="p-6">
             <Tabs defaultValue="category" className="w-full">
-              <TabsList className="tabs-list grid w-full grid-cols-5">
-                <TabsTrigger className="tab-trigger" value="category">
+              <TabsList className="tabs-list w-full flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+                <TabsTrigger 
+                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  value="category"
+                >
                   Category Analysis
                 </TabsTrigger>
-                <TabsTrigger className="tab-trigger" value="intent">
+                <TabsTrigger 
+                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  value="intent"
+                >
                   Support Request Analysis
                 </TabsTrigger>
-                <TabsTrigger className="tab-trigger" value="workarea">
+                <TabsTrigger 
+                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  value="workarea"
+                >
                   Technical Domain Coverage
                 </TabsTrigger>
-                <TabsTrigger className="tab-trigger" value="queries">
+                <TabsTrigger 
+                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  value="queries"
+                >
                   Domain Analysis
                 </TabsTrigger>
-                <TabsTrigger className="tab-trigger" value="training">
+                <TabsTrigger 
+                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  value="training"
+                >
                   Training Recommendation
                 </TabsTrigger>
               </TabsList>
