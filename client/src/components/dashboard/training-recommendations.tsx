@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { useQuery } from "@tanstack/react-query";
 import {
   ResponsiveContainer,
@@ -27,42 +26,48 @@ export default function TrainingRecommendations() {
   if (!training) return null;
 
   return (
-    <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
-      <Card>
-        <CardHeader>
-          <CardTitle>Training Analysis</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ScrollArea className="h-[600px]">
-            {training.recommendations.map((rec, i) => (
+    <Card className="col-span-full">
+      <CardHeader>
+        <CardTitle>Training Analysis</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ScrollArea className="h-[600px]">
+          {training.recommendations.map((rec, i) => {
+            // Parse recommendations to create data points for the spider chart
+            const dataPoints = rec.training_plan.recommendations.map(rec => {
+              const [name, score] = rec.split(" (Priority: ");
+              return {
+                name,
+                value: Number(score.replace(")", ""))
+              };
+            });
+
+            return (
               <div
                 key={i}
-                className="mb-6 pb-6 border-b last:border-0 last:pb-0"
+                className="mb-8 pb-8 border-b last:border-0 last:pb-0"
               >
                 <div className="flex items-center justify-between mb-2">
                   <Badge>{rec.standardized_category}</Badge>
                   <Badge variant="outline">{Math.round(rec.training_plan.timeEstimate)}h</Badge>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-muted-foreground mb-6">
                   {rec.training_query}
                 </p>
 
-                <div className="h-[300px] w-full">
+                <div className="h-[400px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart 
-                      data={Object.entries(rec.training_plan.metrics).map(([name, value]) => ({
-                        name,
-                        value
-                      }))}
-                      outerRadius={130}
+                      data={dataPoints}
+                      outerRadius={180}
                     >
                       <PolarGrid />
                       <PolarAngleAxis 
                         dataKey="name"
                         tick={{ 
-                          fontSize: 10,
+                          fontSize: 11,
                           fill: "hsl(var(--muted-foreground))",
-                          width: 150,
+                          width: 200,
                           dy: 15
                         }}
                       />
@@ -77,7 +82,7 @@ export default function TrainingRecommendations() {
                   </ResponsiveContainer>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-6">
                   <h4 className="text-sm font-medium mb-2">Recommendations</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     {rec.training_plan.recommendations.map((recommendation, j) => (
@@ -89,60 +94,10 @@ export default function TrainingRecommendations() {
                   </ul>
                 </div>
               </div>
-            ))}
-          </ScrollArea>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Summary Statistics</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div>
-                <div className="flex justify-between mb-1">
-                  <span className="text-sm">Total Recommendations</span>
-                  <span className="font-medium">
-                    {training.summary.totalRecommendations}
-                  </span>
-                </div>
-                <Progress 
-                  value={Math.min(100, (training.summary.totalRecommendations / 10) * 100)} 
-                />
-              </div>
-              <div>
-                <div className="flex justify-between mb-1">
-                  <span className="text-sm">Average Time Estimate</span>
-                  <span className="font-medium">
-                    {Math.round(training.summary.averageTimeEstimate)}h
-                  </span>
-                </div>
-                <Progress 
-                  value={Math.min(100, (training.summary.averageTimeEstimate / 40) * 100)} 
-                />
-              </div>
-              <div>
-                <h4 className="text-sm font-medium mb-2">Category Breakdown</h4>
-                <div className="space-y-2">
-                  {Object.entries(training.summary.categoryBreakdown).map(([category, count]) => (
-                    <div key={category}>
-                      <div className="flex justify-between mb-1">
-                        <span className="text-sm">{category}</span>
-                        <span className="text-sm text-muted-foreground">{count}</span>
-                      </div>
-                      <Progress 
-                        value={Math.min(100, (count / training.summary.totalRecommendations) * 100)} 
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+            );
+          })}
+        </ScrollArea>
+      </CardContent>
+    </Card>
   );
 }
