@@ -3,7 +3,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useQuery } from "@tanstack/react-query";
 import { getCategoryAnalysis } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
-import { ChartPieIcon } from "lucide-react";
+import {
+  ChartPieIcon,
+  CodeIcon,
+  DatabaseIcon,
+  BugIcon,
+  TerminalIcon,
+  RocketIcon,
+  BarChartIcon,
+  ShieldIcon,
+  HelpCircleIcon,
+  TestTubesIcon,
+} from "lucide-react";
 import { TopSupportTrends } from "./TopSupportTrends";
 import { useEffect } from "react";
 
@@ -19,6 +30,20 @@ interface CategoryInsight {
   description: string;
   focusAreas?: string[];
 }
+
+// Map categories to relevant icons
+const categoryIcons = {
+  'API Integration': <CodeIcon />,
+  'Code Development': <TerminalIcon />,
+  'Data Processing': <BarChartIcon />,
+  'Database Management': <DatabaseIcon />,
+  'DevOps & Automation': <RocketIcon />,
+  'Error Handling': <BugIcon />,
+  'Performance Optimization': <ChartPieIcon />,
+  'Security & Authentication': <ShieldIcon />,
+  'Technical Support': <HelpCircleIcon />,
+  'Testing & QA': <TestTubesIcon />,
+};
 
 export default function CategoryAnalysis() {
   const { data: categories } = useQuery({
@@ -39,7 +64,7 @@ export default function CategoryAnalysis() {
 
   // Transform insights into the shape expected by TopSupportTrends
   const trendsData = categories.insights.map((insight: CategoryInsight) => ({
-    icon: <ChartPieIcon />,
+    icon: categoryIcons[insight.category as keyof typeof categoryIcons] || <ChartPieIcon />,
     iconColor: "#3b82f6",
     category: insight.category,
     description: insight.description,
@@ -60,7 +85,7 @@ export default function CategoryAnalysis() {
               <div className="flex items-center justify-between">
                 <div className="text-2xl font-bold">{category.value}</div>
                 <Badge className="flex items-center gap-1">
-                  <ChartPieIcon className="w-3 h-3" />
+                  {categoryIcons[category.name as keyof typeof categoryIcons] || <ChartPieIcon className="w-3 h-3" />}
                   {category.percentage}%
                 </Badge>
               </div>

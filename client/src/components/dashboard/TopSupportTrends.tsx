@@ -35,7 +35,6 @@ export function TopSupportTrends({ trendsData }: TopSupportTrendsProps) {
               {item.icon || <ChartPieIcon />}
             </div>
             <h3 className="trend-category">{item.category}</h3>
-            <div className="trend-badge">Trending</div>
             <p className="trend-description">{item.description}</p>
 
             <div className="focus-areas">
