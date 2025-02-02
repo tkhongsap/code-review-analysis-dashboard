@@ -47,21 +47,24 @@ export default function TrainingRecommendations() {
                   {rec.training_query}
                 </p>
 
-                <div className="h-[200px] w-full">
+                <div className="h-[300px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart 
                       data={Object.entries(rec.training_plan.metrics).map(([name, value]) => ({
-                        name: name.split('_').map(word => 
-                          word.charAt(0).toUpperCase() + word.slice(1)
-                        ).join(' '),
+                        name,
                         value
                       }))}
-                      outerRadius={90}
+                      outerRadius={130}
                     >
                       <PolarGrid />
                       <PolarAngleAxis 
                         dataKey="name"
-                        tick={{ fontSize: 10 }}
+                        tick={{ 
+                          fontSize: 10,
+                          fill: "hsl(var(--muted-foreground))",
+                          width: 150,
+                          dy: 15
+                        }}
                       />
                       <Radar
                         name="Priority"
@@ -74,19 +77,17 @@ export default function TrainingRecommendations() {
                   </ResponsiveContainer>
                 </div>
 
-                {rec.training_plan.recommendations.length > 0 && (
-                  <div className="mt-4">
-                    <h4 className="text-sm font-medium mb-2">Recommendations</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      {rec.training_plan.recommendations.map((recommendation, j) => (
-                        <li key={j} className="flex items-center">
-                          <span className="mr-2">•</span>
-                          {recommendation}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <div className="mt-4">
+                  <h4 className="text-sm font-medium mb-2">Recommendations</h4>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {rec.training_plan.recommendations.map((recommendation, j) => (
+                      <li key={j} className="flex items-center">
+                        <span className="mr-2">•</span>
+                        {recommendation}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </ScrollArea>
