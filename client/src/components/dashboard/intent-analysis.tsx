@@ -29,7 +29,7 @@ interface Category {
   percentage: number;
 }
 
-// Map categories to relevant icons - same as category-analysis
+// Map categories to relevant icons
 const categoryIcons: Record<string, JSX.Element> = {
   'API Integration': <CodeIcon className="h-5 w-5" />,
   'Code Development': <TerminalIcon className="h-5 w-5" />,
@@ -69,7 +69,7 @@ export default function IntentAnalysis() {
         {intents.insights?.map((insight: Insight, i: number) => (
           <Card 
             key={i}
-            className="group transition-shadow duration-200 hover:shadow-md"
+            className="group transition-shadow duration-200 hover:shadow-md border-gray-100"
           >
             <CardHeader className="pb-2">
               <div className="flex items-center justify-between">
