@@ -79,11 +79,9 @@ export default function TrainingRecommendations() {
                 <div className="h-[200px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart data={[
-                      { name: "Implementation", value: rec.metrics.implementation },
-                      { name: "Theoretical", value: rec.metrics.theoretical },
-                      { name: "Practical", value: rec.metrics.practical },
-                      { name: "Complexity", value: rec.metrics.complexity },
-                      { name: "Impact", value: rec.metrics.impact },
+                      { name: "Priority", value: rec.priority === "High" ? 100 : 50 },
+                      { name: "Impact", value: rec.impactScore },
+                      { name: "Category Focus", value: 75 }
                     ]}>
                       <PolarGrid />
                       <PolarAngleAxis dataKey="name" />
