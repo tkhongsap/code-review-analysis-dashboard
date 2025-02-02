@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
-import { getWorkAreaAnalysis } from "@/lib/data";
+import { getWorkAreaAnalysis, getCategoryAnalysis } from "@/lib/data";
 import {
   CodeIcon,
   TerminalIcon,
@@ -60,15 +60,24 @@ export default function WorkAreaAnalysis() {
     queryFn: getWorkAreaAnalysis
   });
 
-  if (!workAreas) return null;
+  const { data: categories } = useQuery({
+    queryKey: ["/api/analysis/categories"],
+    queryFn: getCategoryAnalysis
+  });
+
+  if (!workAreas || !categories) return null;
 
   // Sort insights alphabetically by workArea
   const sortedInsights = [...workAreas.insights].sort((a, b) => 
     a.workArea.localeCompare(b.workArea)
   );
 
-  // Calculate total count for consistent percentage calculation
-  const totalCount = workAreas.distribution.reduce((sum, area) => sum + area.count, 0);
+  // Create a map of category counts for percentage calculation
+  const categoryCountMap = new Map(
+    categories.distribution.map(cat => [cat.name, cat.value])
+  );
+
+  const totalCategoryCount = categories.distribution.reduce((sum, cat) => sum + cat.value, 0);
 
   return (
     <div className="space-y-4">
@@ -81,7 +90,8 @@ export default function WorkAreaAnalysis() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sortedInsights.map((insight, i) => {
-          const percentage = Math.round((insight.count / totalCount) * 100);
+          const categoryCount = categoryCountMap.get(insight.workArea) || 0;
+          const percentage = Math.round((categoryCount / totalCategoryCount) * 100);
 
           return (
             <Card 
