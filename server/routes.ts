@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { importJSONData } from "./services/import";
 import { db } from "@db";
-import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories, userCapabilities, trainingRecommendations } from "@db/schema";
+import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories, userCapabilities, trainingRecommendations, categoryInsights } from "@db/schema";
 import { desc, sql } from "drizzle-orm";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -226,9 +226,8 @@ export function registerRoutes(app: Express): Server {
       .groupBy(codeReviews.standardizedCategory)
       .orderBy(sql`count(*) desc`);
 
-      // Read insights from JSON file
-      const insightsPath = join(process.cwd(), "attached_assets", "category_insights.json");
-      const insightsData = JSON.parse(readFileSync(insightsPath, 'utf-8'));
+      // Get insights from database instead of JSON file
+      const insightsData = await db.select().from(categoryInsights);
 
       const distribution = [
         { name: "Data Processing", value: 131, percentage: 28, description: "Data Processing related reviews" },
@@ -245,8 +244,8 @@ export function registerRoutes(app: Express): Server {
 
       res.json({
         distribution,
-        insights: insightsData.map((item: any) => ({
-          category: item.standardized_category,
+        insights: insightsData.map(item => ({
+          category: item.standardizedCategory,
           description: item.insight
         }))
       });
