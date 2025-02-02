@@ -84,8 +84,7 @@ export default function CategoryAnalysis() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div className="text-2xl font-bold">{category.value}</div>
-                <Badge className="flex items-center gap-1">
-                  {categoryIcons[category.name as keyof typeof categoryIcons] || <ChartPieIcon className="w-3 h-3" />}
+                <Badge>
                   {category.percentage}%
                 </Badge>
               </div>
