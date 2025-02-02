@@ -36,7 +36,7 @@
   }
   
   .tab-trigger[data-state='active'] {
-    @apply bg-primary text-primary-foreground shadow-md border border-primary/20;
+    @apply bg-primary text-primary-foreground shadow-md border border-primary/20 font-bold;
   }
   
   .tab-trigger[data-state='inactive'] {
