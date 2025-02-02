@@ -167,6 +167,24 @@ export function registerRoutes(app: Express): Server {
     }
   });
 
+  app.get("/api/check-duplicates", async (req, res) => {
+    try {
+      const duplicatesQuery = await db.execute(sql`
+        SELECT filename, COUNT(*) as count
+        FROM code_reviews
+        GROUP BY filename
+        HAVING COUNT(*) > 1
+      `);
+      res.json({
+        hasDuplicates: duplicatesQuery.rows.length > 0,
+        duplicates: duplicatesQuery.rows
+      });
+    } catch (error) {
+      console.error("Duplicates check error:", error);
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
+
   app.get("/api/metrics", async (req, res) => {
     try {
       // 1. Total number of rows in code_reviews table
