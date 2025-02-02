@@ -25,33 +25,33 @@ export default function Dashboard() {
         <Card>
           <CardContent className="p-6">
             <Tabs defaultValue="category" className="w-full">
-              <TabsList className="tabs-list w-full flex flex-wrap sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+              <TabsList className="tabs-list w-full flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
                 <TabsTrigger 
-                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  className="tab-trigger w-full text-sm sm:text-base p-3 mb-2 sm:mb-0" 
                   value="category"
                 >
                   Category Analysis
                 </TabsTrigger>
                 <TabsTrigger 
-                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  className="tab-trigger w-full text-sm sm:text-base p-3 mb-2 sm:mb-0" 
                   value="intent"
                 >
                   Support Request Analysis
                 </TabsTrigger>
                 <TabsTrigger 
-                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  className="tab-trigger w-full text-sm sm:text-base p-3 mb-2 sm:mb-0" 
                   value="workarea"
                 >
                   Technical Domain Coverage
                 </TabsTrigger>
                 <TabsTrigger 
-                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  className="tab-trigger w-full text-sm sm:text-base p-3 mb-2 sm:mb-0" 
                   value="queries"
                 >
                   Domain Analysis
                 </TabsTrigger>
                 <TabsTrigger 
-                  className="tab-trigger flex-1 text-sm sm:text-base whitespace-normal h-auto py-2" 
+                  className="tab-trigger w-full text-sm sm:text-base p-3 mb-2 sm:mb-0" 
                   value="training"
                 >
                   Training Recommendation
