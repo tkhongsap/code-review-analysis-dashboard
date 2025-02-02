@@ -31,4 +31,19 @@
   font-size: 1rem;
   font-weight: 400;
   color: #555; /* Subtle contrast */
+}
+
+/* Percentage Badge: Enhanced readability & hover effect */
+.percentage-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #3b82f6, #6366f1); /* from-blue-500 to-indigo-600 */
+  color: #fff;
+  font-weight: 500; /* medium font weight for clarity */
+  transition: background 0.2s ease;
+}
+
+.percentage-badge:hover {
+  background: linear-gradient(120deg, #2563eb, #4f46e5); /* Slightly darker gradient */
 } 
