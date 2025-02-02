@@ -1,0 +1,142 @@
+[
+    {
+        "standardized_category": "API Integration",
+        "training_analysis": {
+            "training_query": "Identify urgent training needs in API development, error handling, and logging strategies.",
+            "training_plan": {
+                "REST API Fundamentals": 10,
+                "Training in API Development and Integration": 9,
+                "Workshops on error handling and logging strategies": 9,
+                "Best Practices for Logging in Web Applications": 8,
+                "Web API design and implementation": 8,
+                "Advanced Logging Techniques in .NET": 7
+            }
+        }
+    },
+    {
+        "standardized_category": "Code Development",
+        "training_analysis": {
+            "training_query": "Identify urgent training needs in software development focusing on modern web technologies, API integration, and best practices in programming.",
+            "training_plan": {
+                "RESTful API design and integration workshops": 10,
+                "Angular Fundamentals and Advanced Concepts": 9,
+                "Effective Collaboration with GitHub": 8,
+                "Asynchronous programming in JavaScript/Python": 8,
+                "Unit testing best practices": 7,
+                "Microservices architecture": 7
+            }
+        }
+    },
+    {
+        "standardized_category": "Data Processing",
+        "training_analysis": {
+            "training_query": "Identify urgent training needs in data analysis and natural language processing.",
+            "training_plan": {
+                "Data Analysis with Python or R": 10,
+                "NLP Techniques and Tools": 10,
+                "SQL for Data Analysis": 9,
+                "Data Visualization Best Practices": 8,
+                "Training in Data Analysis Techniques": 8,
+                "Courses on NLP Techniques": 7
+            }
+        }
+    },
+    {
+        "standardized_category": "Database Management",
+        "training_analysis": {
+            "training_query": "Identify urgent training needs in database management, SQL optimization, and MongoDB fundamentals.",
+            "training_plan": {
+                "SQL Performance Tuning Techniques": 10,
+                "Advanced SQL for Data Analysis": 9,
+                "MongoDB Fundamentals": 8,
+                "Debugging techniques and tools": 7,
+                "Database Design and Optimization": 6,
+                "Data Modeling in MongoDB": 5
+            }
+        }
+    },
+    {
+        "standardized_category": "DevOps & Automation",
+        "training_analysis": {
+            "training_query": "Identifying urgent training needs in software development, data integration, and workflow management.",
+            "training_plan": {
+                "Troubleshooting Data Integration Issues": 10,
+                "Kubernetes Fundamentals": 9,
+                "Docker Fundamentals": 9,
+                "Data Analysis and Visualization Courses": 8,
+                "Workflow Automation Tools": 8,
+                "Effective Communication Skills Course": 7
+            }
+        }
+    },
+    {
+        "standardized_category": "Error Handling",
+        "training_analysis": {
+            "training_query": "Identify urgent training needs in debugging, error handling, and best practices for software development.",
+            "training_plan": {
+                "Debugging Techniques and Tools": 10,
+                "Error Handling Best Practices": 10,
+                "Advanced Debugging Workshops": 9,
+                "Troubleshooting Common Build Issues": 8,
+                "Debugging Techniques for Web Applications": 8,
+                "Best Practices for Code Reviews": 7
+            }
+        }
+    },
+    {
+        "standardized_category": "Performance Optimization",
+        "training_analysis": {
+            "training_query": "The urgent training needs focus on enhancing data analysis and optimization skills, particularly in the context of software development and database management.",
+            "training_plan": {
+                "data analysis tools and techniques": 10,
+                "query optimization best practices": 9,
+                "advanced SQL programming courses": 8,
+                "database performance tuning": 8,
+                "debugging techniques and tools for developers": 7,
+                "data visualization tools": 7
+            }
+        }
+    },
+    {
+        "standardized_category": "Security & Authentication",
+        "training_analysis": {
+            "training_query": "Urgent training needs in permission management, role-based access control, and security best practices.",
+            "training_plan": {
+                "Role-Based Access Control (RBAC) Training": 10,
+                "User Authentication and Authorization Best Practices": 9,
+                "Permission Management Best Practices": 8,
+                "Security Best Practices for Resource Management": 8,
+                "Workshops on User Permission Management": 7,
+                "Data Governance and Compliance Training": 6
+            }
+        }
+    },
+    {
+        "standardized_category": "Technical Support",
+        "training_analysis": {
+            "training_query": "urgent training needs in communication and decision-making skills across various contexts",
+            "training_plan": {
+                "effective communication skills": 10,
+                "critical thinking and decision making in medical contexts": 9,
+                "public speaking training": 8,
+                "business communication skills": 8,
+                "workshops on decision-making processes": 7,
+                "active listening techniques": 7
+            }
+        }
+    },
+    {
+        "standardized_category": "Testing & QA",
+        "training_analysis": {
+            "training_query": "Identify urgent training needs in software development and testing practices.",
+            "training_plan": {
+                "best practices for writing unit tests": 10,
+                "unit testing best practices and design patterns": 9,
+                "test-driven development methodologies": 8,
+                "Debugging techniques training": 8,
+                "performance optimization techniques": 7,
+                "code review best practices workshop": 7
+            }
+        }
+    }
+]
