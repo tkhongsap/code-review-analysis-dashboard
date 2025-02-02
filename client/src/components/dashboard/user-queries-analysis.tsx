@@ -75,32 +75,6 @@ export default function UserQueriesAnalysis() {
           </CardContent>
         </Card>
       ))}
-
-      <Card className="lg:col-span-2">
-        <CardHeader>
-          <CardTitle>Summary</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="space-y-2">
-              <p className="text-sm font-medium">Total Categories</p>
-              <p className="text-2xl font-bold">{capabilities.summary.totalCategories}</p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-sm font-medium">Average Score</p>
-              <p className="text-2xl font-bold">
-                {Math.round(capabilities.summary.averageStrong * 10) / 10}
-              </p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-sm font-medium">Total Capabilities</p>
-              <p className="text-2xl font-bold">
-                {capabilities.capabilities.reduce((acc, curr) => acc + curr.metrics.capabilities.length, 0)}
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
