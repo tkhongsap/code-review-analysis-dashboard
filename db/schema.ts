@@ -57,6 +57,18 @@ export const trainingRecommendations = pgTable("training_recommendations", {
   training_plan: jsonb("training_plan").notNull(),
 });
 
+// Relations
+export const codeReviewsRelations = relations(codeReviews, ({ many }) => ({
+  intents: many(intents),
+}));
+
+// Relation between intents and broader categories
+export const intentRelations = relations(intents, ({ one }) => ({
+  broaderCategory: one(intentBroaderCategories, {
+    fields: [intents.name],
+    references: [intentBroaderCategories.standardizedCategory],
+  }),
+}));
 
 // Export schemas for validation
 export const insertUserCapabilitySchema = createInsertSchema(userCapabilities);
@@ -73,16 +85,3 @@ export const insertTrainingRecommendationSchema = createInsertSchema(trainingRec
 export const selectTrainingRecommendationSchema = createSelectSchema(trainingRecommendations);
 export type InsertTrainingRecommendation = typeof trainingRecommendations.$inferInsert;
 export type SelectTrainingRecommendation = typeof trainingRecommendations.$inferSelect;
-
-// Relations
-export const codeReviewsRelations = relations(codeReviews, ({ many }) => ({
-  intents: many(intents),
-}));
-
-// Relation between intents and broader categories
-export const intentRelations = relations(intents, ({ one }) => ({
-  broaderCategory: one(intentBroaderCategories, {
-    fields: [intents.name],
-    references: [intentBroaderCategories.standardizedCategory],
-  }),
-}));

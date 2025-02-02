@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { importJSONData } from "./services/import";
 import { db } from "@db";
-import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories, userCapabilities } from "@db/schema";
+import { codeReviews, intents, intentBroaderCategories, workAreaBroaderCategories, userCapabilities, trainingRecommendations } from "@db/schema";
 import { desc, sql } from "drizzle-orm";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -362,49 +362,41 @@ export function registerRoutes(app: Express): Server {
 
   app.get("/api/analysis/training", async (req, res) => {
     try {
-      const skillStats = await db.select({
-        skill: sql<string>`unnest(capability_analysis)`,
-        count: sql<number>`count(*)`
-      })
-      .from(codeReviews)
-      .groupBy(sql`unnest(capability_analysis)`)
-      .orderBy(sql`count(*) desc`)
-      .limit(5);
+      const trainingData = await db.select().from(trainingRecommendations);
 
-      const totalReviews = await db.select({
-        count: sql<number>`count(*)`
-      }).from(codeReviews);
+      // Transform data for spider chart visualization
+      const transformedData = trainingData.map(item => {
+        const trainingPlan = item.training_plan as Record<string, any>;
+        return {
+          standardized_category: item.standardized_category,
+          training_query: item.training_query,
+          training_plan: {
+            metrics: {
+              implementation: trainingPlan.metrics?.implementation || 0,
+              theoretical: trainingPlan.metrics?.theoretical || 0,
+              practical: trainingPlan.metrics?.practical || 0,
+              complexity: trainingPlan.metrics?.complexity || 0,
+              impact: trainingPlan.metrics?.impact || 0
+            },
+            recommendations: trainingPlan.recommendations || [],
+            timeEstimate: trainingPlan.timeEstimate || 0
+          }
+        };
+      });
 
-      const recommendations = skillStats.map(stat => ({
-        course: `Advanced ${stat.skill}`,
-        priority: stat.count > 100 ? "High" : "Medium",
-        category: stat.skill.split(" ")[0],
-        description: `Master ${stat.skill.toLowerCase()}`,
-        impactScore: Math.min(100, Math.round((stat.count / totalReviews[0].count) * 200))
-      }));
+      // Calculate summary statistics
+      const summary = {
+        totalRecommendations: trainingData.length,
+        averageTimeEstimate: transformedData.reduce((acc, curr) => acc + curr.training_plan.timeEstimate, 0) / transformedData.length,
+        categoryBreakdown: transformedData.reduce((acc, curr) => {
+          acc[curr.standardized_category] = (acc[curr.standardized_category] || 0) + 1;
+          return acc;
+        }, {} as Record<string, number>)
+      };
 
       res.json({
-        recommendations,
-        skillGaps: skillStats.map(stat => ({
-          skill: stat.skill,
-          level: stat.count > 100 ? "Advanced" : "Intermediate",
-          currentProficiency: Math.round((stat.count / totalReviews[0].count) * 100),
-          requiredProficiency: Math.min(100, Math.round((stat.count / totalReviews[0].count) * 150))
-        })),
-        learningPaths: [
-          {
-            name: "Frontend Master",
-            duration: "3 months",
-            description: "Comprehensive frontend development path",
-            skills: skillStats.slice(0, 3).map(s => s.skill)
-          },
-          {
-            name: "Backend Expert",
-            duration: "4 months",
-            description: "Advanced backend development curriculum",
-            skills: skillStats.slice(2, 5).map(s => s.skill)
-          }
-        ]
+        recommendations: transformedData,
+        summary
       });
     } catch (error) {
       console.error("Training recommendations error:", error);

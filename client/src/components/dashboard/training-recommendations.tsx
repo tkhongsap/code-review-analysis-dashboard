@@ -10,36 +10,9 @@ import {
   PolarAngleAxis,
   Radar,
 } from "recharts";
+import { TrainingAnalysis } from "@/lib/data";
 
-interface TrainingMetrics {
-  name: string;
-  value: number;
-}
-
-interface TrainingRecommendation {
-  category: string;
-  query: string;
-  metrics: {
-    implementation: number;
-    theoretical: number;
-    practical: number;
-    complexity: number;
-    impact: number;
-  };
-  recommendations: string[];
-  timeEstimate: number;
-}
-
-interface TrainingData {
-  recommendations: TrainingRecommendation[];
-  summary: {
-    totalRecommendations: number;
-    averageTimeEstimate: number;
-    categoryBreakdown: Record<string, number>;
-  };
-}
-
-async function getTrainingRecommendations(): Promise<TrainingData> {
+async function getTrainingRecommendations(): Promise<TrainingAnalysis> {
   const response = await fetch("/api/analysis/training");
   if (!response.ok) {
     throw new Error("Failed to fetch training recommendations");
@@ -69,19 +42,21 @@ export default function TrainingRecommendations() {
                 className="mb-6 pb-6 border-b last:border-0 last:pb-0"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <Badge>{rec.category}</Badge>
-                  <Badge variant="outline">{Math.round(rec.timeEstimate)}h</Badge>
+                  <Badge>{rec.standardized_category}</Badge>
+                  <Badge variant="outline">{Math.round(rec.training_plan.timeEstimate)}h</Badge>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
-                  {rec.query}
+                  {rec.training_query}
                 </p>
 
                 <div className="h-[200px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart data={[
-                      { name: "Priority", value: rec.priority === "High" ? 100 : 50 },
-                      { name: "Impact", value: rec.impactScore },
-                      { name: "Category Focus", value: 75 }
+                      { name: "Implementation", value: rec.training_plan.metrics.implementation },
+                      { name: "Theoretical", value: rec.training_plan.metrics.theoretical },
+                      { name: "Practical", value: rec.training_plan.metrics.practical },
+                      { name: "Complexity", value: rec.training_plan.metrics.complexity },
+                      { name: "Impact", value: rec.training_plan.metrics.impact }
                     ]}>
                       <PolarGrid />
                       <PolarAngleAxis dataKey="name" />
@@ -96,11 +71,11 @@ export default function TrainingRecommendations() {
                   </ResponsiveContainer>
                 </div>
 
-                {rec.recommendations.length > 0 && (
+                {rec.training_plan.recommendations.length > 0 && (
                   <div className="mt-4">
                     <h4 className="text-sm font-medium mb-2">Recommendations</h4>
                     <ul className="list-disc pl-4 text-sm text-muted-foreground">
-                      {rec.recommendations.map((recommendation, j) => (
+                      {rec.training_plan.recommendations.map((recommendation, j) => (
                         <li key={j}>{recommendation}</li>
                       ))}
                     </ul>

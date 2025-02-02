@@ -30,7 +30,7 @@ export async function getUserQueriesAnalysis() {
   return response.json();
 }
 
-export interface TrainingMetrics {
+export interface TrainingPlanMetrics {
   implementation: number;
   theoretical: number;
   practical: number;
@@ -38,12 +38,16 @@ export interface TrainingMetrics {
   impact: number;
 }
 
-export interface TrainingRecommendation {
-  category: string;
-  query: string;
-  metrics: TrainingMetrics;
+export interface TrainingPlan {
+  metrics: TrainingPlanMetrics;
   recommendations: string[];
   timeEstimate: number;
+}
+
+export interface TrainingRecommendation {
+  standardized_category: string;
+  training_query: string;
+  training_plan: TrainingPlan;
 }
 
 export interface TrainingAnalysis {
