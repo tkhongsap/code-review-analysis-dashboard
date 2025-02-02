@@ -360,6 +360,18 @@ export function registerRoutes(app: Express): Server {
     }
   });
 
+  app.post("/api/import/training-recommendations", async (req, res) => {
+    try {
+      const jsonPath = join(process.cwd(), "attached_assets", "training_recommendation_analysis.json");
+      console.log("Attempting to import training recommendations from:", jsonPath);
+      const result = await importJSONData(jsonPath);
+      res.json(result);
+    } catch (error) {
+      console.error("Import error:", error);
+      res.status(500).json({ success: false, error: String(error) });
+    }
+  });
+
   app.get("/api/analysis/training", async (req, res) => {
     try {
       const trainingData = await db.select().from(trainingRecommendations);
