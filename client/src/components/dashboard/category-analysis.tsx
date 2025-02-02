@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getCategoryAnalysis } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
 import { ChartPieIcon } from "lucide-react";
+import TopSupportTrends from "@/components/TopSupportTrends";
+import { useEffect } from "react";
 
 interface Category {
   name: string;
@@ -23,12 +25,25 @@ export default function CategoryAnalysis() {
     queryFn: getCategoryAnalysis
   });
 
+  useEffect(() => {
+    console.log("CategoryAnalysis data:", categories);
+  }, [categories]);
+
   if (!categories) return null;
 
   // Sort categories alphabetically by name
   const sortedCategories = [...categories.distribution].sort((a, b) => 
     a.name.localeCompare(b.name)
   );
+
+  // Transform insights into the shape expected by TopSupportTrends
+  const trendsData = categories.insights.map((insight) => ({
+    icon: <ChartPieIcon />,       // You can replace this with any relevant icon
+    iconColor: "#3b82f6",         // Default icon color
+    category: insight.category,
+    description: insight.description,
+    focusAreas: ["Placeholder 1", "Placeholder 2"], // Example tags
+  }));
 
   return (
     <div className="space-y-6">
@@ -56,27 +71,7 @@ export default function CategoryAnalysis() {
         ))}
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Category Insights</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ScrollArea className="h-[400px]">
-            <div className="space-y-6">
-              {categories.insights.map((insight: CategoryInsight, i: number) => (
-                <div key={i} className="pb-4 border-b last:border-0">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="outline">{insight.category}</Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {insight.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
-        </CardContent>
-      </Card>
+      <TopSupportTrends trendsData={trendsData} />
     </div>
   );
 }
