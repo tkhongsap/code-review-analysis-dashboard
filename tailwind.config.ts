@@ -11,11 +11,21 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "#006738",
+          hover: "#005730",
+          foreground: "#FFFFFF"
+        },
+        accent: {
+          DEFAULT: "#C4942D",
+          hover: "#B08428",
+          foreground: "#FFFFFF"
+        },
+        background: "#FFFFFF",
+        foreground: "#333333",
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#E6F3F7",
+          foreground: "#333333",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
