@@ -25,10 +25,15 @@ export default function CategoryAnalysis() {
 
   if (!categories) return null;
 
+  // Sort categories alphabetically by name
+  const sortedCategories = [...categories.distribution].sort((a, b) => 
+    a.name.localeCompare(b.name)
+  );
+
   return (
     <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-        {categories.distribution.map((category: Category, i: number) => (
+        {sortedCategories.map((category: Category, i: number) => (
           <Card key={i}>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium">
