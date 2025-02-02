@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCategoryAnalysis } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
 import { ChartPieIcon } from "lucide-react";
-import TopSupportTrends from "@/components/TopSupportTrends";
+import { TopSupportTrends } from "./TopSupportTrends";
 import { useEffect } from "react";
 
 interface Category {
@@ -17,6 +17,7 @@ interface Category {
 interface CategoryInsight {
   category: string;
   description: string;
+  focusAreas?: string[];
 }
 
 export default function CategoryAnalysis() {
@@ -32,17 +33,17 @@ export default function CategoryAnalysis() {
   if (!categories) return null;
 
   // Sort categories alphabetically by name
-  const sortedCategories = [...categories.distribution].sort((a, b) => 
+  const sortedCategories = [...categories.distribution].sort((a: Category, b: Category) => 
     a.name.localeCompare(b.name)
   );
 
   // Transform insights into the shape expected by TopSupportTrends
-  const trendsData = categories.insights.map((insight) => ({
-    icon: <ChartPieIcon />,       // You can replace this with any relevant icon
-    iconColor: "#3b82f6",         // Default icon color
+  const trendsData = categories.insights.map((insight: CategoryInsight) => ({
+    icon: <ChartPieIcon />,
+    iconColor: "#3b82f6",
     category: insight.category,
     description: insight.description,
-    focusAreas: ["Placeholder 1", "Placeholder 2"], // Example tags
+    focusAreas: insight.focusAreas || extractFocusAreas(insight.description),
   }));
 
   return (
@@ -74,4 +75,14 @@ export default function CategoryAnalysis() {
       <TopSupportTrends trendsData={trendsData} />
     </div>
   );
+}
+
+// Helper function to extract focus areas from description
+function extractFocusAreas(description: string): string[] {
+  // Split description by commas, periods, or "and", then clean up and filter
+  return description
+    .split(/[,.]\s+|\sand\s/g)
+    .map(area => area.trim())
+    .filter(area => area.length > 0 && area.length < 30) // Filter out too long or empty strings
+    .slice(0, 3); // Take only first 3 areas
 }
