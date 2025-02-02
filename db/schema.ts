@@ -57,6 +57,14 @@ export const trainingRecommendations = pgTable("training_recommendations", {
   training_plan: jsonb("training_plan").notNull(),
 });
 
+// Category insights table
+export const categoryInsights = pgTable("category_insights", {
+  id: serial("id").primaryKey(),
+  standardizedCategory: text("standardized_category").notNull(),
+  insight: text("insight").notNull(),
+});
+
+
 // Relations
 export const codeReviewsRelations = relations(codeReviews, ({ many }) => ({
   intents: many(intents),
@@ -85,3 +93,8 @@ export const insertTrainingRecommendationSchema = createInsertSchema(trainingRec
 export const selectTrainingRecommendationSchema = createSelectSchema(trainingRecommendations);
 export type InsertTrainingRecommendation = typeof trainingRecommendations.$inferInsert;
 export type SelectTrainingRecommendation = typeof trainingRecommendations.$inferSelect;
+
+export const insertCategoryInsightSchema = createInsertSchema(categoryInsights);
+export const selectCategoryInsightSchema = createSelectSchema(categoryInsights);
+export type InsertCategoryInsight = typeof categoryInsights.$inferInsert;
+export type SelectCategoryInsight = typeof categoryInsights.$inferSelect;
