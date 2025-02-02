@@ -51,13 +51,16 @@ export default function TrainingRecommendations() {
 
                 <div className="h-[200px] w-full">
                   <ResponsiveContainer width="100%" height="100%">
-                    <RadarChart data={[
-                      { name: "Implementation", value: rec.training_plan.metrics.implementation },
-                      { name: "Theoretical", value: rec.training_plan.metrics.theoretical },
-                      { name: "Practical", value: rec.training_plan.metrics.practical },
-                      { name: "Complexity", value: rec.training_plan.metrics.complexity },
-                      { name: "Impact", value: rec.training_plan.metrics.impact }
-                    ]}>
+                    <RadarChart 
+                      data={[
+                        { name: "Implementation", value: rec.training_plan.metrics.implementation },
+                        { name: "Theoretical", value: rec.training_plan.metrics.theoretical },
+                        { name: "Practical", value: rec.training_plan.metrics.practical },
+                        { name: "Complexity", value: rec.training_plan.metrics.complexity },
+                        { name: "Impact", value: rec.training_plan.metrics.impact }
+                      ]}
+                      outerRadius={90}
+                    >
                       <PolarGrid />
                       <PolarAngleAxis dataKey="name" />
                       <Radar
@@ -74,9 +77,12 @@ export default function TrainingRecommendations() {
                 {rec.training_plan.recommendations.length > 0 && (
                   <div className="mt-4">
                     <h4 className="text-sm font-medium mb-2">Recommendations</h4>
-                    <ul className="list-disc pl-4 text-sm text-muted-foreground">
+                    <ul className="space-y-2 text-sm text-muted-foreground">
                       {rec.training_plan.recommendations.map((recommendation, j) => (
-                        <li key={j}>{recommendation}</li>
+                        <li key={j} className="flex items-center">
+                          <span className="mr-2">•</span>
+                          {recommendation}
+                        </li>
                       ))}
                     </ul>
                   </div>
