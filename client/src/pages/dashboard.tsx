@@ -23,12 +23,12 @@ export default function Dashboard() {
         <Card>
           <CardContent className="p-6">
             <Tabs defaultValue="category" className="w-full">
-              <TabsList className="grid w-full grid-cols-5">
-                <TabsTrigger value="category">Category Analysis</TabsTrigger>
-                <TabsTrigger value="intent">Query Analysis</TabsTrigger>
-                <TabsTrigger value="workarea">Work Area Analysis</TabsTrigger>
-                <TabsTrigger value="queries">User Queries</TabsTrigger>
-                <TabsTrigger value="training">Training</TabsTrigger>
+              <TabsList className="tabs-list grid w-full grid-cols-5">
+                <TabsTrigger className="tab-trigger" value="category">Category Analysis</TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="intent">Query Analysis</TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="workarea">Work Area Analysis</TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="queries">User Queries</TabsTrigger>
+                <TabsTrigger className="tab-trigger" value="training">Training</TabsTrigger>
               </TabsList>
               <TabsContent value="category">
                 <CategoryAnalysis />

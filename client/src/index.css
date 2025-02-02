@@ -4,26 +4,47 @@
 
 @layer base {
   :root {
-    --background: 180 25% 98%;
+    --background: 210 40% 98%;
     --foreground: 200 50% 20%;
     --card: 0 0% 100%;
     --card-foreground: 200 50% 20%;
     --popover: 0 0% 100%;
     --popover-foreground: 200 50% 20%;
-    --primary: 187 100% 42%;
+    --primary: 196 100% 47%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 200 30% 96%;
+    --secondary: 210 40% 96%;
     --secondary-foreground: 200 50% 20%;
-    --muted: 200 20% 96%;
-    --muted-foreground: 200 30% 40%;
-    --accent: 187 95% 35%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 25% 40%;
+    --accent: 196 100% 47%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 200 20% 92%;
-    --input: 200 20% 92%;
-    --ring: 187 100% 42%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 196 100% 47%;
     --radius: 0.5rem;
+  }
+
+  /* Enhanced tab styling */
+  .tabs-list {
+    @apply bg-secondary/50 p-1 rounded-lg mb-6;
+  }
+  
+  .tab-trigger {
+    @apply px-6 py-2.5 text-sm font-medium transition-all;
+  }
+  
+  .tab-trigger[data-state='active'] {
+    @apply bg-white text-primary shadow-sm;
+  }
+  
+  .tab-trigger[data-state='inactive'] {
+    @apply text-muted-foreground hover:text-foreground hover:bg-muted;
+  }
+  
+  .tab-content {
+    @apply mt-6 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
   }
 
   * {
