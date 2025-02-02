@@ -32,11 +32,11 @@
   }
   
   .tab-trigger {
-    @apply px-6 py-2.5 text-sm font-medium transition-all;
+    @apply px-6 py-2.5 text-sm font-medium transition-all rounded-md;
   }
   
   .tab-trigger[data-state='active'] {
-    @apply bg-white text-primary shadow-sm;
+    @apply bg-primary text-primary-foreground shadow-md border border-primary/20;
   }
   
   .tab-trigger[data-state='inactive'] {

@@ -18,7 +18,7 @@ export default function OverviewMetrics() {
           <div className="flex items-center space-x-4">
             <FileCode className="h-8 w-8 text-primary" />
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Total Reviews</p>
+              <p className="text-base font-bold text-foreground">Total Reviews</p>
               <h3 className="text-2xl font-bold">{metrics.totalReviews}</h3>
             </div>
           </div>
@@ -30,7 +30,7 @@ export default function OverviewMetrics() {
           <div className="flex items-center space-x-4">
             <BarChart3 className="h-8 w-8 text-primary" />
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Categories</p>
+              <p className="text-base font-bold text-foreground">Categories</p>
               <h3 className="text-2xl font-bold">{metrics.uniqueCategories}</h3>
             </div>
           </div>
@@ -42,7 +42,7 @@ export default function OverviewMetrics() {
           <div className="flex items-center space-x-4">
             <Users className="h-8 w-8 text-primary" />
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Work Areas</p>
+              <p className="text-base font-bold text-foreground">Work Areas</p>
               <h3 className="text-2xl font-bold">{metrics.uniqueWorkAreas}</h3>
             </div>
           </div>
