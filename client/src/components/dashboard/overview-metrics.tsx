@@ -1,22 +1,22 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Users2, Files, FolderKanban } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { getMetrics } from "@/lib/data";
-import { BarChart3, FileCode, Users } from "lucide-react";
 
 export default function OverviewMetrics() {
   const { data: metrics } = useQuery({
     queryKey: ["/api/metrics"],
-    queryFn: getMetrics
+    queryFn: getMetrics,
   });
 
   if (!metrics) return null;
 
   return (
-    <div className="grid gap-4 grid-cols-3">
+    <div className="grid gap-4 md:grid-cols-2">
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center space-x-4">
-            <FileCode className="h-8 w-8 text-primary" />
+            <Files className="h-8 w-8 text-primary" />
             <div>
               <p className="text-base font-bold text-foreground">Total Reviews</p>
               <h3 className="text-2xl font-bold">{metrics.totalReviews}</h3>
@@ -28,22 +28,10 @@ export default function OverviewMetrics() {
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center space-x-4">
-            <BarChart3 className="h-8 w-8 text-primary" />
+            <FolderKanban className="h-8 w-8 text-primary" />
             <div>
               <p className="text-base font-bold text-foreground">Categories</p>
               <h3 className="text-2xl font-bold">{metrics.uniqueCategories}</h3>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent className="p-6">
-          <div className="flex items-center space-x-4">
-            <Users className="h-8 w-8 text-primary" />
-            <div>
-              <p className="text-base font-bold text-foreground">Work Areas</p>
-              <h3 className="text-2xl font-bold">{metrics.uniqueWorkAreas}</h3>
             </div>
           </div>
         </CardContent>
